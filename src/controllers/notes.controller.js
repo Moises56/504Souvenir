@@ -4,6 +4,7 @@ const Note = require('../models/Note'); //?importando el modelo de colection
 
 notesCtrl.renderNoteForm=(req, res) =>{
     //*res.send('Añadir Nota');
+    //console.log(req.user.id)
     res.render('notes/new-note')
 };
 
@@ -11,6 +12,7 @@ notesCtrl.createNewNote = async (req, res) =>{
    // console.log(req.body) //*muetra los datos
    const {title, description} = req.body;//?obtner los datos
    const newNote = new Note({title , description});
+   newNote.user = req.user.id;
    //console.log(newNote); //?muetra
    await newNote.save(); //guarda el objeto dentro de mongoDB
    req.flash('success_msg', 'Nota Agregada Con Exito');//*se utiliza como una variable
@@ -20,14 +22,24 @@ notesCtrl.createNewNote = async (req, res) =>{
 
 
 notesCtrl.renderNotas= async (req, res) =>{ //?Consutar a la base de datos
-    const notes = await Note.find().lean();//?busca el arreglo 
+    const notes = await Note.find({ user: req.user.id })
+    .sort({ createdAt: -1 })
+    .lean();//?busca el arreglo 
+    
     res.render('notes/all-notes', { notes }) //?pasalos objetos/muestra en pantalla
 };
+
+
 
 notesCtrl.renderEditForm = async (req, res) => {
    // res.send('Edit form')
    const note = await Note.findById(req.params.id).lean(); //buscando en la base el ID
-   console.log(note)
+   if(note.user != req.user.id){
+    req.flash('error_msg', "No esta Autorizado")   
+    return res.redirect('/notes');
+
+   }
+  // console.log(note)
    res.render('notes/edit-note', { note }); //pasando el valor
 };
 

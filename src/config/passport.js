@@ -4,12 +4,10 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User'); 
 
 passport.use(new LocalStrategy({
-  usernameField: 'email',
- usernameField: 'password'
+  usernameField: 'email'
 }, async (email, password, done) => {
-
   // Match Email's User
-  const user = await User.findOne({email});
+  const user = await User.findOne({email: email});
   if (!user) {
     return done(null, false, { message: 'Usuario No Encontrado.' });
   } else {
@@ -18,16 +16,16 @@ passport.use(new LocalStrategy({
     if(match) {
       return done(null, user);
     } else {
-      return done(null, false, { message: 'password Incorrecta.' });
+      return done(null, false, { message: 'Contresaña Incorrecta.' });
     }
   }
 }));
 
-passport.serializeUser((user, done) => { //recive dos  cosas el user y el done
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {//comprobar en la bd si existe por id
+passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => {
     done(err, user);
   });

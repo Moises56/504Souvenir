@@ -62,10 +62,10 @@ usersCtrl.renderSignUpForm = (req, res) => {
 
 
   usersCtrl.logout = (req, res) => {
-    //req.logout();
-    //req.flash('success_msg', 'You are logged out now.');
-    res.send('logout');
-    //res.redirect('/users/signin');
+    req.logout();
+    req.flash('success_msg', 'Session Cerrada.');
+    //res.send('logout');
+    res.redirect('/users/signin');
   };
 
 

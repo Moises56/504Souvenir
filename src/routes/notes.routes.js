@@ -7,28 +7,31 @@ const { renderNoteForm,
         renderEditForm,
         updateNotes,
         deleteNotes
-} = require('../controllers/notes.controller')
+} = require('../controllers/notes.controller');
+
+const {isAuthenticated} = require('../helpers/validacion');
+
 
 //*Añadir un nota
-router.get('/notes/add', renderNoteForm)
-router.post('/notes/new-note', createNewNote)
+router.get('/notes/add',isAuthenticated, renderNoteForm)
+router.post('/notes/new-note',isAuthenticated, createNewNote)
 
 //*Obtenet todas las notas
-router.get('/notes', renderNotas)
+router.get('/notes',isAuthenticated, renderNotas)
 
 
 //*Edit notas
 //router.get('/notes/edit/:id', renderEditForm) //*Mostrar el formulario envia los datos
 //router.put('/notes/edit/:id', updateNotes) //*Autualizar los datos resive los datos
 
-router.get("/notes/edit/:id", renderEditForm);
-router.put("/notes/edit-note/:id", updateNotes);
+router.get("/notes/edit/:id",isAuthenticated, renderEditForm);
+router.put("/notes/edit-note/:id",isAuthenticated, updateNotes);
 
 
 
 //*Eliminar
 //router.delete('/notes/delete/:id', deleteNotes)
-router.delete('/notes/delete/:id', deleteNotes);
+router.delete('/notes/delete/:id',isAuthenticated, deleteNotes);
 
 //TODO get ->Obtener
 //TODO post ->Crear

@@ -9,7 +9,7 @@ const userSchema = new Schema({
   });
 
 userSchema.methods.encryptPassword = async (password)=>{ //?Encriptando contraseñas
-    const salt = await bcrypt.genSalt(10)
+    const salt = await bcrypt.genSalt(10);
     return await bcrypt.hash(password, salt);//*devuelve la contraseña cifrada
 };
 
