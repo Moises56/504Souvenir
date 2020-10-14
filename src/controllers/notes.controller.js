@@ -15,7 +15,7 @@ notesCtrl.createNewNote = async (req, res) =>{
    newNote.user = req.user.id;
    //console.log(newNote); //?muetra
    await newNote.save(); //guarda el objeto dentro de mongoDB
-   req.flash('success_msg', 'Nota Agregada Con Exito');//*se utiliza como una variable
+   req.flash('success_msg', 'Producto Agregado Con Exito');//*se utiliza como una variable
    res.redirect("/notes");
     //res.send('Nueva Nota');
 };
@@ -29,7 +29,7 @@ notesCtrl.renderNotas= async (req, res) =>{ //?Consutar a la base de datos
     res.render('notes/all-notes', { notes }) //?pasalos objetos/muestra en pantalla
 };
 
-
+//?Renderizado para editar productos
 
 notesCtrl.renderEditForm = async (req, res) => {
    // res.send('Edit form')
@@ -43,8 +43,7 @@ notesCtrl.renderEditForm = async (req, res) => {
    res.render('notes/edit-note', { note }); //pasando el valor
 };
 
-
-
+//*Actualizar producto
 /*
 notesCtrl.updateNotes = async (req, res) => {//console.log(req.body)
     const {title, description} = req.body;
@@ -55,12 +54,12 @@ notesCtrl.updateNotes = async (req, res) => {//console.log(req.body)
 notesCtrl.updateNotes = async (req, res) => {
     const { title, description } = req.body;
     await Note.findByIdAndUpdate(req.params.id, { title, description });
-    req.flash("success_msg", "Nota Actualizada Con Exito");
+    req.flash("success_msg", "Producto Actualizado Con Exito");
     res.redirect("/notes");
   };
 
 
-
+//*Eliminar producto
 
 /*notesCtrl.deleteNotes=(req, res) => {
     res.render('Eliminar Notas')
@@ -68,7 +67,7 @@ notesCtrl.updateNotes = async (req, res) => {
 
 notesCtrl.deleteNotes = async (req, res) => {
     await Note.findByIdAndDelete(req.params.id);//?Elimina por ID
-    req.flash("success_msg", "Nota Eliminada Con Exito");
+    req.flash("success_msg", "Producto Eliminado Con Exito");
     res.redirect("/notes");
   };
 
