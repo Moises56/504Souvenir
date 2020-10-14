@@ -1,7 +1,8 @@
-//if (procces.env.NODE_ENV !== 'produccion'){
+if (process.env.NODE_ENV !== 'produccion'){
     require('dotenv').config(); //*asigna a la variables de entorno
+    //console.log(process.env.NODE_ENV)
 
-//}
+}
 
 const app = require('./server');
 require('./database');

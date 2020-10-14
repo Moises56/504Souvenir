@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "start": "cross-env NODE_ENV=production node src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
