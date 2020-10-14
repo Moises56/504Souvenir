@@ -1,9 +1,9 @@
 const notesCtrl = {};
 
-const Note = require('../models/Note'); //?importando el modelo de colection
+const Note = require('../models/Note'); //?importando el modelo de colection de la bd
 
 notesCtrl.renderNoteForm=(req, res) =>{
-    //*res.send('Añadir Nota');
+    //*res.send('Añadir producto');
     //console.log(req.user.id)
     res.render('notes/new-note')
 };
