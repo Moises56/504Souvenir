@@ -8,4 +8,12 @@ indexCtrl.renderAbout = (req, res) => { //*muestra handlebars
     res.render('about')
 };
 
+indexCtrl.renderCart = (req, res) => { //*muestra handlebars
+    res.render('cart')
+};
+
+indexCtrl.renderOrder = (req, res) => { //*muestra handlebars
+    res.render('orders')
+};
+
 module.exports = indexCtrl;

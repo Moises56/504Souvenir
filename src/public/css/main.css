@@ -1,7 +1,106 @@
 body {
-    background-color: rgba(177, 207, 235, 0.787);
+    /*background-color: rgba(177, 207, 235, 0.787);*/
+    background: #FC466B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }
 
 .logo {
     width: 30%
 }
+/*Color del navbar*/
+.bg-light{
+  background: #556270;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FF6B6B, #556270);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FF6B6B, #556270); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+#pagina {
+  position: relative;
+  min-height: 100%;
+}
+
+#contenido {
+  padding-bottom:50px; /* este valor debe ser igual o mayor al alto del pie */
+}
+
+
+#pie {
+  height:50px;
+  line-height:50px;
+  background:black;
+  color:white;
+  text-align:center;
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+}
+
+
+
+/*
+footer {
+    box-shadow: 4px -2px 8px rgba(0,0,0,.05);
+  }
+  footer .top, .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  /* Footer top 
+  footer .top .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 35%;
+  }
+  footer .top .links a {
+    text-decoration: none;
+    color: #666666;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+  }
+  footer .top .links a:hover {
+    text-decoration: underline;
+  }
+  footer .top .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 13%;
+  }
+  /* Fotter bottom 
+  footer .bottom .credibility {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #b2b2b2;
+    width: 40%;
+    font-size: 15px;
+  }
+  footer .bottom .payment-methods {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #b2b2b2;
+    width: 40%;
+  }
+  footer .bottom .payment-methods .desc {
+    font-size: 15px;
+  }*/

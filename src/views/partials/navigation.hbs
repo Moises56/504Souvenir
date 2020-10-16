@@ -1,51 +1,94 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-white">
     <div class="container">
-        <a class="navbar-brand" href="/">504SouVenir</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        <a class="navbar-brand text-white" href="/">
+            <i class="fab fa-pagelines"></i>504SouVenir<i class="fab fa-raspberry-pi"></i>
+        </a>
+        <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto menu">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#tiendas" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tienda
+                    </a>
+                    <div class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white" href="#">Cafe</a>
+                        <a class="dropdown-item text-white" href="#">Joyeria</a>
+                        <a class="dropdown-item text-white" href="#">Moda</a>
+                        <a class="dropdown-item text-white" href="#">Hogar</a>
+                        <a class="dropdown-item text-white" href="#">Juguetes</a>
+                        <a class="dropdown-item text-white" href="#">Coleccionables</a>
+                        <a class="dropdown-item text-white" href="#">Complementos</a>
+                        <a class="dropdown-item text-white" href="#">Eco</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Mas</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#artesanos">Artesanos <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#conocenos">blog <span class="sr-only">(current)</span></a>
+                </li>
+               
                 {{#if user}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Productos
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/notes">Ver todo los productos</a>
-                        <a class="dropdown-item" href="/notes/add">Agregar Producto</a>
+                    <div class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white" href="/notes">Ver todo los productos</a>
+                        <a class="dropdown-item text-white" href="/notes/add">Agregar Producto</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/users/logout">Cerrrar Session</a>
                     </div>
                 </li>
 
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="/orders">Ver Ordenes <span class="sr-only">(current)</span></a>
+                </li>
+
                 {{else}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link text-white" href="/about">Conocenos</a>
                 </li>
-                <form class="form-inline my-2 my-lg-0">
+                <!--form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
+                    <button class="btn btn-outline-dark my-2 my-sm-0 text-white" type="submit">Buscar</button>
+                </form-->
+                
             </ul>
             <ul class="navbar-nav ml-auto">
                  <!--a href="/"><i class="fas fa-cloud-upload-alt"></i></!--a-->
                 <li class="nav-item">
-                    <a href="/users/signin" class="nav-link">Login</a>
+                    <a href="/users/signin" class="nav-link text-white">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/users/signup" class="nav-link">Register</a>
+                    <a href="/users/signup" class="nav-link text-white">Register</a>
                 </li>
                 {{/if}}
             </ul>
-
+             <form action="#" class="form-inline mt-2 mt-md-0">
+                    <a href="/cart" class="text-white nav-link">
+                        <i class="text-white fas fa-shopping-cart"></i>Compras 
+                            <i style="color:yellow" id="cart_n"></i>
+                    </a>
+                    <a href="/admin" class="nav-link disabled text-white">
+                        <i class="far fa-user">Adminitrar</i>
+                    </a>
+                </form>
         </div>
-
     </div>
-    <a href="/"><i class="fas fa-shopping-cart"></i></a>
+    <!--a href="/"><i class="fas fa-shopping-cart"></i></!--a-->
 </nav>
+
+
+
