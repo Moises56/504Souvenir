@@ -1,10 +1,12 @@
 body {
-    /*background-color: rgba(177, 207, 235, 0.787);*/
-    background: #FC466B;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ddd6f3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #faaca8, #ddd6f3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #faaca8, #ddd6f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
+
+
+  
 }
 
 .logo {
@@ -12,10 +14,9 @@ body {
 }
 /*Color del navbar*/
 .bg-light{
-  background: #556270;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FF6B6B, #556270);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FF6B6B, #556270); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #E8CBC0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #636FA4, #E8CBC0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #636FA4, #E8CBC0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -47,60 +48,3 @@ html, body {
   width:100%;
 }
 
-
-
-/*
-footer {
-    box-shadow: 4px -2px 8px rgba(0,0,0,.05);
-  }
-  footer .top, .bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
-  /* Footer top 
-  footer .top .links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 35%;
-  }
-  footer .top .links a {
-    text-decoration: none;
-    color: #666666;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-  }
-  footer .top .links a:hover {
-    text-decoration: underline;
-  }
-  footer .top .social-links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 13%;
-  }
-  /* Fotter bottom 
-  footer .bottom .credibility {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #b2b2b2;
-    width: 40%;
-    font-size: 15px;
-  }
-  footer .bottom .payment-methods {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #b2b2b2;
-    width: 40%;
-  }
-  footer .bottom .payment-methods .desc {
-    font-size: 15px;
-  }*/

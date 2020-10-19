@@ -7,12 +7,14 @@ const methodOverride  = require('method-override');
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
+const orderController = require('./controllers/order.contreller');
 
 
 
 //?Initialitations
 const app = express();
 require("./config/passport");
+//require('./models/Order');
 
 
 //?Settings
@@ -75,6 +77,9 @@ app.use((req, res, next) => {
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/notes.routes'));
 app.use(require('./routes/users.routes'));
+
+app.use('/',orderController);
+//app.use(require('./routes/order.routes'));
 
 
 
