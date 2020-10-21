@@ -1,13 +1,9 @@
-body {
+/* body {
   background: #ddd6f3;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #faaca8, #ddd6f3);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #faaca8, #ddd6f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, #faaca8, #ddd6f3); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+
 
-
-
-
-  
-}
+} */
 
 .logo {
     width: 30%
@@ -20,11 +16,11 @@ background: linear-gradient(to right, #636FA4, #E8CBC0); /* W3C, IE 10+/ Edge, F
 
 }
 
-html, body {
+ /* html, body {
   margin:0;
   padding:0;
   height:100%;
-}
+}  */
 
 #pagina {
   position: relative;
