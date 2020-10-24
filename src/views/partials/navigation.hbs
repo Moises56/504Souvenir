@@ -3,28 +3,45 @@
     <div class="contenedor contenedor-botones-menu">
         <button id="btn-menu-barras" class="btn-menu-barras"><i class="fas fa-bars"></i></button>
         <button id="btn-menu-cerrar" class="btn-menu-cerrar"><i class="fas fa-times"></i></button>
-   </div>
-  
+    </div>
+
+    
+
 
     <div class="contenedor contenedor-enlaces-nav">
         <div class="btn-departamentos" id="btn-departamentos">
             <p>Toda Las <span>Ciudades<span></p>
             <i class="fas fa-caret-down"></i>
         </div>
+        <a style="color: rgb(255, 145, 0);" href="/"><i style="color: rgb(255, 145, 0);"
+                class="fab fa-pagelines"></i>504Venir<i class="fab fa-raspberry-pi"></i>
+            <div class="enlaces">
+                <!-- <a href="/"><i class="fab fa-pagelines"></i>504Venir<i class="fab fa-raspberry-pi"></i> -->
 
-        <div class="enlaces">
-            <a href="/"><i class="fab fa-pagelines"></i>504Venir<i class="fab fa-raspberry-pi"></i>
 
+                <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
+
+
+                <a style="color: rgb(242, 246, 246);" href="/orders">Ver Ordenes</a>
+               
+           
             
-            <a href="/about">Conocenos</a>
-            <a href="/cart"><i class="text-warning fas fa-shopping-cart"></i>Compras<i style="color:yellow" id="cart_n"></i></a>
-            <a href="/admin"><i class="far fa-user">Adminitrar</i></a>
-            
+                {{!-- <a style="color: rgb(242, 246, 246);" href="/users/signin">Iniciar Session</a>
+                <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a> --}}
+                 
+            </div> 
 
-             {{#if user}}
+            <!-- <div class="nav-cart">
+				<div class="icono">
+					<a class="" href="#">
+						<i style="color: rgb(255, 145, 0);" class="fas fa-shopping-cart"></i>
+						<span style="color: rgb(246, 255, 254);">Cart</span>
+					</a><i class="count-item">0</i>
+				</div> -->
+ {{#if user}}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgb(246, 255, 254);">
                     Productos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -34,17 +51,26 @@
                     <a class="dropdown-item" href="/users/logout">Cerrrar Session</a>
                 </div>
             </li>
-            <li class="nav-item active">
-                <a class="text-white" href="/orders">Ver Ordenes</a>
-            </li>
-            {{else}}
-            <a href="/users/signin">Iniciar Session</a>
-            <a href="/users/signup">Registrate</a>
-            <a href="#">Ayuda</a>
+             {{else}}
+             <a style="color: rgb(242, 246, 246);" href="/users/signin">Iniciar Session</a>
+                <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
             {{/if}}
 
-        </div>
+            <div class="nav-cart">
+                <div class="icono">
+                    <a class="" href="#">
+                        <i style="color: rgb(255, 145, 0);" class="fas fa-shopping-cart"></i>
+                        <span style="color: rgb(246, 255, 254);">Cart</span>
+                    </a><i class="count-item">0</i>
+                </div>
+            </div>
+
+            
     </div>
+  
+
+
+
 
     <div class="contenedor contenedor-grid">
         <div class="grid" id="grid">
@@ -400,3 +426,66 @@
         </div>
     </div>
 </nav>
+{{!-- <div class="nav-cart text-right">
+        <div class="icono">
+            <a class="" href="/orders">
+                <i style="color: rgb(255, 145, 0);" class="fas fa-shopping-cart"></i>
+                <span style="color: rgb(182, 159, 32);">Cart</span>
+            </a><i class="count-item">0</i>
+        </div>
+    </div> --}}
+
+{{!-- <main class="contenedor col-xs-12 col-sm-6 col-md-6 col-lg-3">
+
+		 <div class="container-fluid ">
+			<div class="row" id="productos">
+				
+				<!-- <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4">
+					<div class="card tarjeta">
+						<img class="card-img-top" src="img/img3.jpg" alt="">
+						<div class="card-body contenido ">$20
+							<h5 class="card-title">Artesania</h5>
+							<p class="card-text">Artesania Honduras</p>
+							<p class="card-text">Ciudad: Tegucigalpa</p>
+							<i class="fas fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+							<div class="price botones">
+								<button>Comprar</button>
+								<button class="btn cart-btn">Agregar</button>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				
+
+			</div>
+		</div> 
+
+		
+
+
+
+		
+		
+
+		<!-- <div class="envoltura">
+			<div class="envoltura tarjeta">
+				<img src="img/img32.jpg" alt="">
+				<div class="contenido">
+					<div class=""">
+						<div class="details">
+							<span>Artesania</span>
+							<p>Artesania Honduras</p>
+						</div>
+						<div class="price">$20</div>
+					</div>
+					<div class="botones">
+						<button>Comprar</button>
+						<button class="cart-btn">Agregar</button>
+					</div>
+				</div>
+			</div> 
+	 -->
+
+	</main> --}}
