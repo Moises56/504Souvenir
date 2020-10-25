@@ -29,7 +29,7 @@ var productos = [{
     },
     {
         nombreProductos: 'producto4',
-        urlImagen: '/img/img/img6.jpg',
+        urlImagen: '/img/img/img36.jpg',
         vendedor: 'vendedor4',
         calificacion: 4,
         ciudad: 'Tegucigalapa',
