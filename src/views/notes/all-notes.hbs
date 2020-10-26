@@ -1,17 +1,48 @@
-<div class="row p-5  ">
-    {{#each notes}}
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title d-flex justify-content-between align align-items-center">{{title}} <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></fa-edit></a>
-                    </h4>
-                    <p>{{description}}</p>
-                    <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>
-                    </form>
-                </div>
-            </div>
+<div class="row">
+  {{#each notes}}
+   <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4">
+      <div class="card tarjeta">
+        <img type="file" class="card-img-top" src="{{path}}" name="image">
+        <div class="card-body contenido ">
+          <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }} <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>Precio: Lps.{{precio}}
+          <p class="card-text">{{ description }}</p>
+          <p class="card-text">{{createdAt}}</p>
+          <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>
+          </form>
         </div>
-    {{/each}}
+      </div>
+  </div>
+  {{else}}
+  <div class="card mx-auto">
+    <div class="card-body">
+      <h1>Hola {{user.name}}</h1>
+      <p clsss="lead"> No hay productos creados.</p>
+      <a href="/notes/add" class="btn btn-success btn-block">Crear Uno!.</a>
+    </div>
+  </div>
+  {{/each}}
 </div>
+
+{{!-- <div class="container-fluid ">
+  <div class="row">
+  
+    < <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4">
+      <div class="card tarjeta">
+        <input class="card-img-top" type="file" name="image">
+        <div class="card-body contenido ">Lps.{{precio}}
+
+          <h5 class="card-title"> {{ title }} <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>
+          <p class="card-text">{{ description }}</p>
+          <p class="card-text">Ciudad: Tegucigalpa</p>
+          <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>
+          </form>
+        </div>
+      </div>
+  </div>
+
+</div>
+</div> --}}

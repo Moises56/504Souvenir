@@ -3,6 +3,9 @@ const exphbs = require('express-handlebars');
 const bodyparser = require('body-parser');
 const path = require('path');
 const morgan = require('morgan');
+const multer = require('multer');
+const uuid = require('uuid').v4;
+const {format} = require('timeago.js');
 const methodOverride  = require('method-override');
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -33,6 +36,16 @@ app.set('view engine', '.hbs');
 //?Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));//?para poder resivir los datos del formulario
+const storage =  multer.diskStorage({
+    destination: path.join(__dirname, 'public/img/uploads'),
+    filename: (req, file, cb, filename) => {
+        cb(null, uuid() + path.extname(file.originalname));
+    }
+});
+app.use(multer({storage: storage}).single('image'));
+//app.use(multer({dest: path.join(__dirname, 'public/img/uploads')}).single('image'));
+
+
 app.use(express.json());
 app.use(methodOverride('_method')); //?Eliminar notas
 app.use(session({ //?guardar mensajes en el servidor
@@ -53,6 +66,11 @@ app.use((req, res, next) => {
     res.locals.error_msg = req.flash("error_msg");
     res.locals.error = req.flash("error");
      res.locals.user = req.user || null;
+    next();
+});
+
+app.use((req, res, next) => {
+    app.locals.format = format;
     next();
 });
 

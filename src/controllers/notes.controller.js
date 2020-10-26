@@ -8,16 +8,56 @@ notesCtrl.renderNoteForm=(req, res) =>{
     res.render('notes/new-note')
 };
 
+
 notesCtrl.createNewNote = async (req, res) =>{
-   // console.log(req.body) //*muetra los datos
-   const {title, description} = req.body;//?obtner los datos
-   const newNote = new Note({title , description});
-   newNote.user = req.user.id;
-   //console.log(newNote); //?muetra
-   await newNote.save(); //guarda el objeto dentro de mongoDB
-   req.flash('success_msg', 'Producto Agregado Con Exito');//*se utiliza como una variable
-   res.redirect("/notes");
-    //res.send('Nueva Nota');
+     const { title, description, precio, image, path} = req.body;
+   
+     const errors = [];
+     if (!title) {
+       errors.push({ text: "Escribe un título." });
+     }
+     if (!description) {
+       errors.push({ text: "Escriba una descripción " });
+     }
+     if (!precio) {
+       errors.push({ text: "Ingrese una cantidad " });
+     }
+      // if (!image) {
+      //   errors.push({ text: "Ingrese una imagen " });
+      // }
+
+     if (errors.length > 0) {
+       res.render("notes/new-note", {
+         errors,
+         title,
+         description,
+         precio,
+         image,
+         path
+       });
+     } else {
+       const newNote = new Note({ title, description, precio, image, path });
+       newNote.path = 'img/uploads/'+req.file.filename;
+       newNote.user = req.user.id;
+
+       await newNote.save();
+       req.flash("success_msg", "Nota agregada con éxito");
+       res.redirect("/notes");
+      //console.log(req.file);
+
+     }
+    
+//     console.log(req.body) //*muetra los datos
+//     const {title, description} = req.body;//?obtner los datos
+//     const newNote = new Note({title , description});
+//     newNote.user = req.user.id;
+//    console.log(newNote); //?muetra
+//     await newNote.save(); //guarda el objeto dentro de mongoDB
+//     req.flash('success_msg', 'Producto Agregado Con Exito');//*se utiliza como una variable
+//     res.redirect("/notes");
+//     res.send('Nueva Nota');
+
+
 };
 
 

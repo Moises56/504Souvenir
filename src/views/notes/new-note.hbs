@@ -1,4 +1,56 @@
-<div class="col-md-5 mx-auto p-5">
+<div class="conatiner p-4">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+             <div class="card-header">
+            <h3>Agregar Producto</h3>
+        </div>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/notes/new-note" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control" placeholder="Titulo" autofocus />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                                <label class="custom-file-label" for="inputGroupFile02"
+                                    aria-describedby="inputGroupFileAddon02">Subir imagen</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input name="precio"  placeholder="Agregar Precio" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="description" class="form-control" placeholder="Descripción"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{{!-- <div class="col-md-5 mx-auto p-5">
     <div class="card text-center">
         <div class="card-header">
             <h3>Agregar Producto</h3>
@@ -19,4 +71,28 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
+
+{{!-- <div class="container-fluid ">
+			<div class="row" id="productos">
+				
+				< <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4">
+					<div class="card tarjeta">
+						<input class="card-img-top" type="file" name="image">
+						<div class="card-body contenido ">$20
+							<h5 class="card-title">Artesania</h5>
+							<p class="card-text">Artesania Honduras</p>
+							<p class="card-text">Ciudad: Tegucigalpa</p>
+							<i class="fas fa-star"></i>
+							<i class="far fa-star"></i>
+							<i class="far fa-star"></i>
+							<div class="price botones">
+								<button>Comprar</button>
+								<button class="btn cart-btn">Agregar</button>
+							</div>
+						</div>
+					</div>
+				</div> 
+
+			</div>
+		</div>  --}}
