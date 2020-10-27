@@ -1,5 +1,4 @@
 
-
 var productos = [{
     nombreProductos: 'Pulsera de conchas',
     urlImagen: '/img/img/imgCeiba/img1.jpg',
@@ -88,7 +87,7 @@ productos.forEach(function (products) {
 }
 //    <i class="far fa-star"></i>
 
-    document.getElementById('productosCeiba').innerHTML +=
+    document.getElementById('productosTegu').innerHTML +=
         `<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 mt-5">
         <div class="card tarjeta">
             <img class="card-img-top " src="${products.urlImagen}" alt="">
