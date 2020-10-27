@@ -24,4 +24,7 @@ indexCtrl.renderCity = (req, res) => { //*muestra handlebars
     res.render('cityTegu')
 };
 
+indexCtrl.renderCity = (req, res) => { //*muestra handlebars
+    res.render('cityOmoa')
+};
 module.exports = indexCtrl;

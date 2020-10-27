@@ -8,7 +8,7 @@ router.get('/cart', renderCart);
 router.get('/orders', renderOrder);
 router.get('/admin', renderAdmin);
 router.get('/cityTegu', renderCity);
-
+router.get('/cityOmoa', renderCity);
 
 module.exports = router;
 
