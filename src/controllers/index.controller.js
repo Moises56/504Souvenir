@@ -20,8 +20,19 @@ indexCtrl.renderAdmin = (req, res) => { //*muestra handlebars
     res.render('admin')
 };
 
-indexCtrl.renderCity = (req, res) => { //*muestra handlebars
+indexCtrl.renderTegu = (req, res) => { //*muestra handlebars
     res.render('cityTegu')
 };
 
+indexCtrl.renderOmoa = (req, res) => { //*muestra handlebars
+    res.render('cityOmoa')
+};
+
+indexCtrl.renderAmapala = (req, res) => { //*muestra handlebars
+    res.render('cityAmapala')
+};
+
+indexCtrl.renderCeiba = (req, res) => { //*muestra handlebars
+    res.render('cityCeiba')
+};
 module.exports = indexCtrl;
