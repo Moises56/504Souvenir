@@ -5,7 +5,7 @@
         <button id="btn-menu-cerrar" class="btn-menu-cerrar"><i class="fas fa-times"></i></button>
     </div>
 
-    
+
 
 
     <div class="contenedor contenedor-enlaces-nav">
@@ -14,34 +14,17 @@
             <i class="fas fa-caret-down"></i>
         </div>
         <a style="color: rgb(53, 41, 26);" href="/"><i style="color: rgb(255, 145, 0);"
-                class="fab fa-pagelines"></i><img  src="/img/logo1.png" alt="logo1"><i class="fab fa-raspberry-pi"></i>
+                class="fab fa-pagelines"></i><img src="/img/logo1.png" alt="logo1"><i class="fab fa-raspberry-pi"></i>
             <div class="enlaces">
-                <!-- <a href="/"><i class="fab fa-pagelines"></i>504Venir<i class="fab fa-raspberry-pi"></i> -->
-
-
-                <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
-
-
+                 <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
                 <a style="color: rgb(242, 246, 246);" href="/orders">Ver Ordenes</a>
-               
-           
-            
-                {{!-- <a style="color: rgb(242, 246, 246);" href="/users/signin">Iniciar Session</a>
-                <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a> --}}
-                 
-            </div> 
 
-            <!-- <div class="nav-cart">
-				<div class="icono">
-					<a class="" href="#">
-						<i style="color: rgb(255, 145, 0);" class="fas fa-shopping-cart"></i>
-						<span style="color: rgb(246, 255, 254);">Cart</span>
-					</a><i class="count-item">0</i>
-				</div> -->
- {{#if user}}
+            </div>
+
+            {{#if user}}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgb(246, 255, 254);">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(246, 255, 254);">
                     Productos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -51,9 +34,9 @@
                     <a class="dropdown-item" href="/users/logout">Cerrar Sessión</a>
                 </div>
             </li>
-             {{else}}
-             <a style="color: rgb(242, 246, 246);" href="/users/signin">Iniciar Sessión</a>
-                <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
+            {{else}}
+            <a style="color: rgb(242, 246, 246);" href="/users/signin">Iniciar Sessión</a>
+            <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
             {{/if}}
 
             <div class="nav-cart">
@@ -65,9 +48,9 @@
                 </div>
             </div>
 
-            
+
     </div>
-  
+
 
 
 

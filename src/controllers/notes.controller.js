@@ -41,7 +41,7 @@ notesCtrl.createNewNote = async (req, res) =>{
        newNote.user = req.user.id;
 
        await newNote.save();
-       req.flash("success_msg", "Nota agregada con éxito");
+       req.flash("success_msg", "Producto agregado con éxito");
        res.redirect("/notes");
       //console.log(req.file);
 

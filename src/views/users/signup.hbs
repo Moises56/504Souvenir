@@ -1,28 +1,159 @@
-<div class="row">
-    <div class="col-md-5 mx-auto">
-        <div class="card">
-            <div class="card-header">
-                Create una Cuenta
+ <style>
+        /* Comentarios CSS*/
+        :root {
+    --color-dark: #15181f;
+    --color-dark-x: #2d343f;
+    --color-dark-xx: #1f232b;
+    --color-light: #ffffff;
+    --color-grey: #f5f6f8;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    background-color: var(--color-grey);
+    color: var(--color-light);
+    letter-spacing: .05rem;
+}
+
+.bg-light {
+    background-color: var(--color-light)!important;
+}
+
+.bg-dark {
+    background-color: var(--color-dark)!important;
+}
+
+.p-6 {
+    padding: 4rem 7rem;
+}
+
+.contact-box {
+    padding: 3rem;
+}
+
+.btn {
+    font-weight: 400;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    min-width: 10rem;
+}
+
+.btn-outline-dark {
+    border: 2px solid var(--color-dark-xx);
+}
+
+
+.form-control {
+    background-color: var(--color-dark-xx);
+    border: 2px solid var(--color-dark-xx);
+    border-radius: .2rem;
+    padding: 1.5rem 1rem;
+}
+.testiomonial {
+    bottom: 10px
+}
+
+@media (max-width: 575.98px) {
+    .p-6 {
+        padding: 2rem;
+    }
+
+    .contact-box {
+        padding: 0;
+    }
+
+    .width-100 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) { 
+    .register-bg {
+        min-height: 50vh;
+    }
+}
+
+      .register-bg {
+    background-image: url('/img/city/hn.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+    </style>
+
+
+ <section class="contact-box">
+        <div class="row no-gutters bg-dark">
+            <div class="col-xl-5 col-lg-12 register-bg">
+                <div class="position-absolute testiomonial p-4">
+                    <img  class="rounded mx-auto d-block" alt="Responsive image"" src="/img/logoBlanco.png"></img>
+                    <h3 class="font-weight-bold text-light">Lleva tus Recuerdos.</h3>
+                    <!-- <p class="lead text-light">Lleva tus Recuerdos.</p> -->
+                </div>
             </div>
-            <div class="card-body">
-                <form action="/users/signup" method="POST">
+            <div class="col-xl-7 col-lg-12 d-flex">
+                <div class="container align-self-center p-6">
+                    <h1 class="font-weight-bold mb-3 text-center">Crea tu cuenta</h1>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Name" value="{{name}}">
+                        <img class="rounded mx-auto d-block" alt="Responsive image"" src="/img/logo1.png"></img>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Email" value="{{email}}">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password"
-                            value="{{password}}">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="confirm_password"
-                            placeholder="Confirm Password" value="{{confirm_password}}">
-                    </div>
-                    <button class="btn btn-primary btn-block">Signup</button>
-                </form>
+                    <p class="text-muted mb-5">Ingresa la siguiente información para registrarte.</p>
+
+                    <form action="/users/signup" method="POST">
+                        <div class="form-row mb-2">
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-bold">Nombre <span class="text-danger">*</span></label>
+                                <input name="name" type="text" class="form-control" placeholder="Tu nombre" value="{{name}}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-bold">Apellido <span class="text-danger">*</span></label>
+                                <input name="apellido" type="text" class="form-control" placeholder="Tu apellido" value="{{apellido}}">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="font-weight-bold">Correo electrónico <span
+                                    class="text-danger">*</span></label>
+                            <input name="email" type="email" class="form-control"
+                                placeholder="Ingresa tu correo electrónico" value="{{email}}">
+                        </div>
+
+                        <div class="form-row mb-2">
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
+                                <input name="password" type="password" class="form-control"
+                                    placeholder="Ingresa una contraseña"  value="{{password}}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-bold">Confirmar <span
+                                        class="text-danger">*</span></label>
+                                <input name="confirm_password" type="password" class="form-control"
+                                    placeholder="Repite la contraseña"  value="{{confirm_password}}">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group mb-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                <label class="form-check-label text-muted">Al seleccionar esta casilla aceptas nuestro
+                                    aviso de privacidad y los términos y condiciones</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary width-100">Regístrate</button>
+                    </form>
+
+                    <div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						 <a href="/users/signin" class="ml-2">Ya tengo una cuenta</a>
+					</div>
+					
+				</div>
+                    <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2020
+                        504Venir</small>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
