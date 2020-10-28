@@ -20,11 +20,20 @@ indexCtrl.renderAdmin = (req, res) => { //*muestra handlebars
     res.render('admin')
 };
 
-indexCtrl.renderCity = (req, res) => { //*muestra handlebars
+indexCtrl.renderTegu = (req, res) => { //*muestra handlebars
     res.render('cityTegu')
 };
 
-indexCtrl.renderCity = (req, res) => { //*muestra handlebars
+indexCtrl.renderOmoa = (req, res) => { //*muestra handlebars
     res.render('cityOmoa')
+};
+indexCtrl.renderSanPedroSula = (req, res) => { //*muestra handlebars
+    res.render('citySanPedroSula')
+};
+indexCtrl.renderPuertoCortes = (req, res) => { //*muestra handlebars
+    res.render('cityPuertoCortes')
+};
+indexCtrl.renderDanli = (req, res) => { //*muestra handlebars
+    res.render('cityDanli')
 };
 module.exports = indexCtrl;
