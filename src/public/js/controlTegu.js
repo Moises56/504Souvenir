@@ -1,74 +1,73 @@
 
-
 var productos = [{
-    nombreProductos: 'Pulsera de conchas',
-    urlImagen: '/img/img/imgCeiba/img1.jpg',
+    nombreProductos: 'Llavero ',
+    urlImagen: '/img/img/imgTegu/img1.png',
     vendedor: 'Jimena R.',
     calificacion: 4,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 120
 
 },
 {
-    nombreProductos: 'Utencilios de cocina',
-    urlImagen: '/img/img/imgCeiba/img2.png ',
+    nombreProductos: 'Taza Artesanal',
+    urlImagen: '/img/img/imgTegu/img2.png ',
     vendedor: 'Ángel A.',
     calificacion: 5,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 380
 
 },
 {
-    nombreProductos: 'Bolso con diseño blanco',
-    urlImagen: '/img/img/imgCeiba/img3.png',
+    nombreProductos: 'Set de Jarrones',
+    urlImagen: '/img/img/imgTegu/img3.jpg',
     vendedor: 'Jimena R.',
     calificacion: 4,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 260
 
 },
 {
-    nombreProductos: 'Set de aritos con cadena',
-    urlImagen: '/img/img/imgCeiba/img4.png',
+    nombreProductos: 'Muñeca de trapo',
+    urlImagen: '/img/img/imgTegu/img4.png',
     vendedor: 'Jimena R.',
     calificacion: 2,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 350
 
 },
 {
-    nombreProductos: 'Pulsera con caracolas',
-    urlImagen: '/img/img/imgCeiba/img5.png',
+    nombreProductos: 'Yoyo de madera',
+    urlImagen: '/img/img/imgTegu/img5.png',
     vendedor: 'Ángel A.',
     calificacion: 4,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 200
 
 },
 {
-    nombreProductos: 'Bolso con diseño del mar',
-    urlImagen: '/img/img/imgCeiba/img6.png',
+    nombreProductos: 'Botas tradicional',
+    urlImagen: '/img/img/imgTegu/img6.png',
     vendedor: 'Jimena R.',
     calificacion: 4,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 400
 
 },
 {
-    nombreProductos: 'Camisa multicolor',
-    urlImagen: '/img/img/imgCeiba/img7.png',
+    nombreProductos: 'Carro de madera',
+    urlImagen: '/img/img/imgTegu/img7.png',
     vendedor: 'Jimena R.',
     calificacion: 3,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 270
 
 },
 {
-    nombreProductos: 'Set pulseras de color',
-    urlImagen: '/img/img/imgCeiba/img8.png',
+    nombreProductos: 'Chumpa con logo',
+    urlImagen: '/img/img/imgTegu/img8.png',
     vendedor: 'Jimena R.',
     calificacion: 3,
-    ciudad: 'La Ceiba',
+    ciudad: 'Tegucigalpa',
     precio: 230
 
 }
@@ -88,7 +87,7 @@ productos.forEach(function (products) {
 }
 //    <i class="far fa-star"></i>
 
-    document.getElementById('productosCeiba').innerHTML +=
+    document.getElementById('productosTegu').innerHTML +=
         `<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 mt-5">
         <div class="card tarjeta">
             <img class="card-img-top " src="${products.urlImagen}" alt="">
