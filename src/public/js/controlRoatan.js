@@ -1,3 +1,4 @@
+
 var productos = [{
     nombreProductos: 'Camiseta',
     urlImagen: '/img/img/imgRoatan/img1.jpg',
