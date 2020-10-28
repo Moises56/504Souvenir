@@ -1,8 +1,16 @@
 const {Router} = require('express');
 const router = Router();
+const User = require('../models/User');
+
 
 const { renderSignUpForm,
     renderSigninForm,
+    renderRecuperarForm,
+    renderNewPassForm,
+    renderCodigoForm,
+    codigo,
+    newPass,
+    recuperar,
     signup,
     signin,
     logout } = require('../controllers/users.controller')
@@ -10,11 +18,32 @@ const { renderSignUpForm,
 router.get('/users/signup', renderSignUpForm);
 router.post('/users/signup', signup);
 
+router.get('/users/recuperar', renderRecuperarForm);
+router.post('/users/recuperar', recuperar);
 
 router.get('/users/signin', renderSigninForm);
 router.post('/users/signin', signin);
 
+router.get('/users/newPass/:token', renderNewPassForm);
+router.post('/users/newPass/:token', newPass);
+
+router.get('/users/codigo/', renderCodigoForm);
+router.post('/users/codigo/', codigo);
+
 router.get('/users/logout', logout);
+
+var EmailCtrl = require('../controllers/mail.controllers');
+//email route
+
+router.post('/email', EmailCtrl.sendEmail);
+
+
+
+
+
+
+
+
 
 
 module.exports = router;

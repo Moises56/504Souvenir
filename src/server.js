@@ -10,6 +10,7 @@ const methodOverride  = require('method-override');
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
+const cookieParser = require('cookie-parser');
 // const orderController = require('./controllers/order.contreller');
 
 
@@ -57,7 +58,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
+//-------------------------
+app.use(cookieParser());
+app.use(bodyparser.urlencoded({extended: true}));
+//------------------
 
 //?Globals Variables
 app.use((req, res, next) => {
@@ -95,6 +99,14 @@ app.use((req, res, next) => {
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/notes.routes'));
 app.use(require('./routes/users.routes'));
+
+app.get('/recuperar', function(req, res) {
+    res.render('forgot', {
+      user: req.user
+    });
+  });
+
+  
 
 app.use(require('./controllers/order.controller'));
 //app.use('/',orderController);

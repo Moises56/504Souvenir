@@ -5,6 +5,9 @@ const User = require('../models/User');
 
 // Modules
 const passport = require('passport');
+const { unregisterDecorator } = require('handlebars');
+
+
 
 usersCtrl.renderSignUpForm = (req, res) => {
   res.render('users/signup');
@@ -61,6 +64,8 @@ usersCtrl.renderSignUpForm = (req, res) => {
     failureFlash: true
   });
 
+ 
+
 
   usersCtrl.logout = (req, res) => {
     req.logout();
@@ -69,6 +74,121 @@ usersCtrl.renderSignUpForm = (req, res) => {
     res.redirect('/users/signin');
   };
 
+  usersCtrl.renderRecuperarForm = (req, res) => {
+    res.render('users/recuperar');
+  };
+
+  usersCtrl.recuperar = passport.authenticate("local", {
+    successRedirect: "/notes",
+    failureRedirect: "/users/recuperar",
+    failureFlash: true
+  });
+  
+  
+  usersCtrl.renderNewPassForm = (req, res) => {
+    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() }}, function(err, user) {
+      if (!user) {
+        req.flash('error', 'El token de restablecimiento de contraseña no es válido o ha caducado.');
+        return res.redirect('/users/recuperar');
+      }else{
+        res.render('users/newPass',req.user);
+      }
+      
+    });
+  } /*function (req, res) {
+    
+    if (req.isAuthenticated()) {
+        //user is alreay logged in
+        return res.redirect('/');
+    }
+    var token = req.params.token;
+    users.checkReset(token, req, res, function (err, data) {
+        if (err)
+            req.flash('error', err);
+
+        //show the UI with new password entry
+        res.render('users/newPass');
+    });
+}*/
+  
+ 
+  usersCtrl.newPass = async (req, res) => {
+    //User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() }}, async function(err, user) {
+      console.log(req.params.id);
+
+    const {password}  = req.body;
+    await User.findByIdAndUpdate(req.params.id,{password});
+    console.log({password});
+    req.flash("success_msg", "Se cambio con Exito");
+    res.redirect("/users/signin");
+      
+      //user.password = req.body;
+      //user.resetPasswordToken = undefined;
+      //user.resetPasswordExpires = undefined;
+
+     // user.save();
+    //});
+  }
+  
+  //------------------
+  
+
+  /*function (req, res) {
+    if (req.isAuthenticated()) {
+        //user is alreay logged in
+        return res.redirect('/');
+    }
+    users.reset(req, res, function (err) {
+        if (err) {
+            req.flash('error', err);
+            return res.redirect('/newPass');
+        }
+        else {
+            req.flash('success', 'Password successfully reset.  Please login using new password.');
+            return res.redirect('/signin');
+        }
+    });
+  }*/
+  
+  
+  
+  
+
+  usersCtrl.renderCodigoForm = (req, res) => {
+    res.render('users/codigo');
+  };
+
+  usersCtrl.codigo = (req, res) => {
+      User.findOne({ resetPasswordToken: req.codigo, resetPasswordExpires: { $gt: Date.now() }}, function(err, user) {
+      if (!user) {
+        req.flash('error', 'El token de restablecimiento de contraseña no es válido o ha caducado.aaaaaa');
+        return res.redirect('/users/recuperar');
+        
+      }
+      user.password = req.body.password;
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpires = undefined;
+
+      user.save();
+    });
+  }
+  
+  /*= (req, res) => {
+        User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+          if (!user) {
+            req.flash('error', 'Password reset token is invalid or has expired.');
+            return res.redirect('back');
+          }
+  
+          user.password = req.body.password;
+          user.resetPasswordToken = undefined;
+          user.resetPasswordExpires = undefined;
+  
+          user.save();
+        });
+  }*/
+
+  
 
   module.exports = usersCtrl;
 
