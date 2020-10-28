@@ -20,11 +20,23 @@ indexCtrl.renderAdmin = (req, res) => { //*muestra handlebars
     res.render('admin')
 };
 
-indexCtrl.renderCity = (req, res) => { //*muestra handlebars
+indexCtrl.renderTegu = (req, res) => { //*muestra handlebars
     res.render('cityTegu')
 };
 
-indexCtrl.renderCity = (req, res) => { //*muestra handlebars
+indexCtrl.renderOmoa = (req, res) => { //*muestra handlebars
     res.render('cityOmoa')
+};
+
+indexCtrl.renderRoatan = (req, res) => { //*muestra handlebars
+    res.render('cityRoatan')
+};
+
+indexCtrl.renderComayagua = (req, res) => { //*muestra handlebars
+    res.render('cityComayagua')
+};
+
+indexCtrl.renderTela = (req, res) => { //*muestra handlebars
+    res.render('cityTela')
 };
 module.exports = indexCtrl;
