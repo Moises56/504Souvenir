@@ -35,4 +35,17 @@ indexCtrl.renderAmapala = (req, res) => { //*muestra handlebars
 indexCtrl.renderCeiba = (req, res) => { //*muestra handlebars
     res.render('cityCeiba')
 };
+
+indexCtrl.renderRoatan = (req, res) => { //*muestra handlebars
+    res.render('cityRoatan')
+};
+
+indexCtrl.renderComayagua = (req, res) => { //*muestra handlebars
+    res.render('cityComayagua')
+};
+
+indexCtrl.renderTela = (req, res) => { //*muestra handlebars
+    res.render('cityTela')
+};
+
 module.exports = indexCtrl;

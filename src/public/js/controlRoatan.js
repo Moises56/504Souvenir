@@ -1,73 +1,72 @@
-
 var productos = [{
-    nombreProductos: 'Llavero ',
-    urlImagen: '/img/img/imgTegu/img1.png',
-    vendedor: 'Jimena R.',
-    calificacion: 4,
-    ciudad: 'Tegucigalpa',
-    precio: 120
+    nombreProductos: 'Camiseta',
+    urlImagen: '/img/img/imgRoatan/img1.jpg',
+    vendedor: 'Joseph S.',
+    calificacion: 3,
+    ciudad: 'Roatan',
+    precio: 250
 
 },
 {
-    nombreProductos: 'Taza Artesanal',
-    urlImagen: '/img/img/imgTegu/img2.png ',
-    vendedor: 'Ángel A.',
-    calificacion: 5,
-    ciudad: 'Tegucigalpa',
-    precio: 380
-
-},
-{
-    nombreProductos: 'Set de Jarrones',
-    urlImagen: '/img/img/imgTegu/img3.jpg',
-    vendedor: 'Jimena R.',
-    calificacion: 4,
-    ciudad: 'Tegucigalpa',
-    precio: 260
-
-},
-{
-    nombreProductos: 'Muñeca de trapo',
-    urlImagen: '/img/img/imgTegu/img4.png',
-    vendedor: 'Jimena R.',
+    nombreProductos: 'Cuadro Tortuga',
+    urlImagen: '/img/img/imgRoatan/img2.jpg',
+    vendedor: 'Allison S.',
     calificacion: 2,
-    ciudad: 'Tegucigalpa',
-    precio: 350
+    ciudad: 'Roatan',
+    precio: 100
 
 },
 {
-    nombreProductos: 'Yoyo de madera',
-    urlImagen: '/img/img/imgTegu/img5.png',
-    vendedor: 'Ángel A.',
-    calificacion: 4,
-    ciudad: 'Tegucigalpa',
+    nombreProductos: 'Delfín de Madera',
+    urlImagen: '/img/img/imgRoatan/img3.jpg',
+    vendedor: 'Mario R.',
+    calificacion: 5,
+    ciudad: 'Roatan',
     precio: 200
 
 },
 {
-    nombreProductos: 'Botas tradicional',
-    urlImagen: '/img/img/imgTegu/img6.png',
-    vendedor: 'Jimena R.',
+    nombreProductos: 'Forro de Cuero',
+    urlImagen: '/img/img/imgRoatan/img4.jpg',
+    vendedor: 'Erick N.',
     calificacion: 4,
-    ciudad: 'Tegucigalpa',
-    precio: 400
+    ciudad: 'Roatan',
+    precio: 520
 
 },
 {
-    nombreProductos: 'Carro de madera',
-    urlImagen: '/img/img/imgTegu/img7.png',
-    vendedor: 'Jimena R.',
+    nombreProductos: 'Maracas',
+    urlImagen: '/img/img/imgRoatan/img5.jpg',
+    vendedor: 'Humberto I.',
     calificacion: 3,
-    ciudad: 'Tegucigalpa',
-    precio: 270
+    ciudad: 'Roatan',
+    precio: 100
 
 },
 {
-    nombreProductos: 'Chumpa con logo',
-    urlImagen: '/img/img/imgTegu/img8.png',
-    vendedor: 'Jimena R.',
-    calificacion: 3,
-    ciudad: 'Tegucigalpa',
+    nombreProductos: 'Mujer Tallada',
+    urlImagen: '/img/img/imgRoatan/img6.jpg',
+    vendedor: 'Patricia.',
+    calificacion: 4,
+    ciudad: 'Roatan',
+    precio: 460
+
+},
+{
+    nombreProductos: 'Placa Metálica',
+    urlImagen: '/img/img/imgRoatan/img7.jpg',
+    vendedor: 'Luis E.',
+    calificacion: 5,
+    ciudad: 'Roatan',
+    precio: 350
+
+},
+{
+    nombreProductos: 'Vasos Metálicos',
+    urlImagen: '/img/img/imgRoatan/img8.jpg',
+    vendedor: 'Sheryn S.',
+    calificacion: 4,
+    ciudad: 'Roatan',
     precio: 230
 
 }
@@ -87,9 +86,9 @@ productos.forEach(function (products) {
 }
 //    <i class="far fa-star"></i>
 
-    document.getElementById('productosTegu').innerHTML +=
+    document.getElementById('productosRoatan').innerHTML +=
         `<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 mt-5">
-        <div class="card tarjeta animated fadeInDown">
+        <div class="card tarjeta">
             <img class="card-img-top " src="${products.urlImagen}" alt="">
             <div class="card-body contenido price">
             <h5 class="card-title" style="color:rgb(255, 145, 0);">${products.nombreProductos}</h5>
