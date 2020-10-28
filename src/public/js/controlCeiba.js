@@ -19,7 +19,7 @@ var productos = [{
 
 },
 {
-    nombreProductos: 'Bolso con diseño',
+    nombreProductos: 'Bolso con diseño blanco',
     urlImagen: '/img/img/imgCeiba/img3.png',
     vendedor: 'Jimena R.',
     calificacion: 4,

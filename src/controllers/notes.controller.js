@@ -41,7 +41,7 @@ notesCtrl.createNewNote = async (req, res) =>{
        newNote.user = req.user.id;
 
        await newNote.save();
-       req.flash("success_msg", "Nota agregada con éxito");
+       req.flash("success_msg", "Producto agregado con éxito");
        res.redirect("/notes");
       //console.log(req.file);
 
@@ -67,7 +67,8 @@ notesCtrl.renderNotas= async (req, res) =>{ //?Consutar a la base de datos
     .lean();//?busca el arreglo 
     
     res.render('notes/all-notes', { notes }) //?pasalos objetos/muestra en pantalla
-};
+    console.log(notes);
+  };
 
 //?Renderizado para editar productos
 
@@ -81,6 +82,7 @@ notesCtrl.renderEditForm = async (req, res) => {
    }
   // console.log(note)
    res.render('notes/edit-note', { note }); //pasando el valor
+  
 };
 
 //*Actualizar producto

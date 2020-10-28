@@ -1,75 +1,75 @@
 // require('./tarjeta');
 
 var productos = [{
-        nombreProductos: 'producto1',
-        urlImagen: '/img/img/img3.jpg',
-        vendedor: 'vendedor1',
-        calificacion: 1,
+        nombreProductos: 'Carrito de madera',
+        urlImagen: '/img/img/imgPrin/img1.png',
+        vendedor: 'Elena M.',
+        calificacion: 2,
         ciudad: 'Tegucigalapa',
         precio: 150
 
     },
     {
-        nombreProductos: 'producto2',
-        urlImagen: '/img/img/img4.jpg',
-        vendedor: 'vendedor2',
-        calificacion: 2,
-        ciudad: 'Copan',
-        precio: 150
+        nombreProductos: 'Pulsera y aritos',
+        urlImagen: '/img/img/imgPrin/img2.png',
+        vendedor: 'Marcos H.',
+        calificacion: 3,
+        ciudad: 'Omoa',
+        precio: 300
 
     },
     {
-        nombreProductos: 'producto3',
-        urlImagen: '/img/img/img5.jpg',
-        vendedor: 'vendedor3',
+        nombreProductos: 'Concha con diseño',
+        urlImagen: '/img/img/imgPrin/img3.jpg',
+        vendedor: 'Cesar P.',
         calificacion: 3,
         ciudad: 'Roatan',
-        precio: 110
+        precio: 550
 
     },
     {
-        nombreProductos: 'producto4',
-        urlImagen: '/img/img/img36.jpg',
-        vendedor: 'vendedor4',
+        nombreProductos: 'Chal tejido',
+        urlImagen: '/img/img/imgPrin/img4.jpg',
+        vendedor: 'Rita C.',
         calificacion: 4,
         ciudad: 'Tegucigalapa',
         precio: 250
 
     },
     {
-        nombreProductos: 'producto5',
-        urlImagen: '/img/img/img13.jpg',
-        vendedor: 'vendedor5',
+        nombreProductos: 'Zapatos con diseño',
+        urlImagen: '/img/img/imgPrin/img5.jpg',
+        vendedor: 'Rebeca K.',
         calificacion: 5,
-        ciudad: 'Copan',
-        precio: 150
+        ciudad: 'Comayagua',
+        precio: 300
 
     },
     {
-        nombreProductos: 'producto6',
-        urlImagen: '/img/img/img22.jpg',
-        vendedor: 'vendedor6',
+        nombreProductos: 'Cartera Multicolor',
+        urlImagen: '/img/img/imgPrin/img6.jpg',
+        vendedor: 'Sofia P.',
         calificacion: 4,
         ciudad: 'Tela',
-        precio: 100
+        precio: 190
 
     },
     {
-        nombreProductos: 'producto7',
-        urlImagen: '/img/img/img21.jpg',
-        vendedor: 'vendedor7',
+        nombreProductos: 'Set de aritos',
+        urlImagen: '/img/img/imgPrin/img7.jpg',
+        vendedor: 'Cristal Y.',
         calificacion: 3,
-        ciudad: 'Copan',
-        precio: 50
+        ciudad: 'Copán',
+        precio: 180
 
     },
     {
-        nombreProductos: 'producto7',
-        urlImagen: '/img/img/img33.jpg',
-        vendedor: 'vendedor7',
+        nombreProductos: 'Cuadro tallado',
+        urlImagen: '/img/img/imgPrin/img8.jpg',
+        vendedor: 'Rigo J.',
         calificacion: 3,
-        ciudad: 'Copan',
-        precio: 50
+        ciudad: 'Danlí',
+        precio: 480
 
     }
 

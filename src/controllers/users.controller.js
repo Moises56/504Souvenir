@@ -12,7 +12,7 @@ usersCtrl.renderSignUpForm = (req, res) => {
 
   usersCtrl.signup = async (req, res) => {
   const errors = [];
-  const { name, email, password, confirm_password } = req.body;
+  const { name, apellido, email, password, confirm_password } = req.body;
   if (password != confirm_password) {
     errors.push({ text: 'Contraseñas No Coinciden.' });
   }
@@ -23,6 +23,7 @@ usersCtrl.renderSignUpForm = (req, res) => {
     res.render('users/signup', {
       errors,
       name,
+      apellido,
       email,
       password,
       confirm_password
@@ -35,7 +36,7 @@ usersCtrl.renderSignUpForm = (req, res) => {
       res.redirect('/users/signup');
     } else {
       // Guardar nuevo usuario
-      const newUser = new User({ name, email, password });
+      const newUser = new User({ name, apellido, email, password });
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
       req.flash('success_msg', 'Estas Registrado.');

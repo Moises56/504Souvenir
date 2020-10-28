@@ -27,13 +27,34 @@ indexCtrl.renderTegu = (req, res) => { //*muestra handlebars
 indexCtrl.renderOmoa = (req, res) => { //*muestra handlebars
     res.render('cityOmoa')
 };
+
+indexCtrl.renderAmapala = (req, res) => { //*muestra handlebars
+    res.render('cityAmapala')
+};
+
+indexCtrl.renderCeiba = (req, res) => { //*muestra handlebars
+    res.render('cityCeiba')
+};
+
+indexCtrl.renderRoatan = (req, res) => { //*muestra handlebars
+    res.render('cityRoatan')
+};
+
+indexCtrl.renderComayagua = (req, res) => { //*muestra handlebars
+    res.render('cityComayagua')
+};
+
+indexCtrl.renderTela = (req, res) => { //*muestra handlebars
+    res.render('cityTela')
+};
+indexCtrl.renderDanli = (req, res) => { //*muestra handlebars
+    res.render('cityDanli')
+};
 indexCtrl.renderSanPedroSula = (req, res) => { //*muestra handlebars
     res.render('citySanPedroSula')
 };
 indexCtrl.renderPuertoCortes = (req, res) => { //*muestra handlebars
     res.render('cityPuertoCortes')
 };
-indexCtrl.renderDanli = (req, res) => { //*muestra handlebars
-    res.render('cityDanli')
-};
+
 module.exports = indexCtrl;
