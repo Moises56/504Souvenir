@@ -32,7 +32,7 @@
 			width: 170px;
 			top: -75px;
 			border-radius: 50%;
-			background: rgb(94, 172, 218);
+			background:#FAFCEE;
 			padding: 10px;
 			text-align: center;
 		}
@@ -40,7 +40,7 @@
 			height: 150px;
 			width: 150px;
 			border-radius: 50%;
-			border: 2px solid white;
+			border: 2px solid rgb(235, 10, 10);
 		}
 		.form_container {
 			margin-top: 100px;
