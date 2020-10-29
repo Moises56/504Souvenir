@@ -5,6 +5,7 @@ const User = require('../models/User');
 
 // Modules
 const passport = require('passport');
+var async = require('async');
 const { unregisterDecorator } = require('handlebars');
 
 
@@ -86,15 +87,17 @@ usersCtrl.renderSignUpForm = (req, res) => {
   
   
   usersCtrl.renderNewPassForm = (req, res) => {
-    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() }}, function(err, user) {
-      if (!user) {
-        req.flash('error', 'El token de restablecimiento de contraseña no es válido o ha caducado.');
-        return res.redirect('/users/recuperar');
-      }else{
-        res.render('users/newPass',req.user);
-      }
+
+    res.render('users/newPass');
+    //User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() }}, function(err, user) {
+      //if (!user) {
+        //req.flash('error', 'El token de restablecimiento de contraseña no es válido o ha caducado.');
+       // return res.redirect('/users/recuperar');
+     // }else{
+      //  res.render('users/newPass',req.user);
+     // }
       
-    });
+    //});
   } /*function (req, res) {
     
     if (req.isAuthenticated()) {
@@ -113,14 +116,16 @@ usersCtrl.renderSignUpForm = (req, res) => {
   
  
   usersCtrl.newPass = async (req, res) => {
+    //var token =decodeURIComponent(req);
+   // console.log(token);
     //User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() }}, async function(err, user) {
-      console.log(req.params.id);
+      //console.log(req.params.id);
 
-    const {password}  = req.body;
-    await User.findByIdAndUpdate(req.params.id,{password});
-    console.log({password});
-    req.flash("success_msg", "Se cambio con Exito");
-    res.redirect("/users/signin");
+    //const {password}  = req.body;
+    //await User.findByIdAndUpdate(req.params.id,{password});
+    //console.log({password});
+    //req.flash("success_msg", "Se cambio con Exito");
+    //res.redirect("/users/signin");
       
       //user.password = req.body;
       //user.resetPasswordToken = undefined;
@@ -158,20 +163,43 @@ usersCtrl.renderSignUpForm = (req, res) => {
     res.render('users/codigo');
   };
 
-  usersCtrl.codigo = (req, res) => {
-      User.findOne({ resetPasswordToken: req.codigo, resetPasswordExpires: { $gt: Date.now() }}, function(err, user) {
-      if (!user) {
-        req.flash('error', 'El token de restablecimiento de contraseña no es válido o ha caducado.aaaaaa');
-        return res.redirect('/users/recuperar');
-        
-      }
-      user.password = req.body.password;
-      user.resetPasswordToken = undefined;
-      user.resetPasswordExpires = undefined;
+  usersCtrl.codigo =  (req, res) => {
+      
+          User.findOne({ resetPasswordToken: req.body.codigo, resetPasswordExpires: { $gt: Date.now() } },  async function(err, user) {
+            if (!user) {
+              req.flash('error', 'El codigo de restablecimiento de contraseña no es válido o ha caducado');
+              return res.redirect('/users/newPass');
+            }
+            
+            const {password} = req.body;
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
+            user.password = await user.encryptPassword(password);
+            await user.save();
 
-      user.save();
-    });
-  }
+            req.flash('success_msg', 'Su Contraseña ha sido Actualizada');
+            res.redirect('/users/signin');
+          });
+          
+        }
+      
+    
+
+
+      //User.findOne({ resetPasswordToken: req.body.codigo, resetPasswordExpires: { $gt: Date.now() }}, function(err, user) {
+    //  if (!user) {
+        //req.flash('error', 'El token de restablecimiento de contraseña no es válido o ha caducado.aaaaaa');
+        //return res.redirect('/users/recuperar');
+        
+      //}else{
+      //  user.password = req.body.password;
+       // user.resetPasswordToken = undefined;
+      //  user.resetPasswordExpires = undefined;
+      //  user.save();
+     // }
+    //  req.flash('sucess_msg', 'Se cambio la contraseña correctamente');
+   // });
+ // }
   
   /*= (req, res) => {
         User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
