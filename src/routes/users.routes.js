@@ -24,11 +24,14 @@ router.post('/users/recuperar', recuperar);
 router.get('/users/signin', renderSigninForm);
 router.post('/users/signin', signin);
 
-router.get('/users/newPass/:token', renderNewPassForm);
-router.post('/users/newPass/:token', newPass);
+//router.get('/users/newPass/:token', renderNewPassForm);
+//router.post('/users/newPass/:token', newPass);
 
-router.get('/users/codigo/', renderCodigoForm);
-router.post('/users/codigo/', codigo);
+router.get('/users/newPass', renderNewPassForm);
+router.post('/users/newPass', newPass);
+
+router.get('/users/codigo', renderCodigoForm);
+router.post('/users/codigo', codigo);
 
 router.get('/users/logout', logout);
 

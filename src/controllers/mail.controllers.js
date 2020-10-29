@@ -14,14 +14,15 @@ const emailUser = await User.findOne({ email: email });
         //---------------------------------------
 
         function generateToken() {
-            var buf = new Buffer(16);
-            for (var i = 0; i < buf.length; i++) {
-                buf[i] = Math.floor(Math.random() * 256);
-            }
-            var id = buf.toString('base64');
-            return id;
+          var buf = new Buffer.alloc(16);
+          for (var i = 0; i < buf.length; i++) {
+              buf[i] = Math.floor(Math.random() * 256);
+          }
+          var id = buf.toString('base64');
+          return id
      }
      var token = generateToken();
+     guardarToken(token); 
 
      function guardarToken(token) {
         User.findOne({ email: req.body.email }, function(err, user) {
@@ -36,7 +37,7 @@ const emailUser = await User.findOne({ email: email });
     }
 
 
-    guardarToken(token);
+    
      
         // Definimos el transporter
         var transporter = nodemailer.createTransport({
@@ -51,9 +52,9 @@ const emailUser = await User.findOne({ email: email });
         from: '504venir <souvenirs504@gmail.com>',
         to: req.body.email,
         subject: 'Recuperar Contraseña',
-        html: 'Está recibiendo esto porque usted (u otra persona) ha solicitado el restablecimiento de la contraseña de su cuenta.\n\n' +
+        text: 'Está recibiendo esto porque usted (u otra persona) ha solicitado el restablecimiento de la contraseña de su cuenta.\n\n' +
              'Haga clic en el siguiente enlace o péguelo en su navegador para completar el proceso:\n' +
-             'http://'+ req.headers.host+'/users/newPass/'+ token+'\n \n' +
+             ''+ token+'\n \n' +
              'Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios.\n',
     };
     // Enviamos el email
@@ -62,9 +63,9 @@ const emailUser = await User.findOne({ email: email });
             console.log(error);
             res.send(500, error.message);
         } else {
-            console.log("Email sent");
-            req.flash('success_msg', 'Correo Enviado.');
-            res.redirect('users/recuperar');
+            console.log("Email Enviado");
+            req.flash('success_msg', 'Comprueba la bandeja de entrada de tu email');
+            res.redirect('/users/newPass');
         }
     });
     
