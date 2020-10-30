@@ -52,10 +52,11 @@ const emailUser = await User.findOne({ email: email });
         from: '504venir <souvenirs504@gmail.com>',
         to: req.body.email,
         subject: 'Recuperar Contraseña',
-        text: 'Está recibiendo esto porque usted (u otra persona) ha solicitado el restablecimiento de la contraseña de su cuenta.\n\n' +
-             'Haga clic en el siguiente enlace o péguelo en su navegador para completar el proceso:\n' +
-             ''+ token+'\n \n' +
-             'Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios.\n',
+        html: '<body text="#528cc3"><tablestyle="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;><center><img src="https://i.postimg.cc/VsjTWMfp/Souvenir-504.png"><br><b>Reiniciar Contraseña:<br>Hola<br> <strong>Está recibiendo esto porque ha solicitado el restablecimiento de la contraseña de su cuenta.</strong><br> Copie el siguente token y en la ventana de restablecer su contraseña peguelo en la casilla Codigo:<br></b></p><center/><table/><body>'+token+'<br><br><center><b>Souvernis 504</b></center>'
+        // 'Está recibiendo esto porque usted (u otra persona) ha solicitado el restablecimiento de la contraseña de su cuenta.\n\n' +
+        //      '                Copie el siguente token y peguelo en ventana de restablecer su contraseña:                            \n' +
+        //      '                                     '+ token+'\n ' +
+        //      '     Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios.\n',
     };
     // Enviamos el email
     transporter.sendMail(mailOptions, function(error, info){
