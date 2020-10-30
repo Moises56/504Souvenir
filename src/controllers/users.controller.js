@@ -170,15 +170,30 @@ usersCtrl.renderSignUpForm = (req, res) => {
               req.flash('error', 'El codigo de restablecimiento de contraseña no es válido o ha caducado');
               return res.redirect('/users/newPass');
             }
-            
-            const {password} = req.body;
-            user.resetPasswordToken = undefined;
+            const errors = [];
+            const { password, confirm_password } = req.body;
+            if (password != confirm_password) {
+              errors.push({ text: 'Contraseñas No Coinciden.' });
+            }
+            if (password.length < 4) {
+              errors.push({ text: 'Las Contraseñas requiere almenos 4 caratcteres.' });
+            }if (errors.length > 0) {
+              res.render('users/newPass', {
+                errors,
+                password,
+                confirm_password
+              });
+            }else{
+              user.resetPasswordToken = undefined;
             user.resetPasswordExpires = undefined;
             user.password = await user.encryptPassword(password);
             await user.save();
 
             req.flash('success_msg', 'Su Contraseña ha sido Actualizada');
             res.redirect('/users/signin');
+            }
+            
+            
           });
           
         }
