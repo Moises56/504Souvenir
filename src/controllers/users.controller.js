@@ -41,6 +41,7 @@ usersCtrl.renderSignUpForm = (req, res) => {
     } else {
       // Guardar nuevo usuario
       const newUser = new User({ name, apellido, email, password });
+      console.log(newUser);
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
       req.flash('success_msg', 'Estas Registrado.');
@@ -49,13 +50,15 @@ usersCtrl.renderSignUpForm = (req, res) => {
   }
 };
 
-    //console.log(req.body)
+    // console.log(req.body)
     //res.send('recivido')
      // res.send('signup');
   
 
   usersCtrl.renderSigninForm = (req, res) => {
     res.render('users/signin');
+    
+    
   };
   
  
@@ -63,6 +66,8 @@ usersCtrl.renderSignUpForm = (req, res) => {
     successRedirect: "/notes",
     failureRedirect: "/users/signin",
     failureFlash: true
+
+      
   });
 
  

@@ -10,6 +10,8 @@ const NoteSchema = new Schema(
       mimetype: {type: String},
       size: {type: Number},
       precio: {type: Number},
+      imgURL: {type: String},
+      public_id: {type: String},
       user: {type: String,required: true }
     },{
       timestamps: true

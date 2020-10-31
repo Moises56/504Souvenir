@@ -18,11 +18,14 @@
             <div class="enlaces">
                  <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
                 <a style="color: rgb(242, 246, 246);" href="/orders">Ver Ordenes</a>
+                {{!-- <a style="color: rgb(242, 246, 246);" href="/notes">Mi Perfil</a> --}}
 
             </div>
 
             {{#if user}}
-            <li class="nav-item dropdown">
+
+            <a style="color: rgb(242, 246, 246);" href="/notes">Mi Perfil</a>
+            {{!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(246, 255, 254);">
                     Productos
@@ -33,7 +36,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/users/logout">Cerrar Sesión</a>
                 </div>
-            </li>
+            </li> --}}
             {{else}}
             <a style="color: rgb(242, 246, 246);" href="/users/signin">Iniciar Sesión</a>
             <a style="color: rgb(242, 246, 246);" href="/users/signup">Regístrate</a>

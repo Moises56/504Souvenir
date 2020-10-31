@@ -28,6 +28,9 @@ app.set('views', path.join(__dirname, 'views'));//?mostra donde esta la carpeta 
 
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',  //*mostrar el archivo prncipal
+    runtimeOptions: {allowProtoPropertiesByDefault: true,
+        	         allowProtoMethodsByDefault: true,},
+
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs'

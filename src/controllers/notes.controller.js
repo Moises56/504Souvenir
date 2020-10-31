@@ -2,6 +2,15 @@ const notesCtrl = {};
 
 const Note = require('../models/Note'); //?importando el modelo de colection de la bd
 
+const cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const fsExtra = require('fs-extra');
+
 notesCtrl.renderNoteForm=(req, res) =>{
     //*res.send('Añadir producto');
     //console.log(req.user.id)
@@ -10,8 +19,8 @@ notesCtrl.renderNoteForm=(req, res) =>{
 
 
 notesCtrl.createNewNote = async (req, res) =>{
-     const { title, description, precio, image, path} = req.body;
-   
+     const { title, description, precio, image, path, imgURL, public_id} = req.body;
+     //const resultado = await cloudinary.v2.uploader.upload(req.file.path);
      const errors = [];
      if (!title) {
        errors.push({ text: "Escribe un título." });
@@ -33,14 +42,31 @@ notesCtrl.createNewNote = async (req, res) =>{
          description,
          precio,
          image,
-         path
+         path,
+         //imgURL: resultado.url,
+         //public_id: resultado.public_id
+         
        });
      } else {
-       const newNote = new Note({ title, description, precio, image, path });
-       newNote.path = 'img/uploads/'+req.file.filename;
+      const resultado = await cloudinary.v2.uploader.upload(req.file.path);
+       const newNote = new Note({ title, 
+        description, 
+        precio, 
+        image, 
+        path, 
+        imgURL: resultado.url,
+         public_id: resultado.public_id });
+       
+      //  newNote.imgURL: resultado.url,
+      //  newNote.public_id: resultado.public_id
+       //newNote.path = 'img/uploads/'+req.file.filename;
        newNote.user = req.user.id;
+     
+       await newNote.save();//?Guardando en la base toda la collections Productos
+       await fsExtra.unlink(req.file.path) //?Eliminando la img de la carpeta uploads
 
-       await newNote.save();
+   
+
        req.flash("success_msg", "Producto agregado con éxito");
        res.redirect("/notes");
       //console.log(req.file);
@@ -94,11 +120,18 @@ notesCtrl.updateNotes = async (req, res) => {//console.log(req.body)
 };*/
 
 notesCtrl.updateNotes = async (req, res) => {
-    const { title, description } = req.body;
-    await Note.findByIdAndUpdate(req.params.id, { title, description });
+    const { title, description, precio, path } = req.body;
+    const apdateNote = await Note.findByIdAndUpdate(req.params.id, { title, description, precio, path });
+   
+    apdateNote.path = 'img/uploads/'+req.file.filename;
+    console.log(req.file);
     req.flash("success_msg", "Producto Actualizado Con Exito");
     res.redirect("/notes");
   };
+
+  // const newNote = new Note({ title, description, precio, image, path });
+  // newNote.path = 'img/uploads/'+req.file.filename;
+  // newNote.user = req.user.id;
 
 
 //*Eliminar producto

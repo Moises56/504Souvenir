@@ -1,9 +1,9 @@
 <div class="conatiner p-4">
     <div class="row">
-        <div class="col-md-4 offset-md-4">
-             <div class="card-header">
-            <h3>Agregar Producto</h3>
-        </div>
+        <div class="offset-md-4 col-xs-12 col-sm-4 col-md-6 col-lg-4">
+            <div class="card-header">
+                <h3>Agregar Producto</h3>
+            </div>
             <div class="card">
                 <div class="card-body">
                     <form action="/notes/new-note" method="POST" enctype="multipart/form-data">
@@ -22,7 +22,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input name="precio"  placeholder="Agregar Precio" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input name="precio" placeholder="Agregar Precio" type="text" class="form-control"
+                                aria-label="Amount (to the nearest dollar)">
                             <div class="input-group-append">
                                 <span class="input-group-text">.00</span>
                             </div>
@@ -34,7 +35,9 @@
                         <div class="form-group">
                             <button class="btn btn-primary btn-block" type="submit">Guardar</button>
                         </div>
+                        <a class="container" href="/notes">Regresar</a>
 
+                      
 
 
                     </form>

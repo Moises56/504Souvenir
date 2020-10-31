@@ -1,13 +1,209 @@
+<style>
+  :root {
+    --width: 300px;
+    --padding: 10px;
+    --bgcolor: rgb(52, 52, 52);
+    --hovercolor: rgb(23, 23, 23);
+    --width-collapsed: 50px;
+  }
+
+  body {
+    background-color: #032c55;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0px;
+    margin: 0;
+    margin-left: var(--width-collapsed);
+  }
+
+  .body-expanded {
+    margin-left: var(--width);
+  }
+
+  #main-container {
+    color: white;
+  }
+
+  #sidemenu {
+    background-color: var(--bgcolor);
+    color: white;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  #sidemenu a {
+    color: white;
+    text-decoration: none;
+  }
+
+  /*Header*/
+  #sidemenu #header {
+    box-sizing: border-box;
+    border-bottom: solid 1px var(--hovercolor);
+  }
+
+  #sidemenu #header #title {
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  #sidemenu #header #title,
+  #sidemenu #header #menu-btn {
+    vertical-align: middle;
+  }
+
+  #sidemenu #header #menu-btn {
+    display: inline-block;
+  }
+
+  #sidemenu #header #menu-btn {
+    cursor: pointer;
+    padding: 10px;
+    width: var(--width-collapsed);
+    box-sizing: border-box;
+  }
+
+  #sidemenu #header #menu-btn {
+    background-color: var(--hovercolor);
+  }
+
+  #sidemenu #header #menu-btn .btn-hamburger {
+    background-color: #ffffff;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+  }
+
+  /*profile*/
+  #sidemenu #profile {
+    border-bottom: solid 1px var(--hovercolor);
+    padding: var(--padding) 0;
+    text-align: center;
+  }
+
+  #sidemenu #profile #fhoto {
+    box-sizing: border-box;
+    padding: var(--padding);
+    margin: 0 auto;
+  }
+
+  #sidemenu #profile #fhoto img {
+    border-radius: 50%;
+    width: 60%;
+  }
+
+  #sidemenu #profile #fhoto,
+  #sidemenu #profile #name {
+    font-size: 24px;
+    padding: var(--padding) 0;
+    overflow: hidden;
+  }
+
+  /*items*/
+
+  #sidemenu #menu-items {
+    overflow: hidden;
+  }
+
+  #sidemenu #menu-items .item {
+    width: var(--width);
+  }
+
+  #sidemenu #menu-items .item .icon,
+  #sidemenu #menu-items .item .title {
+    font-size: 14px;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  #sidemenu #menu-items .item a {
+    display: block;
+  }
+
+  #sidemenu #menu-items .item a:hover {
+    background-color: var(--hovercolor);
+  }
+
+  #sidemenu #menu-items .item .icon {
+    box-sizing: border-box;
+    padding: var(--padding);
+    width: var(--width-collapsed);
+  }
+
+  #sidemenu #menu-items .item .icon img {
+    width: 100%;
+  }
+
+  #sidemenu #menu-items .item .title {
+    padding: var(--padding) 0;
+  }
+
+  #sidemenu #menu-items .item.separator {
+    height: 1px;
+    border-bottom: solid 1px var(--hovercolor);
+    margin: 15px 0;
+  }
+
+  .menu-expanded {
+    width: var(--width);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .menu-expanded #header #title {
+    display: inline-block;
+    width: calc(100% - 50px);
+    margin-right: -5px;
+    padding: var(--padding);
+  }
+
+  .menu-expanded #header #title span {
+    width: calc(var(--width) - var(--width-collapsed) - 5px);
+    overflow: hidden;
+    /* display: inline-block; */
+  }
+
+  .menu-expanded #profile #fhoto {
+    width: 200px;
+  }
+
+  .menu-expanded #profile #name {
+    width: 300px;
+  }
+
+  .menu-collapsed {
+    width: var(--width-collapsed);
+  }
+
+  .menu-collapsed #header #title {
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu-collapsed #profile #name {
+    display: none;
+  }
+
+  .menu-collapsed .item {
+    width: 100px;
+  }
+</style>
+
+
 <div class="row">
   {{#each notes}}
-  <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4">
-    <div class="card tarjeta animated fadeInDown">
-      <img type="file" class="card-img-top" src="{{path}}" name="image">
-      <div class="card-body contenido ">
+  <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4 pt-3">
+    <div class="card tarjeta animate__animated animate__fadeInDown">
+      <img type="file" class="card-img-top " src="{{imgURL}}" name="image">
+      <div class="card-body contenido animate__animated animate__fadeInDown">
         <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }} <a
             href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>Precio: Lps.{{precio}}
         <p class="card-text">{{ description }}</p>
-        <p class="card-text">{{createdAt}}</p>
+        <p class="card-text">{{format.createdAt}}</p>
         <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>
@@ -18,10 +214,149 @@
   {{else}}
   <div class="card mx-auto">
     <div class="card-body">
-      <h1>Hola {{user/name}}</h1>
-      <p clsss="lead"> No hay productos creados.</p>
-      <a href="/notes/add" class="btn btn-success btn-block">Crear Uno!.</a>
+      <h1>Hola {{user.name}}{{user.apellido}}</h1>
+      <p clsss="lead"> No tienes productos creados.</p>
+      <a href="/notes/add" class="btn btn-success btn-block">Create Uno!.</a>
     </div>
   </div>
+
   {{/each}}
+</div>
+
+<div class="menu-collapsed" id="sidemenu">
+  <!-- header -->
+  <div id="header">
+    <div id="title"><span>504Venir</span></div>
+    <div id="menu-btn">
+      <div class="btn-hamburger"></div>
+      <div class="btn-hamburger"></div>
+      <div class="btn-hamburger"></div>
+    </div>
+  </div>
+
+  <!-- profile -->
+  <div id="profile">
+    <div id="fhoto"><img src="img/perfil/nancy4.png" alt=""></div>
+    <div id="name"><span>{{user.name}}{{user.apellido}}</span></div>
+  </div>
+
+
+  <!-- items -->
+  <div id="menu-items">
+    <div class="item">
+      <a href="#">
+        <div class="icon" data-toggle="modal" data-target="#modalNuevaApp"><i class="fas fa-plus"></i></div>
+        <div class="title" data-toggle="modal" data-target="#modalNuevaApp"><span>Crear Producto</span></div>
+
+        <!-- <div class="title"><span>Crear Producto</span></div> -->
+        {{!-- <button type="button" class="btn btn-link my-2 my-sm-0 text-white" data-toggle="modal" data-target="#modalNuevaApp" href="/notes/add">Crear Producto</button> --}}
+      </a>
+    </div>
+
+    <div class="item separator"></div>
+
+    <div class="item">
+      <a href="/notes">
+        <div class="icon"><i class="far fa-eye"></i></div>
+        <div class="title"><span>Ver todo los Productos</span></div>
+
+      </a>
+    </div>
+
+
+    <div class="item">
+      <a href="#">
+        <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <div class="title"><span>Ver Estado</span></div>
+      </a>
+    </div>
+
+    <div class="item separator"></div>
+
+    <div class="item">
+      <a href="/users/logout">
+        <!-- <div class="icon"><img src="img/app-icons/40.webp" alt=""></div> -->
+        <div class="icon"><i class="fas fa-times"></i></div>
+        <div class="title"><span>Cerrar Session</span></div>
+
+
+      </a>
+    </div>
+
+    <div class="item separator"></div>
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalNuevaApp" tabindex="-1" aria-labelledby="modalNuevaAppLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalNuevaAppLabel">Crea un Nuevo Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <form action="/notes/new-note" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <input type="text" name="title" class="form-control" placeholder="Titulo" autofocus />
+                </div>
+
+                {{!-- <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+            <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Subir
+              imagen</label>
+          </div>
+        </div> --}}
+
+                <div class="input-group mb-3">
+                  <label for="exampleFormControlFile1">Subir una Imagen</label>
+                  <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input name="precio" placeholder="Agregar Precio" type="text" class="form-control"
+                    aria-label="Amount (to the nearest dollar)">
+                  <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <textarea name="description" class="form-control" placeholder="Descripción"></textarea>
+                </div>
+                {{!-- <div class="form-group">
+                            <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+                        </div> --}}
+                {{!-- <a class="container" href="/notes">Regresar</a> --}}
+
+
+                <div class="modal-footer">
+                  <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
+                  <button type="button" class="btn btn-secondary btn-lg btn-block"
+                    data-dismiss="modal">Cancelar</button>
+
+                </div>
+
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
