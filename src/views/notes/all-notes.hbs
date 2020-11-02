@@ -8,7 +8,16 @@
   }
 
   body {
-    background-color: #032c55;
+    background: #314755;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #26a0da, #314755);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #26a0da, #314755);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     padding: 0px;
@@ -214,7 +223,7 @@
   {{else}}
   <div class="card mx-auto">
     <div class="card-body">
-      <h1>Hola {{user.name}}{{user.apellido}}</h1>
+      <h1>Hola {{user.name}} {{user.apellido}}</h1>
       <p clsss="lead"> No tienes productos creados.</p>
       <a href="/notes/add" class="btn btn-success btn-block">Create Uno!.</a>
     </div>
@@ -236,8 +245,8 @@
 
   <!-- profile -->
   <div id="profile">
-    <div id="fhoto"><img src="img/perfil/nancy4.png" alt=""></div>
-    <div id="name"><span>{{user.name}}{{user.apellido}}</span></div>
+    <div id="fhoto"><i style="color:lightseagreen"class="far fa-user-circle"></i></div>
+    <div id="name"><span>{{user.name}} {{user.apellido}}</span></div>
   </div>
 
 
@@ -245,7 +254,7 @@
   <div id="menu-items">
     <div class="item">
       <a href="#">
-        <div class="icon" data-toggle="modal" data-target="#modalNuevaApp"><i class="fas fa-plus"></i></div>
+        <div class="icon" data-toggle="modal" data-target="#modalNuevaApp"><i style="color:forestgreen"class="fas fa-plus"></i></div>
         <div class="title" data-toggle="modal" data-target="#modalNuevaApp"><span>Crear Producto</span></div>
 
         <!-- <div class="title"><span>Crear Producto</span></div> -->
@@ -257,7 +266,7 @@
 
     <div class="item">
       <a href="/notes">
-        <div class="icon"><i class="far fa-eye"></i></div>
+        <div class="icon"><i style="color:darkturquoise" class="far fa-eye"></i></div>
         <div class="title"><span>Ver todo los Productos</span></div>
 
       </a>
@@ -266,7 +275,7 @@
 
     <div class="item">
       <a href="#">
-        <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <div class="icon"><i style="color:darkgreen" class="fas fa-hand-holding-usd"></i></div>
         <div class="title"><span>Ver Estado</span></div>
       </a>
     </div>
@@ -276,7 +285,7 @@
     <div class="item">
       <a href="/users/logout">
         <!-- <div class="icon"><img src="img/app-icons/40.webp" alt=""></div> -->
-        <div class="icon"><i class="fas fa-times"></i></div>
+        <div class="icon"><i style="color: red;" class="fas fa-times"></i></div>
         <div class="title"><span>Cerrar Session</span></div>
 
 

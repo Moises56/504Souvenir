@@ -121,10 +121,10 @@ notesCtrl.updateNotes = async (req, res) => {//console.log(req.body)
 
 notesCtrl.updateNotes = async (req, res) => {
     const { title, description, precio, path } = req.body;
-    const apdateNote = await Note.findByIdAndUpdate(req.params.id, { title, description, precio, path });
+    await Note.findByIdAndUpdate(req.params.id, { title, description, precio, path });
    
-    apdateNote.path = 'img/uploads/'+req.file.filename;
-    console.log(req.file);
+    // apdateNote.path = 'img/uploads/'+req.file.filename;
+    // console.log(req.file);
     req.flash("success_msg", "Producto Actualizado Con Exito");
     res.redirect("/notes");
   };
@@ -141,7 +141,9 @@ notesCtrl.updateNotes = async (req, res) => {
 };*/
 
 notesCtrl.deleteNotes = async (req, res) => {
-    await Note.findByIdAndDelete(req.params.id);//?Elimina por ID
+   const note =  await Note.findByIdAndDelete(req.params.id);//?Elimina por ID
+    const result = await cloudinary.v2.uploader.destroy(note.public_id);
+    console.log(result);
     req.flash("success_msg", "Producto Eliminado Con Exito");
     res.redirect("/notes");
   };
