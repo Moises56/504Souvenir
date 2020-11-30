@@ -22,7 +22,6 @@ module.exports = function Cart(cart) {
         
       };
     
-
     this.getItems = function() {
         var arr = [];
         for (var id in this.items) {

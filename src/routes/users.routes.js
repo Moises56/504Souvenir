@@ -1,18 +1,29 @@
 const {Router} = require('express');
 const router = Router();
 const User = require('../models/User');
-
+const {isAuthenticated} = require('../helpers/validacion');
 
 const { renderSignUpForm,
     renderSigninForm,
     renderRecuperarForm,
     renderNewPassForm,
     renderCodigoForm,
+    renderUserAdminForm,
+    renderAdminPanelForm,
+    renderUserEditForm,
+    renderNewUserForm,
+    renderUserEditPerfilForm,
+    updateUsersPerfil,
+    deleteUser,
+    updateUsers,
+    newUser,
+    admin,
     codigo,
     newPass,
     recuperar,
     signup,
     signin,
+    userAdmin,
     logout } = require('../controllers/users.controller')
 
 router.get('/users/signup', renderSignUpForm);
@@ -23,6 +34,23 @@ router.post('/users/recuperar', recuperar);
 
 router.get('/users/signin', renderSigninForm);
 router.post('/users/signin', signin);
+
+router.get('/users/userAdmin', renderUserAdminForm);
+router.post('/users/userAdmin',requireAdmin(), userAdmin);
+
+router.get('/users/adminPanel',isAuthenticated, renderAdminPanelForm);
+//router.post('/users/admin', admin);
+
+router.delete('/users/delete/:id', deleteUser);
+
+router.get("/users/editeUser/:id",isAuthenticated, renderUserEditForm);
+router.put("/users/editeUser/:id",isAuthenticated, updateUsers);
+
+router.get("/users/editeUserPerfil/:id",isAuthenticated, renderUserEditPerfilForm);
+router.put("/users/editeUserPerfil/:id",isAuthenticated, updateUsersPerfil);
+
+router.get('/users/newUser', renderNewUserForm);
+router.post('/users/newUser', newUser);
 
 //router.get('/users/newPass/:token', renderNewPassForm);
 //router.post('/users/newPass/:token', newPass);
@@ -42,7 +70,28 @@ router.post('/email', EmailCtrl.sendEmail);
 
 
 
+function requireAdmin() {
+  return function(req, res, next) {
+    User.findOne({ email: req.body.email }, function(err, user) {
+      if (err) { return next(err); }
 
+      if (!user) { 
+        // Do something - the user does not exist
+        req.flash('error', 'Credenciales Incorrectas');
+            return res.redirect('/users/userAdmin');
+      }
+      if (!user.admin==true) { 
+        req.flash('error', 'No es un usuario Administrador');
+        return res.redirect('/users/userAdmin');
+        // Do something - the user exists but is no admin user
+      }
+      // Hand over control to passport
+      next();
+    
+    });
+  }
+  
+}
 
 
 

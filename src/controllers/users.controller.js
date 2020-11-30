@@ -10,6 +10,7 @@ const { unregisterDecorator } = require('handlebars');
 
 
 
+
 usersCtrl.renderSignUpForm = (req, res) => {
   res.render('users/signup');
 };
@@ -60,17 +61,141 @@ usersCtrl.renderSignUpForm = (req, res) => {
     
     
   };
+
+  // usersCtrl.signin = (req,res)=>{
+  //   User.findOne({ admin: req.admin='true'},  async function(err, admin) {
+  //     if (admin = false) {
+  //       usersCtrl.signin = passport.authenticate("local", {
+  //         successRedirect: "/notes",
+  //         failureRedirect: "/users/signin",
+  //         failureFlash: true,
+      
+            
+  //       })
+  //     }
+      
+  //   });
+  // }
   
+  // usersCtrl.signin = (req,res) =>{
+  //   User.findOne({ email: req.body.email},  function(err, user) {
+  //         if (user.admin = 'false') {
+  //           passport.authenticate("local", {
+  //              successRedirect: "/notes",
+  //              failureRedirect: "/users/signin",
+  //              failureFlash: true
+          
+                
+  //            });
+  //          }else{
+
+  //           passport.authenticate("local", {
+  //             successRedirect: "/notes",
+  //             failureRedirect: "/users/signin",
+  //             failureFlash: true
+         
+               
+  //           });
+             
+  //           req.flash('success_msg', 'Su Contraseña ha sido Actualizada');
+  //           res.redirect('/notes');
+  //          }
+          
+  //        });
+  // };
+
+  // function requireAdmin() {
+  //   return function(req, res, next) {
+  //     User.findOne({ email: req.body.email }, function(err, user) {
+  //       if (err) { return next(err); }
+  
+  //       if (!user) { 
+  //         // Do something - the user does not exist
+  //         req.flash('error', 'Credenciales Incorrectas');
+  //             return res.redirect('/users/userAdmin');
+  //       }
+  //       if (!user.admin==true) { 
+  //         req.flash('error', 'No es un usuario Administrador');
+  //         return res.redirect('/users/userAdmin');
+  //         // Do something - the user exists but is no admin user
+  //       }
+  //       // Hand over control to passport
+  //       next();
+      
+  //     });
+  //   }
+    
+  // }
  
-  usersCtrl.signin = passport.authenticate("local", {
-    successRedirect: "/notes",
-    failureRedirect: "/users/signin",
-    failureFlash: true
+    usersCtrl.signin = passport.authenticate("local", {
+      successRedirect: "/notes",
+     failureRedirect: "/users/signin",
+      failureFlash: true
 
       
-  });
+    });
 
- 
+    usersCtrl.renderAdminPanelForm= async (req, res) =>{ //?Consutar a la base de datos
+      const users = await User.find({ user: req.body.email })
+      //.sort({ createdAt: -1 })
+      .lean();//?busca el arreglo 
+      
+      res.render('users/adminPanel', { users }) //?pasalos objetos/muestra en pantalla
+      console.log(users);
+    };
+
+    usersCtrl.deleteUser = async (req, res) => {
+      const user =  await User.findByIdAndDelete(req.params.id);//?Elimina por ID
+       //const result = await cloudinary.v2.uploader.destroy(note.public_id);
+       
+       req.flash("success_msg", 'Usuario '+ user.name+' '+user.apellido + ' Eliminado');
+       res.redirect('/users/adminPanel');
+     };
+
+    // usersCtrl.renderAdminPanelForm = (req, res) => {
+    //   User.find().then(result=>{
+    //     res.send(result);
+    //     res.end();
+    //   }).catch(error=>{
+    //     res.send(error);
+    //     res.end();
+    //   })
+    //   res.render('users/adminPanel');
+    // };
+    // personas:[];
+    // ngOnInit(){
+    //   this.httpClient.get(´${this.backendHost}/usuarios´)
+    //   .subscribe( res=>{
+    //     this.personas = res;
+    //     console.log(this.personas)
+    //   });
+    // }
+    // usersCtrl.userAdmin = passport.authenticate("local", {
+    //   successRedirect: "/notes",
+    //  failureRedirect: "/users/userAdmin",
+    //   failureFlash: true
+  
+      
+    // });
+
+  
+
+  usersCtrl.renderUserAdminForm = (req, res) => {
+    res.render('users/userAdmin');
+    
+    
+  };
+  
+  usersCtrl.userAdmin = passport.authenticate("local", {
+    successRedirect: "/users/adminPanel",
+   failureRedirect: "/users/userAdmin",
+    failureFlash: true
+
+    
+  });
+  
+  
+  
 
 
   usersCtrl.logout = (req, res) => {
@@ -236,7 +361,88 @@ usersCtrl.renderSignUpForm = (req, res) => {
         });
   }*/
 
+  usersCtrl.renderUserEditForm = async (req, res) => {
+    // res.send('Edit form')
+    const users = await User.findById(req.params.id).lean(); //buscando en la base el ID
+    // console.log(users._id);
+    // if(users._id != req.user.id){
+    //  req.flash('error_msg', "No esta Autorizado")   
+    //  return res.redirect('/users/adminPanel');
+ 
+    // }
+   // console.log(note)
+    res.render('users/editeUser', { users }); //pasando el valor
+   
+ };
+
   
+usersCtrl.updateUsers = async (req, res) => {
+  const { name, apellido, email } = req.body;
+  await User.findByIdAndUpdate(req.params.id, { name, apellido, email });
+ 
+  // apdateNote.path = 'img/uploads/'+req.file.filename;
+  // console.log(req.file);
+  req.flash("success_msg", "Usuario Actualizado Con Exito");
+  res.redirect("/users/adminPanel");
+};
+
+usersCtrl.renderUserEditPerfilForm = async (req, res) => {
+  // res.send('Edit form')
+  const users = await User.findById(req.params.id).lean(); //buscando en la base el ID
+  
+  res.render('users/editeUserPerfil', { users }); //pasando el valor
+ 
+};
+
+usersCtrl.updateUsersPerfil = async (req, res) => {
+  const { name, apellido, email } = req.body;
+  await User.findByIdAndUpdate(req.params.id, { name, apellido, email });
+ 
+  // apdateNote.path = 'img/uploads/'+req.file.filename;
+  // console.log(req.file);
+  req.flash("success_msg", "Usuario Actualizado Con Exito");
+  res.redirect("/notes");
+};
+
+usersCtrl.renderNewUserForm = (req, res) => {
+  res.render('users/newUser');
+};
+
+  usersCtrl.newUser = async (req, res) => {
+  const errors = [];
+  const { name, apellido, email, password, confirm_password } = req.body;
+  if (password != confirm_password) {
+    errors.push({ text: 'Contraseñas No Coinciden.' });
+  }
+  if (password.length < 4) {
+    errors.push({ text: 'Las Contraseñas requiere almenos 4 caratcteres.' });
+  }
+  if (errors.length > 0) {
+    res.render('users/newUser', {
+      errors,
+      name,
+      apellido,
+      email,
+      password,
+      confirm_password
+    });
+  } else {
+    // par las coindidencias del email
+    const emailUser = await User.findOne({ email: email });
+    if (emailUser) {
+      req.flash('error_msg', 'El correo ya esta en uso.');
+      res.redirect('/users/newUser');
+    } else {
+      // Guardar nuevo usuario
+      const newUser = new User({ name, apellido, email, password });
+      console.log(newUser);
+      newUser.password = await newUser.encryptPassword(password);
+      await newUser.save();
+      req.flash('success_msg', 'Usuario Agregado con Exito');
+      res.redirect('/users/adminPanel');
+    }
+  }
+};
 
   module.exports = usersCtrl;
 

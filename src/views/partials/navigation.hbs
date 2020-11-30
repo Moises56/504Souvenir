@@ -16,7 +16,7 @@
         <a style="color: rgb(53, 41, 26);" href="/"><i style="color: rgb(255, 145, 0);"
                 class="fab fa-pagelines"></i><img src="/img/logo1.png" alt="logo1"><i class="fab fa-raspberry-pi"></i>
             <div class="enlaces">
-                <a style="color: rgb(242, 246, 246);" href="/about">𝒞𝑜𝓃𝑜𝒸𝑒𝓃𝑜𝓈</a>
+                <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
                 {{!-- <a style="color: rgb(242, 246, 246);" href="/cart/cart">𝒱𝑒𝓇 𝒪𝓇𝒹𝑒𝓃𝑒𝓈</a> --}}
                 {{!-- <a style="color: rgb(242, 246, 246);" href="/notes">Mi Perfil</a> --}}
 
@@ -24,7 +24,7 @@
 
             {{#if user}}
 
-            <a style="color: rgb(242, 246, 246);" href="/notes">𝓜𝓲 𝓟𝓮𝓻𝓯𝓲𝓵</a>
+            <a style="color: rgb(242, 246, 246);" href="/notes">MI PERFIL</a>
             {{!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(246, 255, 254);">
@@ -38,8 +38,8 @@
                 </div>
             </li> --}}
             {{else}}
-            <a style="color: rgb(242, 246, 246);" href="/users/signin">𝐼𝓃𝒾𝒸𝒾𝒶𝓇 𝒮𝑒𝓈𝒾ó𝓃</a>
-            <a style="color: rgb(242, 246, 246);" href="/users/signup">𝑅𝑒𝑔í𝓈𝓉𝓇𝒶𝓉𝑒</a>
+            <a style="color: rgb(242, 246, 246);" href="/users/signin">Inicia Session</a>
+            <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
             {{/if}}
 
 
@@ -62,7 +62,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header text-center">
-                                <h5 class="modal-title text-info" id="exampleModalLabel">𝓟𝓻𝓸𝓭𝓾𝓬𝓽𝓸𝓼 𝓐𝓰𝓻𝓮𝓰𝓪𝓭𝓸𝓼</h5>
+                                <h5 class="modal-title text-info" id="exampleModalLabel">Productos Agregados</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -79,9 +79,9 @@
                                         <tr>
                                            
                                             <th scope="col">#</th>
-                                            <th scope="col">𝓟𝓻𝓸𝓭𝓾𝓬𝓽𝓸𝓼</th>
-                                            <th scope="col">𝓒𝓪𝓷𝓽𝓲𝓭𝓪𝓭</th>
-                                            <th scope="col">𝓟𝓻𝓮𝓬𝓲𝓸</th>
+                                            <th scope="col">Productos</th>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Precio/th>
                                             
                                         </tr>
                                     </thead>
@@ -100,8 +100,8 @@
                                
                                 
                                 <div class="modal-footer">
-                                    <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">𝓒𝓮𝓻𝓻𝓪𝓻</a>
-                                    <a type="button" class="btn btn-outline-success" href="/cart/cart">𝓟𝓻𝓸𝓬𝓮𝓼𝓪𝓻</a>
+                                    <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</a>
+                                    <a type="button" class="btn btn-outline-success" href="/cart/cart">Procesar</a>
                                 </div>
 
 
@@ -139,27 +139,27 @@
     <div class="contenedor contenedor-grid">
         <div class="grid" id="grid">
             <div class="categorias">
-                <button class="btn-regresar"><i class="fas fa-arrow-left"></i> 𝓡𝓮𝓰𝓻𝓮𝓼𝓪𝓻</button>
-                <h3 class="subtitulo">𝓒𝓪𝓽𝓮𝓰𝓸𝓻𝓲𝓪𝓼</h3>
+                <button class="btn-regresar"><i class="fas fa-arrow-left"></i> Regresar𝓻</button>
+                <h3 class="subtitulo">Categorias</h3>
 
-                <a href="/cityTegu" data-categoria="tegucigalpa">𝓣𝓮𝓰𝓾𝓬𝓲𝓰𝓪𝓵𝓹𝓪 <i class="fas fa-angle-right"></i></a>
-                <a href="/citySanPedroSula" data-categoria="san-pedro-sula">𝓢𝓪𝓷 𝓟𝓮𝓭𝓻𝓸 𝓢𝓾𝓵𝓪 <i
+                <a href="/cityTegu" data-categoria="tegucigalpa">Tegucigalpa <i class="fas fa-angle-right"></i></a>
+                <a href="/citySanPedroSula" data-categoria="san-pedro-sula">San Pedro sula <i
                         class="fas fa-angle-right"></i></a>
-                <a href="/cityPuertoCortes" data-categoria="puerto-cortes">𝓟𝓾𝓮𝓻𝓽𝓸 𝓒𝓸𝓻𝓽𝓮𝓼<i
+                <a href="/cityPuertoCortes" data-categoria="puerto-cortes">Puerto Cortes<i
                         class="fas fa-angle-right"></i></a>
-                <a href="/cityDanli" data-categoria="danli">𝓓𝓪𝓷𝓵𝓲 <i class="fas fa-angle-right"></i></a>
-                <a href="/cityCeiba" data-categoria="la-ceiba">𝓛𝓪 𝓒𝓮𝓲𝓫𝓪<i class="fas fa-angle-right"></i></a>
-                <a href="/cityComayagua" data-categoria="comayagua">𝓒𝓸𝓶𝓪𝔂𝓪𝓰𝓾𝓪 <i class="fas fa-angle-right"></i></a>
-                <a href="/cityTela" data-categoria="tela">𝓣𝓮𝓵𝓪 <i class="fas fa-angle-right"></i></a>
-                <a href="/cityOmoa" data-categoria="omoa">𝓞𝓶𝓸𝓪 <i class="fas fa-angle-right"></i></a>
-                <a href="/cityAmapala" data-categoria="amapala">𝓐𝓶𝓪𝓹𝓪𝓵𝓪 <i class="fas fa-angle-right"></i></a>
-                <a href="/cityRoatan" data-categoria="roatan">𝓡𝓸𝓪𝓽á𝓷 <i class="fas fa-angle-right"></i></a>
+                <a href="/cityDanli" data-categoria="danli">Danli <i class="fas fa-angle-right"></i></a>
+                <a href="/cityCeiba" data-categoria="la-ceiba">La Ceiba<i class="fas fa-angle-right"></i></a>
+                <a href="/cityComayagua" data-categoria="comayagua">Comayagua <i class="fas fa-angle-right"></i></a>
+                <a href="/cityTela" data-categoria="tela">Tela <i class="fas fa-angle-right"></i></a>
+                <a href="/cityOmoa" data-categoria="omoa">Omoa <i class="fas fa-angle-right"></i></a>
+                <a href="/cityAmapala" data-categoria="amapala">Amapala <i class="fas fa-angle-right"></i></a>
+                <a href="/cityRoatan" data-categoria="roatan">Roatan <i class="fas fa-angle-right"></i></a>
             </div>
 
             <div class="contenedor-subcategorias">
                 <div class="subcategoria " data-categoria="tegucigalpa">
                     <div class="enlaces-subcategoria">
-                        <button class="btn-regresar"><i class="fas fa-arrow-left"></i>𝓡𝓮𝓰𝓻𝓮𝓼𝓪𝓻</button>
+                        <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
                         <h3 class="subtitulo">Tegucigalpa</h3>
                         <a href="#">Artesanía</a>
                         <a href="#">Joyería</a>
