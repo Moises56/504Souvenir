@@ -17,8 +17,10 @@ module.exports = function Cart(cart) {
     };
 
       this.removeItem = function(id) {
-            this.items[id].quantity <= 0;
-            delete this.items[id];
+        this.totalItems -= this.items[id].quantity;
+        this.totalPrice -= this.items[id].precio;
+        // this.items[id].quantity <= 0;
+        delete this.items[id];
         
       };
     
@@ -31,12 +33,15 @@ module.exports = function Cart(cart) {
     };
 
     this.reduceItem = (id) => {
+        this.totalItems -= this.items[id].quantity;
         this.items[id].quantity--;
         this.items[id].precio -= this.items[id].item.precio;
         this.totalQty--;
         this.totalPrice -= this.items[id].item.precio;
         
-        if (this.items[id].quantity <= 0) {
+        
+        if (this.items[id].quantity <= 0 ) {
+            
             delete this.items[id];
         }
     }
