@@ -3,3 +3,5 @@ node_modules
 productos
 public/img/uploads
 env
+package-lock.json
+package.json
