@@ -6,8 +6,7 @@ const { renderNoteForm,
         renderNotas,
         renderEditForm,
         updateNotes,
-        deleteNotes
-} = require('../controllers/notes.controller');
+        deleteNotes} = require('../controllers/notes.controller');
 
 const {isAuthenticated} = require('../helpers/validacion');
 
@@ -18,7 +17,8 @@ router.post('/notes/new-note',isAuthenticated, createNewNote)
 
 //*Obtenet todas las notas
 router.get('/notes',isAuthenticated, renderNotas)
-//router.get('/',isAuthenticated, renderNotas)
+// router.get('/productos/new-productos', renderProductos)
+// router.get('index', renderProductosIndex)
 
 //*Edit notas
 //router.get('/notes/edit/:id', renderEditForm) //*Mostrar el formulario envia los datos

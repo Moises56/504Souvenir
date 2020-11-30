@@ -3,9 +3,12 @@ const router = Router();
 
 const {renderIndex, renderAbout, renderCart, renderOrder, renderAdmin, renderTegu, renderOmoa,renderAmapala, renderCeiba, renderRoatan, renderComayagua, renderTela, renderSanPedroSula, renderPuertoCortes, renderDanli } = require('../controllers/index.controller')
 
+const { renderProductos,renderProductosIndex} = require('../controllers/notes.controller');
 
+// router.get('/productos/new-productos', renderProductos)
+router.get('/', renderProductosIndex) //?Mostrando todos los productos
 
-router.get('/', renderIndex);
+// router.get('/', renderIndex);
 router.get('/about', renderAbout);
 router.get('/cart', renderCart);
 router.get('/orders', renderOrder);

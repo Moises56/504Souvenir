@@ -1,8 +1,10 @@
 const indexCtrl = {};
+const Note = require('../models/Note'); //?importando el modelo de 
 
-indexCtrl.renderIndex = (req, res) => { //*muestra handlebars
-    res.render('index')
-};
+
+//  indexCtrl.renderIndex =  (req, res) => { 
+//      res.render('index')
+//  };
 
 indexCtrl.renderAbout = (req, res) => { //*muestra handlebars
     res.render('about')

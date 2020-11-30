@@ -1,0 +1,82 @@
+<style>
+    .table-responsive {
+        -sm|-md|-lg|-xl
+    }
+</style>
+
+{{# if products }}
+<h2 class="text-center text-danger">{{title}}</h2><br>
+<div class="row mt-5 ">
+    <div class="col-md-8 offset-md-2 table-responsive">
+
+        <table class="table table-hover table-striped ">
+            <thead class="table thead-dark">
+                <tr>
+                    <th class="text-center" style="width:40%">IMG</th>
+                    <th style="width:40%">PRODUCTOS</th>
+                    <th style="width:40%">DESCRIPCION</th>
+                    <th style="width:8%">CANTIDAD</th>
+                    <th style="width:22%" class="text-center">SUBTOTAL</th>
+                    <th style="width:20%">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{# each products }}
+
+                <tr class="table-primary">
+                    <td><img type="file" class="card-img-top" src="{{ this.item.imgURL}}" name="image"></td>
+                    <td class="text-dark">{{ this.item.title }}</td>
+                    {{!-- <td>{{{this.item.description}}}</td> --}}
+                    <td class="text-center text-dark">{{{this.item.description}}}</td>
+                    <td class="text-center text-dark">{{ this.quantity }}</td>
+                    <td class="text-center text-dark"><i class="fas fa-dollar-sign text-success"></i>.{{ this.precio }}
+                    </td>
+                    <td>
+                        <a href="/aumentar/{{this.item._id}}" class="btn btn-outline-success btn-sm"><i
+                                class="fas fa-plus"></i></a>
+                        <a href="/reduce/{{this.item._id}}" class="btn btn-outline-danger btn-sm"><i
+                                class="fas fa-minus"></i></a>
+                        {{!-- <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger btn-sm">Vaciar Todo <i
+                                class="fa fa-trash-o"></i></a> --}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row mt-5 p-3 mb-2 bg-warning text-dark">
+    <div class="col-md-8 offset-md-2 text-center ">
+        <strong>𝓣𝓸𝓽𝓪𝓵 𝓪 𝓟𝓪𝓰𝓪𝓻: <i class="fas fa-dollar-sign text-success"></i>.{{ totalPrice }}.00</strong>
+    </div>
+    <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger btn-sm">Vaciar Carrito <i
+            class="fa fa-trash-o"></i></a>
+</div>
+<hr>
+<div class="row mt-5 text-center">
+    <div class="col-md-6 offset-md-3">
+        <a href='#' role="button" class="btn btn-outline-success"><i class="fas fa-pager"></i>
+            Pagar
+        </a>
+        <a href='/' role="button" class="btn btn-outline-info btn-sm"><i style="color: rgb(255, 145, 0);"
+            class="fas fa-shopping-cart"></i>
+        Seguir Comprando
+    </a>
+    </div>
+    
+</div>
+{{ else }}
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+        <div class="alert alert-success text-center" role="alert">
+            𝓝𝓸 𝓱𝓪 𝓼𝓮𝓵𝓮𝓬𝓬𝓲𝓸𝓷𝓪𝓭𝓸 𝓷𝓲𝓷𝓰𝓾𝓷 𝓹𝓻𝓸𝓭𝓾𝓬𝓽𝓸!
+        </div>
+        <a href='/' role="button" class="btn btn-outline-info btn-sm"><i style="color: rgb(255, 145, 0);"
+                class="fas fa-shopping-cart"></i>
+            Seguir Comprando
+        </a>
+    </div>
+
+</div>
+{{/if}}

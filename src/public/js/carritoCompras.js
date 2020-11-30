@@ -1,7 +1,7 @@
 let carrito = {}
 
-const detectarBotones = (data) => {
-    const botones = document.querySelectorAll('.card button')
+const detectarBotones = (note) => {
+    const botones = document.querySelectorAll('.price')
 
     botones.forEach(btn => {
         btn.addEventListener('click', () => {

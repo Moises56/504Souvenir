@@ -212,7 +212,7 @@
         <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }} <a
             href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>Precio: Lps.{{precio}}
         <p class="card-text">Detalle: {{ description }}</p>
-        <p class="card-text">{{format.createdAt}}</p>
+        <p class="card-text">{{createdAt}}</p>
         <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>

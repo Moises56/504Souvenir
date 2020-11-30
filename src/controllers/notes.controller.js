@@ -17,12 +17,9 @@ notesCtrl.renderNoteForm=(req, res) =>{
     res.render('notes/new-note')
 };
 
-
-
 notesCtrl.createNewNote = async (req, res) =>{
-  // console.log(req.file.path)
      const { title, description, precio, image, path, originalname, imgURL, public_id} = req.body;
-     console.log(req.body)
+    //  console.log(req.body)
      const errors = [];
      if (!title) {
        errors.push({ text: "Escribe un título." });
@@ -43,12 +40,9 @@ notesCtrl.createNewNote = async (req, res) =>{
          title,
          description,
          precio,
-        //  image,
-        //  originalname,
-        //  path,
        });
      } else {
-       console.log(req.file.path)
+      //  console.log(req.file.path)
       const resultado = await cloudinary.v2.uploader.upload(req.file.path);
       const newNote = new Note({ title,
         description,
@@ -59,42 +53,46 @@ notesCtrl.createNewNote = async (req, res) =>{
         originalname: resultado.originalname,
         imgURL: resultado.url,
         public_id: resultado.public_id });
-         
        
-      //  newNote.imgURL: resultado.url,
-      //  newNote.public_id: resultado.public_id
-       //newNote.path = 'img/uploads/'+req.file.filename;
+        console.log(newNote)
        newNote.user = req.user.id;
-       await newNote.save();//?Guardando en la base toda la collections Productos
+       await newNote.save();//?Guardando en la base toda la collections
 
        await fsExtra.unlink(req.file.path) //?Eliminando la img de la carpeta uploads
-       req.flash("success_msg", "Producto agregado con éxito");
+       req.flash("success_msg", "Producto agregado con éxito");//? msn de de exito
        res.redirect("/notes");
-      // res.redirect("/");
-      //console.log(req.file);
 
+        // res.redirect("index");
+      //console.log(req.file);
      }
-    
-//     console.log(req.body) //*muetra los datos
-//     const {title, description} = req.body;//?obtner los datos
-//     const newNote = new Note({title , description});
-//     newNote.user = req.user.id;
-//    console.log(newNote); //?muetra
-//     await newNote.save(); //guarda el objeto dentro de mongoDB
-//     req.flash('success_msg', 'Producto Agregado Con Exito');//*se utiliza como una variable
-//     res.redirect("/notes");
-//     res.send('Nueva Nota');
+
 };
+
 notesCtrl.renderNotas= async (req, res) =>{ //?Consutar a la base de datos
     const notes = await Note.find({ user: req.user.id })
     .sort({ createdAt: -1 })
     .lean();//?busca el arreglo
-    
     res.render('notes/all-notes', { notes }) //?pasalos objetos/muestra en pantalla
-    //res.render('/', { notes }) //?pasa los objetos/muestra en pantalla
-
-    console.log(notes);
+    // res.render('index', { notes }) //?pasa los objetos/muestra en pantalla
+    //  console.log(notes);
   };
+
+   notesCtrl.renderProductos = async (req, res) => {
+     const notes = await Note.find()
+     .sort({ createdAt: -1 })
+     .lean();
+     res.render('productos/new-productos', {notes})
+      // console.log(products)
+   }
+
+   notesCtrl.renderProductosIndex = async (req, res) => {
+    const notes = await Note.find()
+    .sort({ createdAt: -1 })
+    .lean();
+    res.render('index', {notes})
+     // console.log(products)
+  }
+
 
 //?Renderizado para editar productos
 notesCtrl.renderEditForm = async (req, res) => {
@@ -107,7 +105,6 @@ notesCtrl.renderEditForm = async (req, res) => {
    }
   // console.log(note)
    res.render('notes/edit-note', { note }); //pasando el valor
-  
 };
 
 //*Actualizar producto
@@ -123,7 +120,7 @@ notesCtrl.updateNotes = async (req, res) => {
     const resultado = await cloudinary.v2.uploader.upload(req.file.path);
     const note =  await Note.findByIdAndUpdate(req.params.id);//?Actualiza por ID
     const result = await cloudinary.v2.uploader.destroy(note.public_id);
-    console.log(result);
+    // console.log(result);
     
     await Note.findByIdAndUpdate(req.params.id, { 
       title, 

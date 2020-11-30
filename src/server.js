@@ -11,7 +11,12 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const cookieParser = require('cookie-parser');
+ var mongoose = require('mongoose');
+ var MongoStore = require('connect-mongo')(session);
 // const orderController = require('./controllers/order.contreller');
+
+// var product = require ('./models/Note');
+// var products = require('./routes/products.routes');
 
 
 
@@ -55,7 +60,9 @@ app.use(methodOverride('_method')); //?Eliminar notas
 app.use(session({ //?guardar mensajes en el servidor
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    // store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    // cookie: { maxAge: 120 * 60 * 60 }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -81,6 +88,18 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+    res.locals.login = req.isAuthenticated();
+    res.locals.session = req.session;
+    next();
+})
+
+// res.locals is an object passed to hbs engine
+app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
+
 //app.use((req, res, next) => {
     //res.locals.success_msg = req.flash("success_msg");
     //res.locals.error_msg = req.flash("error_msg");
@@ -102,6 +121,12 @@ app.use((req, res, next) => {
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/notes.routes'));
 app.use(require('./routes/users.routes'));
+app.use(require('./routes/carrito.routes'));
+//  app.use(require('./routes/products.routes'));
+
+// app.get('/saveitem', products.create);
+// app.post('/additem', products.store);
+
 
 app.get('/recuperar', function(req, res) {
     res.render('forgot', {
@@ -111,7 +136,7 @@ app.get('/recuperar', function(req, res) {
 
   
 
-app.use(require('./controllers/order.controller'));
+//app.use(require('./controllers/order.controller'));
 //app.use('/',orderController);
 //app.use(require('./routes/order.routes'));
 

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+// var MongoStore = require('connect-mongo')(session);
+
 
 
 // const {NOTES_APP_MONGODB_HOST, NOTES_APP_MONGODB_DATABASE} = process.env;
