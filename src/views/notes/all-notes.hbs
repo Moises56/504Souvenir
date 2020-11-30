@@ -245,7 +245,8 @@
 
   <!-- profile -->
   <div id="profile">
-    <div id="fhoto"><i style="color:lightseagreen"class="far fa-user-circle"></i></div>
+    {{!-- <img src="{{imgUrl}}" alt="..." class="img-thumbnail"> --}}
+     <div id="fhoto"><i style="color:lightseagreen"class="far fa-user-circle"></i></div> 
     <div id="name"><span>{{user.name}} {{user.apellido}}</span></div>
   </div>
 
@@ -271,7 +272,7 @@
 
       </a>
     </div>
-
+  <div class="item separator"></div>
 
     <div class="item">
       <a href="#">
@@ -281,6 +282,19 @@
     </div>
 
     <div class="item separator"></div>
+
+    
+     <div class="item">
+      <a href="/users/editeUserPerfil/{{user._id}}">
+        <!-- <div class="icon"><img src="img/app-icons/40.webp" alt=""></div> -->
+        <div class="icon"><i style="color: darkgreen;" class="fas fa-edit"></i></div>
+        <div class="title"><span>Editar Perfil</span></div>
+
+
+      </a>
+    </div>
+
+    <div class="item separator"></div> 
 
     <div class="item">
       <a href="/users/logout">
@@ -293,7 +307,6 @@
     </div>
 
     <div class="item separator"></div>
-
   </div>
 </div>
 
