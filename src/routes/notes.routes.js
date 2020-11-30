@@ -18,7 +18,7 @@ router.post('/notes/new-note',isAuthenticated, createNewNote)
 
 //*Obtenet todas las notas
 router.get('/notes',isAuthenticated, renderNotas)
-
+//router.get('/',isAuthenticated, renderNotas)
 
 //*Edit notas
 //router.get('/notes/edit/:id', renderEditForm) //*Mostrar el formulario envia los datos

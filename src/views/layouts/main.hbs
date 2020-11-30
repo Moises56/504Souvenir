@@ -9,16 +9,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Souvenir504</title>
-     <link rel="icon" type="image/png" href="img/logo2.png">
-    
-    <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="img/logo2.png">
 
-     <!--ANIMATE CSS-->
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!--ANIMATE CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-   
+
     {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css"> --}}
-    
+
     <!--Para Iconos-FontAwesome-->
     <script src="https://kit.fontawesome.com/0174cae6ac.js" crossorigin="anonymous"></script>
     <!--<link rel="stylesheet" href="fonts/sofiapro-bold.woff">
@@ -27,13 +28,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	{{!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {{!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"> --}}
 
-   
+
     <!--Estilos CSS-->
     <link rel="stylesheet" href="/css/estilos.css">
-	<link rel="stylesheet" href="/css/tarjeta.css">
+    <link rel="stylesheet" href="/css/tarjeta.css">
     <!-- <link rel="stylesheet" href="/css/buscador.css"> -->
 
     <link rel="stylesheet" href="/css/main.css">
@@ -44,26 +45,26 @@
     {{!-- <link rel="stylesheet" href="css/sidebarMenu.css">  --}}
     {{!-- <link rel="stylesheet" href="/css/registro.css"> --}}
 
-    
-    
+
+
 </head>
 
 <body>
     <div id="pagina">
-      <div id="cabecera">
-        {{>navigation}}
-        <div id="contenido">
+        <div id="cabecera">
+            {{>navigation}}
+            <div id="contenido">
 
-            <main class="container p-5">
-                {{>messages}}
-                {{>errors}}
-                {{{body}}}
-            </main>
+                <main class="container p-5">
+                    {{>messages}}
+                    {{>errors}}
+                    {{{body}}}
+                </main>
 
-            <div id="pie">
-                {{>footer}}
+                <div id="pie">
+                    {{>footer}}
+                </div>
             </div>
-         </div>
         </div>
     </div>
 
@@ -74,7 +75,7 @@
 
     <!--BOOTSTRAP-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -82,23 +83,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-        
-        <script src="js/controlador.js"></script>
-        <script src="js/controlTegu.js"></script>
-        <script src="js/controlOmoa.js"></script>
-        <script src="js/controlSanPedroSula.js"></script>
-        <script src="js/controlPuertoCortes.js"></script>
-        <script src="js/controlDanli.js"></script>
-        <script src="js/controlAmapala.js"></script>
-        <script src="js/controlCeiba.js"></script>
-        <script src="js/controlRoatan.js"></script>
-        <script src="js/controlComayagua.js"></script>
-        <script src="js/controlTela.js"></script>
-	    <script src="js/tarjeta.js"></script>
-        <script src="js/control.js"></script>
-        <script src="..public/js/cart.js"></script>
-        <script src="../public/js/main.js"></script>
-        <script src="js/sidebarMenu.js"></script>
+    {{!-- Ciudades --}}
+
+    <script src="js/controlador.js"></script>
+    <script src="js/controlTegu.js"></script>
+    <script src="js/controlOmoa.js"></script>
+    <script src="js/controlSanPedroSula.js"></script>
+    <script src="js/controlPuertoCortes.js"></script>
+    <script src="js/controlDanli.js"></script>
+    <script src="js/controlAmapala.js"></script>
+    <script src="js/controlCeiba.js"></script>
+    <script src="js/controlRoatan.js"></script>
+    <script src="js/controlComayagua.js"></script>
+    <script src="js/controlTela.js"></script>
+    <script src="js/tarjeta.js"></script>
+    <script src="js/carritoCompras"></script>
+
+    <script src="js/control.js"></script>
+    <script src="..public/js/cart.js"></script>
+    <script src="../public/js/main.js"></script>
+    <script src="js/sidebarMenu.js"></script>
+    <script src="js/about.js"></script>
+        <!-- Scroll Reveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 
 
 </body>

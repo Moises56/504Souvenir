@@ -18,9 +18,11 @@ notesCtrl.renderNoteForm=(req, res) =>{
 };
 
 
+
 notesCtrl.createNewNote = async (req, res) =>{
-     const { title, description, precio, image, path, imgURL, public_id} = req.body;
-     //const resultado = await cloudinary.v2.uploader.upload(req.file.path);
+  // console.log(req.file.path)
+     const { title, description, precio, image, path, originalname, imgURL, public_id} = req.body;
+     console.log(req.body)
      const errors = [];
      if (!title) {
        errors.push({ text: "Escribe un título." });
@@ -41,34 +43,34 @@ notesCtrl.createNewNote = async (req, res) =>{
          title,
          description,
          precio,
-         image,
-         path,
-         //imgURL: resultado.url,
-         //public_id: resultado.public_id
-         
+        //  image,
+        //  originalname,
+        //  path,
        });
      } else {
+       console.log(req.file.path)
       const resultado = await cloudinary.v2.uploader.upload(req.file.path);
-       const newNote = new Note({ title, 
-        description, 
-        precio, 
-        image, 
-        path, 
+      const newNote = new Note({ title,
+        description,
+        precio,
+        image,
+        path,
+        originalname: req.file.originalname,
+        originalname: resultado.originalname,
         imgURL: resultado.url,
-         public_id: resultado.public_id });
+        public_id: resultado.public_id });
+         
        
       //  newNote.imgURL: resultado.url,
       //  newNote.public_id: resultado.public_id
        //newNote.path = 'img/uploads/'+req.file.filename;
        newNote.user = req.user.id;
-     
        await newNote.save();//?Guardando en la base toda la collections Productos
+
        await fsExtra.unlink(req.file.path) //?Eliminando la img de la carpeta uploads
-
-   
-
        req.flash("success_msg", "Producto agregado con éxito");
        res.redirect("/notes");
+      // res.redirect("/");
       //console.log(req.file);
 
      }
@@ -82,22 +84,19 @@ notesCtrl.createNewNote = async (req, res) =>{
 //     req.flash('success_msg', 'Producto Agregado Con Exito');//*se utiliza como una variable
 //     res.redirect("/notes");
 //     res.send('Nueva Nota');
-
-
 };
-
-
 notesCtrl.renderNotas= async (req, res) =>{ //?Consutar a la base de datos
     const notes = await Note.find({ user: req.user.id })
     .sort({ createdAt: -1 })
-    .lean();//?busca el arreglo 
+    .lean();//?busca el arreglo
     
     res.render('notes/all-notes', { notes }) //?pasalos objetos/muestra en pantalla
+    //res.render('/', { notes }) //?pasa los objetos/muestra en pantalla
+
     console.log(notes);
   };
 
 //?Renderizado para editar productos
-
 notesCtrl.renderEditForm = async (req, res) => {
    // res.send('Edit form')
    const note = await Note.findById(req.params.id).lean(); //buscando en la base el ID
@@ -120,18 +119,25 @@ notesCtrl.updateNotes = async (req, res) => {//console.log(req.body)
 };*/
 
 notesCtrl.updateNotes = async (req, res) => {
-    const { title, description, precio, path } = req.body;
-    await Note.findByIdAndUpdate(req.params.id, { title, description, precio, path });
-   
-    // apdateNote.path = 'img/uploads/'+req.file.filename;
-    // console.log(req.file);
+    const { title, description, precio, imgURL } = req.body;
+    const resultado = await cloudinary.v2.uploader.upload(req.file.path);
+    const note =  await Note.findByIdAndUpdate(req.params.id);//?Actualiza por ID
+    const result = await cloudinary.v2.uploader.destroy(note.public_id);
+    console.log(result);
+    
+    await Note.findByIdAndUpdate(req.params.id, { 
+      title, 
+      description, 
+      precio, 
+      imgURL: resultado.url,
+      public_id: resultado.public_id
+       });
+
+       await fsExtra.unlink(req.file.path)
     req.flash("success_msg", "Producto Actualizado Con Exito");
     res.redirect("/notes");
   };
 
-  // const newNote = new Note({ title, description, precio, image, path });
-  // newNote.path = 'img/uploads/'+req.file.filename;
-  // newNote.user = req.user.id;
 
 
 //*Eliminar producto
@@ -143,7 +149,7 @@ notesCtrl.updateNotes = async (req, res) => {
 notesCtrl.deleteNotes = async (req, res) => {
    const note =  await Note.findByIdAndDelete(req.params.id);//?Elimina por ID
     const result = await cloudinary.v2.uploader.destroy(note.public_id);
-    console.log(result);
+   // console.log(result);
     req.flash("success_msg", "Producto Eliminado Con Exito");
     res.redirect("/notes");
   };

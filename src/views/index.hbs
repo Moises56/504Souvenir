@@ -11,7 +11,8 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Tegucigalpa</h1>
-                        <p>Tegucigalpa es conocida por muchos por su diversidad gastronómica y sitios que puedes recorrer dentro de la ciudad.</p>
+                        <p>Tegucigalpa es conocida por muchos por su diversidad gastronómica y sitios que puedes
+                            recorrer dentro de la ciudad.</p>
                         <p><a href="/cityTegu" role="butoon" class="btn btn-primary btn-lg">Productos</a></p>
                     </div>
                 </div>
@@ -19,10 +20,11 @@
 
             <div class="carousel-item">
                 <img class="d-block w-100 imgFilter second-slide" src="img/carusel/slide2.jpg" alt="Second slide">
-                 <div class="container">
+                <div class="container">
                     <div class="carousel-caption text-left">
                         <h1>Omoa</h1>
-                        <p>Omoa es una pequeña ciudad de playa ubicada en Honduras. Es famosa por sus relucientes playas que se extienden a lo largo del mar Caribe.</p>
+                        <p>Omoa es una pequeña ciudad de playa ubicada en Honduras. Es famosa por sus relucientes playas
+                            que se extienden a lo largo del mar Caribe.</p>
                         <p><a href="/cityOmoa" role="butoon" class="btn btn-primary btn-lg">Productos</a></p>
                     </div>
                 </div>
@@ -33,30 +35,34 @@
                 <div class="container">
                     <div class="carousel-caption text-right">
                         <h1>Roatán</h1>
-                        <p>Roatán es una de las Islas de la Bahía de Honduras en el Caribe. Forma parte del enorme Sistema Arrecifal Mesoamericano y es conocida por las playas, los sitios de buceo y la fauna marina.</p>
+                        <p>Roatán es una de las Islas de la Bahía de Honduras en el Caribe. Forma parte del enorme
+                            Sistema Arrecifal Mesoamericano y es conocida por las playas, los sitios de buceo y la fauna
+                            marina.</p>
                         <p><a href="/cityRoatan" role="butoon" class="btn btn-primary btn-lg">Productos</a></p>
                     </div>
                 </div>
             </div>
-         </div>
-        <a style="z-index:101" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        </div>
+        <a style="z-index:101" class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+            data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Anterior</span>
         </a>
-        <a style="z-index:101" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a style="z-index:101" class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+            data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Siguiente</span>
-        </a> 
+        </a>
     </div>
 
-    
+
 </main>
 
 
-    <div class="container-fluid ">
-			<div class="row" id="productos">
-				
-				<!-- <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4">
+{{!-- <div class="container-fluid ">
+    <div class="row" id="productos">
+
+        <!-- <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4">
 					<div class="card tarjeta">
 						<img class="card-img-top" src="img/img3.jpg" alt="">
 						<div class="card-body contenido ">$20
@@ -73,16 +79,35 @@
 						</div>
 					</div>
 				</div> -->
-				
 
-			</div>
-		</div> 
+    </div>
+</div> --}}
+
+<div class="row">
+    {{#each notes}}
+    <div class="col-xs-12 col-sm-4 col-md-6 col-lg-4 pt-3">
+        <div class="card tarjeta animate__animated animate__fadeInDown">
+            <img type="file" class="card-img-top " src="{{imgURL}}" name="image">
+            <div class="card-body contenido animate__animated animate__fadeInDown">
+                <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }} <a
+                        href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>Precio: Lps.{{precio}}
+                <p class="card-text">Detalle: {{ description }}</p>
+                <p class="card-text">{{format.createdAt}}</p>
+                <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>
+                </form>
+            </div>c
+        </div>
+    </div>
+     {{/each}}
+</div>
 
 
 
-    
 
-    {{!-- <div class="container marketing">
+
+{{!-- <div class="container marketing">
         <br>
         <h2 id="pro1">producto1</h2>
         <hr>

@@ -1,45 +1,488 @@
-<section class="card">
-    <div class="card-body">
-        
-    
-     <main role="main" class="container bg-dark">
+<style>
+    /* Global */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        <div width=100% align=left>
-            <div class="history">
-                <a href="/" class="history">&nbsp;Inicio&nbsp;</a>
-                <a href="#" class="history"><i class="fa fa-angle-double-left"></i></a>
-                <a href="/" class="history">&nbsp;504Venir&nbsp;</a>
-                <a href="#" class="history"><i class="fa fa-angle-double-left"></i></a>
-            </div>
+    body {
+        font-family: "Oswald", sans-serif;
+        background-color: #000000;
+        /* Pattern from https://www.heropatterns.com/ */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%23540606' fill-opacity='0.4'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        color: #1e272e;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .container {
+        width: 90%;
+        margin: auto;
+    }
+
+    /* Navigation */
+    .nav-main {
+        font-size: 17px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        padding: 20px 0;
+    }
+
+    .nav-brand {
+        width: 50px;
+    }
+
+    /* Navbar Left */
+    .nav-main ul {
+        display: flex;
+    }
+
+    .nav-main ul li {
+        padding: 10px;
+    }
+
+    .nav-main ul li a {
+        padding: 2px;
+    }
+
+    .nav-main ul li a:hover {
+        border-bottom: 2px solid #fff;
+    }
+
+    .nav-main ul.nav-menu {
+        flex: 1;
+        margin-left: 20px;
+    }
+
+    hr {
+        margin: 10px 0;
+    }
+
+    /* Responsive Button */
+    .menu-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 30px;
+        z-index: 2;
+        display: none;
+    }
+
+    /* SHOWCASE */
+
+    .btn {
+        cursor: pointer;
+        display: inline-block;
+        border: 0;
+        font-weight: bold;
+        padding: 10px 20px;
+        background: #262626;
+        color: #fff;
+        font-size: 15px;
+        border: 1px solid #fff;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    .showcase {
+        width: 100%;
+        height: 550px;
+        background: url("./img/about/showcase2.jpg") no-repeat center center/cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-end;
+        padding-bottom: 50px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .showcase h2,
+    .showcase p {
+        margin-bottom: 10px;
+    }
+
+    .showcase .btn {
+        margin-top: 20px;
+    }
+
+    /* News Cards */
+    .news-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        margin: 70px 0;
+    }
+
+    .news-cards img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .news-cards h3 {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    .news-cards a {
+        padding: 10px 0;
+        color: #f2f2f2;
+        text-transform: uppercase;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    /* CARDS BANNER ONE */ 
+    .cards-banner-one {
+        width: 100%;
+        height: 350px;
+        background: url("./img/tech-red.jpg");
+        margin-bottom: 40px;
+    }
+
+    .cards-banner-one .content {
+        width: 40%;
+        padding: 90px 0 0 30px;
+        color: #fff;
+    }
+
+    .cards-banner-one p,
+    .cards-banner-two p {
+        margin: 10px 0 20px 0;
+    }
+
+    /* CARDS BANNER TWO*/
+    .cards-banner-two {
+        width: 100%;
+        height: 350px;
+        background: url("./img/image-five.jpg") no-repeat center center/cover;
+    }
+
+    .cards-banner-two .content {
+        width: 50%;
+        padding: 100px 0 0 30px;
+    }
+
+    /* Follow */
+    .social {
+        margin: 50px;
+    }
+
+    .social p {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .links a {
+        margin: 0 30px;
+    }
+
+    .links a i {
+        font-size: 3rem;
+    }
+
+    /* Links */
+    .footer-links {
+        background: #2f3640;
+        color: #616161;
+        font-size: 12px;
+        padding: 35px 0;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .footer-container ul {
+        margin: 0 auto;
+    }
+
+    .footer-links li {
+        line-height: 2.8;
+    }
+
+    .footer {
+        background: #2f3640;
+        color: #616161;
+        font-size: 12px;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 1rem;
+        padding-bottom: 20px;
+    }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+        .menu-btn {
+            display: block;
+        }
+
+        .menu-btn:hover {
+            opacity: 0.5;
+        }
+
+        .nav-main ul.nav-menu {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #2f3640;
+            width: 50%;
+            height: 100%;
+            border-right: #ccc 1px solid;
+            opacity: 0.9;
+            padding: 30px;
+            transform: translateX(-500px);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .nav-main ul.nav-menu li {
+            padding: 20px;
+            border-bottom: #ccc solid 1px;
+            font-size: 14px;
+        }
+
+        .nav-main ul.nav-menu li:last-child {
+            border-bottom: 0;
+        }
+
+        .nav-main ul.nav-menu.show {
+            transform: translateX(-20px);
+        }
+
+        .nav-main ul.nav-menu-right {
+            margin-right: 50px;
+        }
+
+        .news-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .cards-banner-one .content,
+        .cards-banner-two .content {
+            width: 80%;
+        }
+
+        .footer-links .footer-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 500px) {
+        .news-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .cards-banner-one .content,
+        .cards-banner-two .content {
+            width: 100%;
+            padding: 60px 20px;
+        }
+
+        .footer-links .footer-container {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-links .footer-container ul {
+            text-align: center;
+        }
+    }
+</style>
+
+<div class="menu-btn">
+    <i class="fas fa-bars fa-2x"></i>
+</div>
+
+<div class="container">
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <!-- Brand -->
+         <h1>Bienvenidos </h1>
+         <img src="img/hh1.jpg" alt="TechNews Logo" class="nav-brand">
+        <!-- Left Nav -->
+
+
+        <!-- Right Nav -->
+        {{!-- <ul class="nav-menu-right">
+            <li>
+                <a href="/">
+                    <i class="fas fa-search"></i>
+                </a>
+            </li>
+        </ul> --}}
+    </nav> 
+    <hr>
+
+    <!-- SHOWCASE -->
+    <header class="showcase">
+        <h2>Nuestra historia!</h2>
+        <p> 504venir comenzó en 2020 como emprendimiento por parte de 5 alumnos de la UNAH nos esforzamos para brindar la mejor experiencia
+            de compra en línea posible. Nuestra misión es proporcionar un lugar feliz y seguro para que nuestros
+            clientes compren y experimenten la cultura de todo Honduras. Hacemos todo lo posible para ofrecer los
+            precios más bajos como muestra de nuestro agradecimiento a todos y cada uno de nuestros clientes.</p>
+        <a href="users/signup" class="btn">
+            Registrarse <i class="fas fa-chevron-right"></i>
+        </a>
+    </header>
+
+    <!-- NEWS CARDS -->
+    <div class="news-cards">
+        <div>
+            <img src="img/about/8a.jpeg" alt="" />
+            <h3>Artesanias</h3>
+            <p>Le ofrecemos variedad de vajillas hechas a mano complentamente de barro, diseños que van a tu gusto.
+                Variedad de colores y estilos y de diferentes lugares de todo el pais solo selecciona el departamento y
+                 listo miles de diseños, formas al alcance de un click.
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
         </div>
+        <div>
+            <img src="img/about/1a.jpg" alt="" />
+            <h3>Maceteras </h3>
+            <p>Ya disponibles maceteras de diferentes diseños para que toda tu casa luzca muy tradicional y alegre.
+                Para que las coloques en cada rincón de tu casa, ventanas, jardin, habitación hará de tu espacio 
+                único.
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
+        </div>
+        <div>
+            <img src="img/about/2a.jpg" alt="" />
+            <h3>Joyeros </h3>
+            <p> Encontraras miles de joyeros con diferentes estilos dentro de ellos podrás colocar accesorios, 
+                dar como regalo para una persona especial.
+                El material con el que se hacen son resistentes al agua, son estructurados de manera que te duren 
+                por mucho tiempo.
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
+        </div>
+        <div>
+            <img src="img/about/3a.jpeg" alt="" />
+            <h3>Recuerditos</h3>
+            <p>Si visitas nuestra Honduras y visitas algún lugar emblemático y por alguna razón no compraste nada que te recuerde
+                tan inolvidables momentos.
+                Te ofrecemos recuerditos directamente del lugar de origen, te llenará de muchos recuerdos.
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
+        </div>
+    </div>
 
-
-        <div class="jumbotron">
-            <h1 class="display-4">Bienvenidos</h1>
-            <p class="lead">504Venir comenzó en 2020 y nos esforzamos para brindar la mejor experiencia
-                de compra en línea posible. Nuestra misión es proporcionar un lugar feliz y seguro para que nuestros
-                clientes compren y experimenten la cultura de todo Hondureña. Hacemos todo lo posible para ofrecer los
-                precios más bajos como muestra de nuestro agradecimiento a todos y cada uno de nuestros clientes.</p>
-            <hr class="my-4">
-            <p>Muchos de nuestros artículos se importan y envían desde cada ciudad de honduras. Estamos más que felices
+    <!-- Card Banner 1-->
+    <section class="cards-banner-one">
+        <div class="content">
+            <h2>Nuestra Especialidad</h2>
+            <!-- lorem 20 -->
+            <p>Muchos de nuestros artículos se importan y envían desde cada ciudad de Honduras. Estamos más que satisfechos
                 de ayudar con la planificación de eventos privados y corporativos, y creemos que cada evento merece su
                 propia personalidad y estilo. ¡Las fiestas temáticas son nuestras especialidades!.</p>
-           
+            <a href="#" class="btn">Leer más<i class="fas fa-chevron-right"></i></a>
         </div>
+    </section>
 
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <img  class="rounded mx-auto d-block" alt="Responsive image" src="img/logoAzul.png"></img>
+    <!-- NEWS CARDS -->
+    <div class="news-cards">
+        <div>
+            <img src="img/about/4a.jpg" alt="" />
+            <h3>Decoraciones</h3>
+            <p>Variedad de artículos con diseños únicos para decoraciones 
+                Las bolsitas son hechas a mano de tela arpillera, súper resistentes
+                y bellas.
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
+        </div>
+        <div>
+            <img src="img/about/5a.jpeg" alt="" />
+            <h3>Perfumes</h3>
+            <p> Le ofrecemos perfumes con aromas naturales traidos desde el lugar de origen 
+                con un proceso del 100 % en su elaboración.
+                Sus frascos con diseños únicos que pueden complementar tu estilo y dar un dulce 
+                olor a tus días.
                 
-                <p class="lead">Deseamos brindarle la flexibilidad de compra que necesita en un entorno amigable, feliz
-                    y eficiente. Puede contar con nuestro equipo para ofrecerle las mejores opciones de productos a
-                    precios competitivos. Recibimos nuevos productos con frecuencia y estamos emocionados de compartir
-                    estos artículos con usted. ¡Esperamos sinceramente que disfrute comprando con nosotros!.</p>
-            </div>
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
         </div>
+        <div>
+            <img src="img/about/6a.jpg" alt="" />
+            <h3>Dulces </h3>
+            <p>Variedad de dulces a disposición en Honduras su cocina tradicional es muy rica en los
+                diferentes sabores que hay.
+                Ofrecemos tabletas de coco, dulces artesanales y diferentes sabores de confites.
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
+        </div>
+        <div>
+            <img src="img/about/7a.jpeg" alt="" />
+            <h3>Adornos</h3>
+            <p>Sin duda lo más llamativo son los adornos tradicionales que pueden ser parte de la 
+                decoración del hogar o exterior.
+                Los que observamos son estilo percheros, pero hay variedad como ser estatuas, alcancias, hueveras
+                e infinidad de objetos que son emblemático en su lugar.
+            </p>
+            <a href="#">Leer más <i class="fas fa-angle-double-right"></i></a>
+        </div>
+    </div>
 
-    </main>
+    <!-- third card -->
+    <section class="cards-banner-two">
+        <div class="content">
+            <h2>Deseamos.</h2>
+            <!-- lorem 30 -->
+            <p>Deseamos brindarle la flexibilidad de compra que necesita en un entorno amigable, feliz
+                y eficiente. Puede contar con nuestro equipo para ofrecerle las mejores opciones de productos a
+                precios competitivos. Recibimos nuevos productos con frecuencia y estamos emocionados de compartir
+                estos artículos con usted. ¡Esperamos sinceramente que disfrute comprando con nosotros!.</p>
+            <a href="#" class="btn">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </section>
 
-</section>
+    <!-- Follow -->
+    <section class="social">
+        <p>Siguenos 504venir</p>
+        <div class="links">
+            <a href="https://facebook.com">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://linkdin.com">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </section>
+</div>
 
 
+
+<!-- Footer -->
+<footer class="footer">
+    <h3>504Venir Copyright</h3>
+</footer>
+
+<!-- Scroll Reveal -->
+<script src="https://unpkg.com/scrollreveal"></script>
