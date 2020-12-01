@@ -35,7 +35,7 @@ router.get('/cart/cart', function(req, res, next) {
   }
   var cart = new Cart(req.session.cart);
   res.render('cart/cart', {
-    title: '𝓒𝓪𝓻𝓻𝓸 𝓭𝓮 𝓒𝓸𝓶𝓹𝓻𝓪𝓼',
+    title: 'Producto a Comprar',
     // numItems: cart.items,
     products: cart.getItems(),
     totalPrice: cart.totalPrice

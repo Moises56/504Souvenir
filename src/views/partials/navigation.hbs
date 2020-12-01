@@ -10,7 +10,7 @@
 
     <div class="contenedor contenedor-enlaces-nav">
         <div class="btn-departamentos" id="btn-departamentos">
-            <p>𝒯𝑜𝒹𝒶 𝐿𝒶𝓈 <span>𝒞𝒾𝓊𝒹𝒶𝒹𝑒𝓈<span></p>
+            <p>Toda Las<span>Ciudades<span></p>
             <i class="fas fa-caret-down"></i>
         </div>
         <a style="color: rgb(53, 41, 26);" href="/"><i style="color: rgb(255, 145, 0);"
@@ -48,21 +48,21 @@
                     {{!-- <div class="col-xs-8"> --}}
                     <a src="" class="btn" data-toggle="modal" data-target="#exampleModal">
                         <i style="color: rgb(255, 145, 0);" class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-                        {{#if session.cart.totalItems }}
-                        <span class="btn btn-sm btn-info btn-outline">{{session.cart.totalItems}}</span>
+                        {{#if session.cart.totalQty }}
+                        <span class="badge badge-pill badge-warning font-weight-bold">{{session.cart.totalQty}}</span>
                         {{/if}}
                     </a>
                 </div>
 
 
-                {{#if session.cart.totalItems }}
+                {{#if session.cart.totalQty }}
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header text-center">
-                                <h5 class="modal-title text-info" id="exampleModalLabel">Productos Agregados</h5>
+                                <h5 class="modal-title text-info font-weight-bold" id="exampleModalLabel">Productos Agregados</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -71,39 +71,31 @@
                             <div class="modal-body">
 
                                 {{!-- table --}}
-                                
-                               
                                 <table class="table table-hover">
-
                                     <thead class="thead-dark">
                                         <tr>
-                                           
                                             <th scope="col">#</th>
                                             <th scope="col">Productos</th>
                                             <th scope="col">Cantidad</th>
-                                            <th scope="col">Precio/th>
-                                            
+                                            <th scope="col">Precio</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                         {{#each session.cart.items }}
+                                        {{#each session.cart.items }}
                                         <tr>
                                             <th scope="row">{{numItems}}</th>
                                             <td>{{ this.item.title }}</td>
                                             <td>{{ this.quantity }}</td>
                                             <td>$.{{ this.precio }}</td>
                                         </tr>
-                                         {{/each}}
+                                        {{/each}}
                                     </tbody>
-
                                 </table>
-                               
-                                
+
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</a>
-                                    <a type="button" class="btn btn-outline-success" href="/cart/cart">Procesar</a>
+                                    <a type="button" class="btn btn-outline-success" href="/cart/cart">Comprar</a>
                                 </div>
-
 
                             </div>
                         </div>
