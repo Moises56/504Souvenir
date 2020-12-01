@@ -8,7 +8,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     date: { type: Date, default: Date.now },
     admin: {type:Boolean, default:false},
-    imgURL: { type: String },
+    imgURL: { type: String,default:"http://res.cloudinary.com/dilhuayui/image/upload/v1606861341/q4s0rquxymrpsxtsndyr.jpg" },
     resetPasswordToken: String,
     resetPasswordExpires: Date,
   });
