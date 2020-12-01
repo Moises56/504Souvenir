@@ -31,6 +31,12 @@
             <form action="/users/editeUserPerfil/{{users._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">
 
+                <div class="custom-file">
+                                <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                                <label class="custom-file-label" for="inputGroupFile02"
+                                    aria-describedby="inputGroupFileAddon02">Subir imagen</label>
+                            </div>
+
                 <div class="form-group">
                     <h5>Nombre: </h5>
                     <input type="text" name="name" class="form-control" value="{{users.name}}" />
@@ -43,6 +49,18 @@
                     <h5>Email: </h5>
                     <input type="text" name="email" class="form-control" value="{{users.email}}" />
                 </div>
+                <div>
+                    <a href="/users/correoPass/{{users._id}}">Cambiar Contraseña</a>
+                </div>
+                
+                {{!-- <div class="form-group">
+                    <h5>Contraseña: </h5>
+                    <input type="password" name="password" class="form-control" value="{{users.password}}" />
+                </div>
+                <div class="form-group">
+                    <h5>Confirmar Contraseña: </h5>
+                    <input type="password" name="confirm_password" class="form-control" value="{{users.password}}" />
+                </div> --}}
 
                 {{!-- <div class="input-group mb-3">
                     <div class="custom-file">
@@ -84,7 +102,7 @@
                         Guardar
                     </button>
                 </div>
-
+                
             </form>
         </div>
     </div>

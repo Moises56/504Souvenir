@@ -13,6 +13,8 @@ const { renderSignUpForm,
     renderUserEditForm,
     renderNewUserForm,
     renderUserEditPerfilForm,
+    renderCorreoPassForm,
+    newCorreoPass,
     updateUsersPerfil,
     deleteUser,
     updateUsers,
@@ -51,6 +53,12 @@ router.put("/users/editeUserPerfil/:id",isAuthenticated, updateUsersPerfil);
 
 router.get('/users/newUser', renderNewUserForm);
 router.post('/users/newUser', newUser);
+
+router.get('/users/newPassPerfil/:id', renderNewPassForm);
+router.post('/users/newPassPerfil/:id', newPass);
+
+router.get('/users/correoPass/:id', renderCorreoPassForm);
+//router.post('/users/correoPass/:id', newCorreoPass);
 
 //router.get('/users/newPass/:token', renderNewPassForm);
 //router.post('/users/newPass/:token', newPass);

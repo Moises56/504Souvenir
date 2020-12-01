@@ -244,9 +244,9 @@
   </div>
 
   <!-- profile -->
-  <div id="profile">
-    {{!-- <img src="{{imgUrl}}" alt="..." class="img-thumbnail"> --}}
-     <div id="fhoto"><i style="color:lightseagreen"class="far fa-user-circle"></i></div> 
+  <div id="profile"> 
+    {{!-- <img type="file" class="card-img-top " src="{{imgURL}}" name="image"> --}}
+     <div id="fhoto"><img type="file" class="card-img-top " src="{{user.imgURL}}" name="image"></div> 
     <div id="name"><span>{{user.name}} {{user.apellido}}</span></div>
   </div>
 
@@ -295,6 +295,7 @@
     </div>
 
     <div class="item separator"></div> 
+    
 
     <div class="item">
       <a href="/users/logout">

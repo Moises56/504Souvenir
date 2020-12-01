@@ -8,7 +8,14 @@ const passport = require('passport');
 var async = require('async');
 const { unregisterDecorator } = require('handlebars');
 
+const cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
+const fsExtra = require('fs-extra');
 
 
 usersCtrl.renderSignUpForm = (req, res) => {
@@ -378,8 +385,10 @@ usersCtrl.renderSignUpForm = (req, res) => {
   
 usersCtrl.updateUsers = async (req, res) => {
   const { name, apellido, email } = req.body;
-  await User.findByIdAndUpdate(req.params.id, { name, apellido, email });
- 
+  const resultado = await cloudinary.v2.uploader.upload(req.file.path);
+  
+  await User.findByIdAndUpdate(req.params.id, { name, apellido, email,  imgURL: resultado.url });
+  await fsExtra.unlink(req.file.path)
   // apdateNote.path = 'img/uploads/'+req.file.filename;
   // console.log(req.file);
   req.flash("success_msg", "Usuario Actualizado Con Exito");
@@ -394,14 +403,28 @@ usersCtrl.renderUserEditPerfilForm = async (req, res) => {
  
 };
 
+
+
 usersCtrl.updateUsersPerfil = async (req, res) => {
   const { name, apellido, email } = req.body;
-  await User.findByIdAndUpdate(req.params.id, { name, apellido, email });
+  const resultado = await cloudinary.v2.uploader.upload(req.file.path);
+  await User.findByIdAndUpdate(req.params.id, { name, apellido, email,imgURL: resultado.url });
+  console.log(resultado);
+  await fsExtra.unlink(req.file.path)
  
-  // apdateNote.path = 'img/uploads/'+req.file.filename;
+  //apdateNote.path = 'img/uploads/'+req.file.filename;
   // console.log(req.file);
   req.flash("success_msg", "Usuario Actualizado Con Exito");
   res.redirect("/notes");
+};
+
+
+usersCtrl.renderCorreoPassForm = async (req, res) => {
+  // res.send('Edit form')
+  const users = await User.findById(req.params.id).lean(); //buscando en la base el ID
+  
+  res.render('users/correoPass', { users }); //pasando el valor
+ 
 };
 
 usersCtrl.renderNewUserForm = (req, res) => {
