@@ -23,7 +23,6 @@ module.exports = function Cart(cart) {
         delete this.items[id];
         
       };
-    
     this.getItems = function() {
         var arr = [];
         for (var id in this.items) {
@@ -33,20 +32,21 @@ module.exports = function Cart(cart) {
     };
 
     this.reduceItem = (id) => {
-        this.totalItems -= this.items[id].quantity;
+       this.totalItems -= this.items[id].quantity--;
         this.items[id].quantity--;
         this.items[id].precio -= this.items[id].item.precio;
         this.totalQty--;
         this.totalPrice -= this.items[id].item.precio;
         
         
-        if (this.items[id].quantity <= 0 ) {
-            
+        if (this.items[id].quantity <= 0) {
+            // this.totalItems -= this.items[id].quantity;
             delete this.items[id];
         }
     }
 
     this.aumentaItem = (id) => {
+        this.totalItems += this.items[id].quantity;
         this.items[id].quantity++;
         this.items[id].precio += this.items[id].item.precio;
         this.totalQty++;
