@@ -28,6 +28,14 @@ body {
   background: #ff7979;
   padding: 0 20px;
 } */
+
+
+.img-alinear{
+  height: 250px;
+  width: 315px;
+  object-fit: cover;
+  }
+
 .envoltura{
   /* position: relative; */
   /* max-width: 1130px; */
