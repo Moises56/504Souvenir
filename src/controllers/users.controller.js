@@ -385,10 +385,10 @@ usersCtrl.renderSignUpForm = (req, res) => {
   
 usersCtrl.updateUsers = async (req, res) => {
   const { name, apellido, email } = req.body;
-  const resultado = await cloudinary.v2.uploader.upload(req.file.path);
+  //const resultado = await cloudinary.v2.uploader.upload(req.file.path);
   
-  await User.findByIdAndUpdate(req.params.id, { name, apellido, email,  imgURL: resultado.url });
-  await fsExtra.unlink(req.file.path)
+  await User.findByIdAndUpdate(req.params.id, { name, apellido, email });
+  //await fsExtra.unlink(req.file.path)
   // apdateNote.path = 'img/uploads/'+req.file.filename;
   // console.log(req.file);
   req.flash("success_msg", "Usuario Actualizado Con Exito");
