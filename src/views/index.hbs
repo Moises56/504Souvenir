@@ -1,5 +1,6 @@
 <style>
     body {
+       
         background: #D3CCE3;
         /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
@@ -8,6 +9,9 @@
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
+    }
+    h1{
+         font-family: 'Roboto', sans-serif;
     }
 </style>
 
@@ -72,13 +76,13 @@
 
 <main class="animate__animated animate__fadeInDown ">
     <br>
-    <h2 id="titulo" class="text-center text-info">Productos</h2>
+    <h1 id="titulo" class="text-center text-info">Productos</h1>
     <div class="container-fluid ">
         <div class="row">
             {{#each notes}}
 
 
-            <div id="agregar" class="col-xs-12 col-sm-4 col-md-6 col-lg-4 pt-3 font-weight-bold">
+            <div id="agregar" class="col-xs-12 col-sm-11 col-md-6 col-lg-4 pt-3 font-weight-bold">
                 <div class="card tarjeta animate__animated animate__fadeInDown border border-danger">
                     <img type="file" class="card-img-top img-alinear" src="{{imgURL}}" name="image">
                     
