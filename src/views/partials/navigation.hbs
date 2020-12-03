@@ -5,7 +5,11 @@
         <button id="btn-menu-cerrar" class="btn-menu-cerrar"><i class="fas fa-times"></i></button>
     </div>
 
-
+    {{!-- <a style="color: rgb(53, 41, 26);" href="/">
+        <i style="color: rgb(255, 145, 0);" class="fab fa-pagelines"></i>
+        <img src="/img/logo1.png" alt="logo1">
+        <i style="color: rgb(255, 145, 0);" class="fab fa-raspberry-pi"></i>
+    </a> --}}
 
 
     <div class="contenedor contenedor-enlaces-nav">
@@ -13,19 +17,24 @@
             <p>Toda Las<span>Ciudades<span></p>
             <i class="fas fa-caret-down"></i>
         </div>
-        <a style="color: rgb(53, 41, 26);" href="/"><i style="color: rgb(255, 145, 0);"
-                class="fab fa-pagelines"></i><img src="/img/logo1.png" alt="logo1"><i class="fab fa-raspberry-pi"></i>
-            <div class="enlaces">
-                <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
-                {{!-- <a style="color: rgb(242, 246, 246);" href="/cart/cart">𝒱𝑒𝓇 𝒪𝓇𝒹𝑒𝓃𝑒𝓈</a> --}}
-                {{!-- <a style="color: rgb(242, 246, 246);" href="/notes">Mi Perfil</a> --}}
 
-            </div>
+        <a style="color: rgb(53, 41, 26);" href="/">
+            <i style="color: rgb(255, 145, 0);" class="fab fa-pagelines"></i>
+            <img src="/img/logo1.png" alt="logo1">
+            <i style="color: rgb(255, 145, 0);" class="fab fa-raspberry-pi"></i>
+        </a>
 
-            {{#if user}}
+        <div class="enlaces">
+            <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
+            {{!-- <a style="color: rgb(242, 246, 246);" href="/cart/cart">𝒱𝑒𝓇 𝒪𝓇𝒹𝑒𝓃𝑒𝓈</a> --}}
+            {{!-- <a style="color: rgb(242, 246, 246);" href="/notes">Mi Perfil</a> --}}
 
-            <a style="color: rgb(242, 246, 246);" href="/notes">MI PERFIL</a>
-            {{!-- <li class="nav-item dropdown">
+        </div>
+
+        {{#if user}}
+
+        <a style="color: rgb(242, 246, 246);" href="/notes">MI PERFIL</a>
+        {{!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(246, 255, 254);">
                     Productos
@@ -37,73 +46,74 @@
                     <a class="dropdown-item" href="/users/logout">Cerrar Sesión</a>
                 </div>
             </li> --}}
-            {{else}}
-            <a style="color: rgb(242, 246, 246);" href="/users/signin">Inicia Session</a>
-            <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
-            {{/if}}
+        {{else}}
+        <a style="color: rgb(242, 246, 246);" href="/users/signin">Inicia Session</a>
+        <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
+        {{/if}}
 
 
-            <div class="nav-cart col-xs-8">
-                <div class="dropdown pull-right icono">
-                    {{!-- <div class="col-xs-8"> --}}
-                    <a src="" class="btn" data-toggle="modal" data-target="#exampleModal">
-                        <i style="color: rgb(255, 145, 0);" class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-                        {{#if session.cart.totalQty }}
-                        <span class="badge badge-pill badge-warning font-weight-bold">{{session.cart.totalQty}}</span>
-                        {{/if}}
-                    </a>
-                </div>
+        <div class="nav-cart col-xs-8">
+            <div class="dropdown pull-right icono">
+                {{!-- <div class="col-xs-8"> --}}
+                <a src="" class="btn" data-toggle="modal" data-target="#exampleModal">
+                    <i style="color: rgb(255, 145, 0);" class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                    {{#if session.cart.totalQty }}
+                    <span class="badge badge-pill badge-warning font-weight-bold">{{session.cart.totalQty}}</span>
+                    {{/if}}
+                </a>
+            </div>
 
 
-                {{#if session.cart.totalQty }}
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <h5 class="modal-title text-info font-weight-bold" id="exampleModalLabel">Productos Agregados</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            {{#if session.cart.totalQty }}
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title text-info font-weight-bold" id="exampleModalLabel">Productos
+                                Agregados</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            {{!-- table --}}
+                            <table class="table table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Productos</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each session.cart.items }}
+                                    <tr>
+                                        <th scope="row">{{numItems}}</th>
+                                        <td>{{ this.item.title }}</td>
+                                        <td>{{ this.quantity }}</td>
+                                        <td>$.{{ this.precio }}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+
+                            <div class="modal-footer">
+                                <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</a>
+                                <a type="button" class="btn btn-outline-success" href="/cart/cart">Comprar</a>
                             </div>
 
-                            <div class="modal-body">
-
-                                {{!-- table --}}
-                                <table class="table table-hover">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Productos</th>
-                                            <th scope="col">Cantidad</th>
-                                            <th scope="col">Precio</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{#each session.cart.items }}
-                                        <tr>
-                                            <th scope="row">{{numItems}}</th>
-                                            <td>{{ this.item.title }}</td>
-                                            <td>{{ this.quantity }}</td>
-                                            <td>$.{{ this.precio }}</td>
-                                        </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
-
-                                <div class="modal-footer">
-                                    <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</a>
-                                    <a type="button" class="btn btn-outline-success" href="/cart/cart">Comprar</a>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                 </div>
-                {{/if}}
-
             </div>
+            {{/if}}
+
+        </div>
     </div>
 
 
@@ -483,6 +493,7 @@
             </div>
         </div>
     </div>
+    
 </nav>
 {{!-- <div class="nav-cart text-right">
         <div class="icono">

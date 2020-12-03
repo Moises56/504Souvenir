@@ -151,6 +151,34 @@ notesCtrl.deleteNotes = async (req, res) => {
     res.redirect("/notes");
   };
 
+  //?Buscador
+
+//   notesCtrl.buscador = async (req, res) => {
+//     if(req.body){
+//         console.log("Buscar",req.body)
+//         console.log(req.body)
+//        await Note.find({title:{$regex:'.*'+req.body+'.*',$options:"i"}}, function(error, req, res){
+//           if(error){
+//             console.log("errorr en finde")
+//           }else{
+//             var productosListado = req, res
+//             res.render('store/checkout',{title:"Home",productos:productosListado,buscar:req.body})
+//           }
+//         })
+//     }else{
+//       await Note.find({}, function(error, req, res){
+//         if(error){
+//           console.log("error en finde")
+//         }else{
+//           var productosListado = req, res
+//           res,render('store/checkout', {title:"Home",Productos:productosListado,buscar:''})
+//         }
+//       })
+
+//     }
+    
+// }
+
 
 
 
