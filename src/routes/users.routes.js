@@ -77,7 +77,6 @@ var EmailCtrl = require('../controllers/mail.controllers');
 router.post('/email', EmailCtrl.sendEmail);
 
 
-
 function requireAdmin() {
   return function(req, res, next) {
     User.findOne({ email: req.body.email }, function(err, user) {

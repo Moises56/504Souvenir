@@ -1,0 +1,25 @@
+<a href="/notes">Regresar</a>
+
+<table class="table table-hover text-center">
+  <thead class="thead-dark">
+    <tr >
+      <th scope="col">#</th>
+      <th scope="col">Productos</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">precio</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each notes}}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{ title }}</td>
+      <td>{{ description }}</td>
+      <td>Lps.{{precio}}</td>
+      <td class="p-3 mb-2 bg-primary text-white text-center">EN VENTA</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+

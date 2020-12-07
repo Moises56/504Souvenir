@@ -7,6 +7,7 @@ const { renderNoteForm,
         renderEditForm,
         updateNotes,
         deleteNotes,
+        status,
         buscador} = require('../controllers/notes.controller');
 
 const {isAuthenticated} = require('../helpers/validacion');
@@ -36,6 +37,12 @@ router.get('/note/:id', (req, res) => {
 //*Eliminar
 //router.delete('/notes/delete/:id', deleteNotes)
 router.delete('/notes/delete/:id',isAuthenticated, deleteNotes);
+
+
+//?Estatus
+router.get('/notes/status',isAuthenticated, status)
+router.post('/notes/status',isAuthenticated, status)
+
 
 //?buscador
 // router.get('store/checkout', buscador)
