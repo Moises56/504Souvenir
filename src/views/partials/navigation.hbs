@@ -13,14 +13,18 @@
             <p>Toda Las<span>Ciudades<span></p>
             <i class="fas fa-caret-down"></i>
         </div>
+        
         <a style="color: rgb(53, 41, 26);" href="/"><i style="color: rgb(255, 145, 0);"
                 class="fab fa-pagelines"></i><img src="/img/logo1.png" alt="logo1"><i class="fab fa-raspberry-pi"></i>
+                
             <div class="enlaces">
                 <a style="color: rgb(242, 246, 246);" href="/about">Conocenos</a>
                 {{!-- <a style="color: rgb(242, 246, 246);" href="/cart/cart">𝒱𝑒𝓇 𝒪𝓇𝒹𝑒𝓃𝑒𝓈</a> --}}
                 {{!-- <a style="color: rgb(242, 246, 246);" href="/notes">Mi Perfil</a> --}}
 
-            </div>
+            </div> 
+
+            
 
             {{#if user}}
 
@@ -41,7 +45,10 @@
             <a style="color: rgb(242, 246, 246);" href="/users/signin">Inicia Session</a>
             <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
             {{/if}}
-
+             <form class="form-inline my-2 my-lg-0 position-relative" action="/notes/notesFinder" method="GET">
+                  <input class="form-control mr-sm-2" name="formulario" type="search" placeholder="Buscar Articulos" aria-label="Search">
+                  <button name="boton" class="btn btn-search position-absolute" type="submit"><i class="fas fa-search"></i></button>
+             </form>
 
             <div class="nav-cart col-xs-8">
                 <div class="dropdown pull-right icono">
@@ -104,6 +111,7 @@
                 {{/if}}
 
             </div>
+            
     </div>
 
 

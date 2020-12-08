@@ -9,7 +9,13 @@
 	font-family: Arial, sans-serif;
 } */
 
-
+.btn-search{
+	right: 5px;
+  }
+  .btn-primary:hover{
+	  background-color: transparent;
+	  background-color:transparent;
+  }
 
 .contenedor {
 	margin: auto;
@@ -390,4 +396,5 @@ main article {
 		width: 25%;
 		height: 100%;
 	}
+	
 }

@@ -77,6 +77,17 @@ notesCtrl.renderNotas= async (req, res) =>{ //?Consutar a la base de datos
     //  console.log(notes);
   };
 
+  notesCtrl.renderNotesFinder= async (req, res) =>{ //?Consutar a la base de datos
+    console.log(req.query.formulario);
+    const formulario = req.query.formulario;
+    const notes = await Note.find({ title:{$regex:'.*'+req.query.formulario+'.*',$options:"i"} })
+    .sort({ createdAt: -1 })
+    .lean();//?busca el arreglo
+    res.render('notes/notesFinder', { notes, formulario }) //?pasalos objetos/muestra en pantalla
+    // res.render('index', { notes }) //?pasa los objetos/muestra en pantalla
+    //  console.log(notes);
+  };
+
    notesCtrl.renderProductos = async (req, res) => {
      const notes = await Note.find()
      .sort({ createdAt: -1 })

@@ -86,3 +86,7 @@ body{
   color: #644bff;
   cursor: pointer;
 }
+
+.btn-search{
+  right: 0;
+}
