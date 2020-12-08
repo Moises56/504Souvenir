@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2? family = Roboto & display = swap'); 
 /* 
 body {
 
@@ -28,14 +29,26 @@ body {
   background: #ff7979;
   padding: 0 20px;
 } */
-.envoltura{
+
+.bg-secondary{
+  background-color: #090e13!important;
+}
+
+.img-alinear {
+  height: 250px;
+  width: 315px;
+  object-fit: cover;
+}
+
+.envoltura {
   /* position: relative; */
   /* max-width: 1130px; */
   display: flex;
   /* align-items: center; */
   /* justify-content: space-between; */
 }
-.envoltura .nav-cart{
+
+.envoltura .nav-cart {
   position: absolute;
   right: 0;
   top: -35%;
@@ -46,18 +59,22 @@ body {
   display: flex;
   cursor: pointer;
   justify-content: space-evenly;
-  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.15);
 }
-.nav-cart .icono{
+
+.nav-cart .icono {
   color: #ff7979;
 }
-.nav-cart .icono i{
+
+.nav-cart .icono i {
   font-size: 20px;
 }
-.nav-cart .icono span{
+
+.nav-cart .icono span {
   font-weight: 500;
 }
-.nav-cart .count-item{
+
+.nav-cart .count-item {
   font-size: 15px;
   height: 23px;
   width: 23px;
@@ -68,57 +85,68 @@ body {
   border: 1px solid #ffb3b3;
   border-radius: 50%;
 }
-.envoltura .tarjeta{
+
+.envoltura .tarjeta {
   position: relative;
   background: #fff;
   border-radius: 3px;
   width: calc(33% - 13px);
   overflow: hidden;
-  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.15);
 }
-.envoltura .tarjeta img{
+
+.envoltura .tarjeta img {
   width: 100%;
   border-radius: 3px;
   transition: all 0.3s ease;
 }
-.tarjeta:hover img{
+
+.tarjeta:hover img {
   transform: scale(1.1);
 }
-.envoltura .tarjeta .contenido{
+
+.envoltura .tarjeta .contenido {
   position: absolute;
   width: 100%;
   bottom: -50%;
   background: #fff;
   padding: 10px 20px 22px 20px;
-  box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.15);
+  box-shadow: 0px -3px 10px 0px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
-.envoltura .tarjeta:hover .contenido{
+
+.envoltura .tarjeta:hover .contenido {
   bottom: 0;
 }
+
 .tarjeta .contenido .fila,
-.contenido .botones{
+.contenido .botones {
   display: flex;
   justify-content: space-between;
 }
-.contenido .fila .details span{
+
+.contenido .fila .details span {
   font-size: 22px;
   font-weight: 500;
 }
-.contenido .fila .details p{
+
+.contenido .fila .details p {
   color: #333;
   font-size: 17px;
   font-weight: 400;
 }
-.contenido .fila .price{
+
+.contenido .fila .price {
   color: #ff7979;
   font-size: 25px;
   font-weight: 600;
 }
-.contenido .botones{
+
+.contenido .botones {
   margin-top: 20px;
 }
-.contenido .botones button{
+
+.contenido .botones button {
   width: 100%;
   padding: 9px 0;
   outline: none;
@@ -130,21 +158,75 @@ body {
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
-.botones button:first-child{
+
+.botones button:first-child {
   color: #ff7979;
   margin-right: 10px;
   background: #fff;
 }
-button:first-child:hover{
+
+button:first-child:hover {
   color: #fff;
   background: #ff7979;
 }
-.botones button:last-child{
+
+.botones button:last-child {
   color: #fff;
   margin-left: 10px;
   background: #ff7979;
 }
-button:last-child:hover{
+
+button:last-child:hover {
   background: #ff6666;
   border-color: #ff6666;
 }
+
+@media (max-width: 575.98px) {
+  .img-alinear {
+    width:100%;
+    max-width:400px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 1200px) {
+  .img-alinear {
+    width:100%;
+    max-width:400px;
+    object-fit: cover;
+  }
+}
+
+/* @media only screen and (max-width: 360px) {}
+
+@media only screen and (max-width: 411px) {}
+
+@media only screen and (max-width: 320px) {
+
+  .img-alinear {
+    height: 250px;
+    width: 190px;
+    object-fit: cover;
+  }
+}
+
+
+@media only screen and (max-width: 375px) {
+
+  .img-alinear {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+
+  }
+}
+
+@media only screen and (max-width: 414px) {
+
+  .img-alinear {
+    height: 250px;
+    width: 285px;
+    object-fit: cover;
+
+  }
+} */

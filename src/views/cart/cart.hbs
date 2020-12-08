@@ -32,9 +32,12 @@
                     <td class="text-center text-dark"><i class="fas fa-dollar-sign text-success"></i>.{{ this.precio }}
                     </td>
                     <td>
-                        <a href="/aumentar/{{this.item._id}}" class="btn btn-outline-success btn-sm"><i class="fas fa-plus"></i></a>
-                        <a href="/reduce/{{this.item._id}}" class="btn btn-outline-primary btn-sm"><i class="fas fa-minus"></i></a>
-                        <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+                        <a href="/aumentar/{{this.item._id}}" class="btn btn-outline-success btn-sm"><i
+                                class="fas fa-plus"></i></a>
+                        <a href="/reduce/{{this.item._id}}" class="btn btn-outline-primary btn-sm"><i
+                                class="fas fa-minus"></i></a>
+                        <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger btn-sm"><i
+                                class="fa fa-trash-o"></i></a>
                         {{!-- <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger btn-sm">Vaciar Todo <i
                                 class="fa fa-trash-o"></i></a> --}}
                     </td>
@@ -56,9 +59,34 @@
 <hr>
 <div class="row mt-5 text-center">
     <div class="col-md-6 offset-md-3">
-        <a href='#' role="button" class="btn btn-outline-success"><i class="fas fa-pager"></i>
+        {{!-- <a href='#' role="button" class="btn btn-outline-success"><i class="fas fa-pager"></i>
             Pagar
-        </a>
+        </a> --}}
+        {{#if products }}
+        <form action="/checkout" method="POST">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_51HcP01KSAmtvjzoazQOdic4kooqKFL1rXGOUDAball3WVj2PHKWlpJmQN0hByZEw8jJPsjHzVpEAMsArt7ZebcqL00sWmtxQ5m"
+                data-amount="{{ totalPrice }}00" data-name="504Venir" data-description="{{this.item.title }}"
+                data-image="/img/logo2.png" data-locale="auto">
+                </script>
+            <script>
+                document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+            </script>
+            <button class="btn btn-outline-success btn-block">Pagar
+                <i class="fas fa-pager"></i>
+            </button>
+        </form>
+        {{/if}}
+
+
+
+
+
+
+
+
+
+
         <a href='/' role="button" class="btn btn-outline-info btn-sm"><i style="color: rgb(255, 145, 0);"
                 class="fas fa-shopping-cart"></i>
             Seguir Comprando

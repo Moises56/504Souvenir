@@ -53,7 +53,10 @@ notesCtrl.createNewNote = async (req, res) =>{
         originalname: resultado.originalname,
         imgURL: resultado.url,
         public_id: resultado.public_id });
-       
+        
+        // process.on('unhandledRejection', e => {
+        //   console.error(e);
+        // });
         console.log(newNote)
        newNote.user = req.user.id;
        await newNote.save();//?Guardando en la base toda la collections
@@ -66,7 +69,7 @@ notesCtrl.createNewNote = async (req, res) =>{
       //console.log(req.file);
      }
 
-};
+}
 
 notesCtrl.renderNotas= async (req, res) =>{ //?Consutar a la base de datos
     const notes = await Note.find({ user: req.user.id })
@@ -161,6 +164,42 @@ notesCtrl.deleteNotes = async (req, res) => {
     req.flash("success_msg", "Producto Eliminado Con Exito");
     res.redirect("/notes");
   };
+
+  notesCtrl.status = async (req, res) => {
+    const notes = await Note.find({ user: req.user.id })
+    .sort({ createdAt: -1 })
+    .lean();
+    res.render('notes/status', {notes})
+    // res.redirect("notes/status");
+  }
+
+  //?Buscador
+
+//   notesCtrl.buscador = async (req, res) => {
+//     if(req.body){
+//         console.log("Buscar",req.body)
+//         console.log(req.body)
+//        await Note.find({title:{$regex:'.*'+req.body+'.*',$options:"i"}}, function(error, req, res){
+//           if(error){
+//             console.log("errorr en finde")
+//           }else{
+//             var productosListado = req, res
+//             res.render('store/checkout',{title:"Home",productos:productosListado,buscar:req.body})
+//           }
+//         })
+//     }else{
+//       await Note.find({}, function(error, req, res){
+//         if(error){
+//           console.log("error en finde")
+//         }else{
+//           var productosListado = req, res
+//           res,render('store/checkout', {title:"Home",Productos:productosListado,buscar:''})
+//         }
+//       })
+
+//     }
+    
+// }
 
 
 

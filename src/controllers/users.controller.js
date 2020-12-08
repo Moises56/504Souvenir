@@ -69,6 +69,10 @@ usersCtrl.renderSignUpForm = (req, res) => {
     
   };
 
+  //  usersCtrl.renderSigninForm2 = (req, res) => {
+  //    res.render('cart/cart');
+    
+  // };
   // usersCtrl.signin = (req,res)=>{
   //   User.findOne({ admin: req.admin='true'},  async function(err, admin) {
   //     if (admin = false) {
