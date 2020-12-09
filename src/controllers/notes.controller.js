@@ -1,6 +1,8 @@
 const notesCtrl = {};
 
 const Note = require('../models/Note'); //?importando el modelo de colection de la bd
+const Cart = require('../models/Cart');
+// const Order = require('../models/Order');
 
 const cloudinary = require('cloudinary');
 cloudinary.config({
@@ -10,6 +12,7 @@ cloudinary.config({
 });
 
 const fsExtra = require('fs-extra');
+const Order = require('../models/Order');
 
 notesCtrl.renderNoteForm=(req, res) =>{
     //*res.send('Añadir producto');
@@ -154,13 +157,24 @@ notesCtrl.deleteNotes = async (req, res) => {
     res.redirect("/notes");
   };
 
-  notesCtrl.status = async (req, res) => {
-    const notes = await Note.find({ user: req.user.id })
-    .sort({ createdAt: -1 })
-    .lean();
-    res.render('notes/status', {notes})
-    // res.redirect("notes/status");
-  }
+
+  //***************Estatus */
+
+  // notesCtrl.status = async (req, res) => {
+  //   const orders = await Order.find({ 'user': req.user}, (err, orders) => {
+  //     if(err){
+  //       return res.write('Error');
+  //     }
+  //     var cart;
+  //     orders.forEach(order => {
+  //       cart = new Cart(order.cart);
+  //       order.items = cart.generateArray();
+  //     });
+  //     res.render('notes/status', {orders});
+  //   })
+   
+  //   // res.redirect("notes/status");
+  // }
 
   //?Buscador
 

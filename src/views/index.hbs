@@ -15,7 +15,8 @@
 
 </style>
 
-<main role="main" class="animate__animated animate__fadeInDown">
+{{!-- class="animate__animated animate__fadeInDown" --}}
+<main role="main">
     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
         <ol class="carousel-indicators">
             <li style="z-index:102;" data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -99,7 +100,7 @@
     {{/each}} --}}
 
 
-    <main class="animate__animated animate__fadeInDown ">
+    <main class="">
         <br>
         <h1 id="titulo" class="text-center text-white btn-outline-info">Productos</h1>
         <div class="container-fluid ">
@@ -108,14 +109,14 @@
 
 
                 <div id="agregar" class="col-xs-12 col-sm-12 col-md-6 col-lg-4 pt-3 font-weight-bold">
-                    <div class="card tarjeta animate__animated animate__fadeInDown border border-danger">
+                    <div class="card tarjeta">
                         <img loading="lazy" type="file" class="card-img-top img-alinear" src="{{imgURL}}" name="image">
 
                         <div class="card-body contenido p-3 mb-2 bg-secondary text-white">
                             <h5 id="titleT" class="card-title text-center font-weight-bold ">{{ title }}</h5>
                             <hr>
-                            <p class="card-text animate__animated animate__fadeInDown">Detalle: {{ description }}</p>
-                            <p class="card-text">Precio: Lps.{{precio}}</p>{{format.createdAt}}
+                            <p class="card-text animate__animated animate__fadeInDown">Detalle: {{ description }}</p>Vendedor:{{user}}
+                            <p class="card-text">Precio: Lps.{{precio}}</p>
                             <i style="color: rgb(226, 170, 16);" class="fas fa-star"></i>
                             <i class="far fa-star"></i>
                             <div class="price botones">

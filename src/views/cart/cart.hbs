@@ -3,6 +3,14 @@
         -sm|-md|-lg|-xl
     }
 </style>
+{{!-- 
+<div class="col-md-6 offset-3 mt-4">
+    <div class="alert alert-success {{#if noMsg}} d-none {{/if}}">
+        {{success_msg}}
+    </div>
+</div> --}}
+
+
 
 {{#if products }}
 <h2 class="text-center text-danger">{{title}}</h2><br>
@@ -66,8 +74,11 @@
         <form action="/checkout" method="POST">
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="pk_test_51HcP01KSAmtvjzoazQOdic4kooqKFL1rXGOUDAball3WVj2PHKWlpJmQN0hByZEw8jJPsjHzVpEAMsArt7ZebcqL00sWmtxQ5m"
-                data-amount="{{ totalPrice }}00" data-name="504Venir" data-description="{{this.item.title }}"
-                data-image="/img/logo2.png" data-locale="auto">
+                data-amount="{{ totalPrice }}00" 
+                data-name="504Venir" 
+                data-description="{{this.item.title }}"
+                data-image="/img/logo2.png" 
+                data-locale="auto">
                 </script>
             <script>
                 document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';

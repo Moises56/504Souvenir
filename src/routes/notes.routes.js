@@ -1,6 +1,9 @@
 const {Router} = require('express');
 const router = Router();
 
+const Cart = require('../models/Cart');
+const Order = require('../models/Order');
+
 const { renderNoteForm,
         createNewNote,
         renderNotas,
@@ -40,9 +43,33 @@ router.delete('/notes/delete/:id',isAuthenticated, deleteNotes);
 
 
 //?Estatus
-router.get('/notes/status',isAuthenticated, status)
-router.post('/notes/status',isAuthenticated, status)
+router.get('/notes/status',isAuthenticated, async (req, res) => {
+    const orders = await Order.find({ user: req.user.id })
+    .sort({ createdAt: -1 })
+    .lean();
+    res.render('notes/status', {orders})
+    console.log(orders)
+  });
 
+
+
+// router.post('/notes/status',isAuthenticated, status)
+
+// notesCtrl.status = async (req, res) => {
+//     const orders = await Order.find({ 'user': req.user}, (err, orders) => {
+//       if(err){
+//         return res.write('Error');
+//       }
+//       var cart;
+//       orders.forEach(order => {
+//         cart = new Cart(order.cart);
+//         order.items = cart.generateArray();
+//       });
+//       res.render('notes/status', {orders});
+//     })
+   
+//     // res.redirect("notes/status");
+//   }
 
 //?buscador
 // router.get('store/checkout', buscador)
