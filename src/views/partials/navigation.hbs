@@ -51,7 +51,10 @@
         <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
         {{/if}}
 
-
+         <form class="form-inline my-2 my-lg-0 position-relative" action="/notes/notesFinder" method="GET">
+                  <input class="form-control mr-sm-2" name="formulario" type="search" placeholder="Buscar Articulos" aria-label="Search">
+                  <button name="boton" class="btn btn-search position-absolute" type="submit"><i class="fas fa-search"></i></button>
+             </form>
         <div class="nav-cart col-xs-8">
             <div class="dropdown pull-right icono">
                 {{!-- <div class="col-xs-8"> --}}

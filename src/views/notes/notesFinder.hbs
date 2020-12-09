@@ -1,0 +1,73 @@
+<style>
+    body {
+       
+        background: #D3CCE3;
+
+        font-family: 'Roboto', sans-serif;
+
+        background: #0F2027;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+        background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+        background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    }
+    h1{
+         font-family: 'Roboto', sans-serif;
+    }
+
+
+</style>
+<div class="container w-auto p-3" >
+  <div class="card ">
+    <div class="card-body" style="background-color: #a2b9bc;">
+      <div class="row my-2 mx-auto">
+          <h4 class="font-weight-bold mb-0">Resultados para: "{{formulario}}"</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  {{#each notes}}
+   <div id="agregar" class="col-xs-12 col-sm-4 col-md-6 col-lg-4 pt-3 font-weight-bold">
+                <div class="card tarjeta animate__animated animate__fadeInDown border border-danger">
+                    <img type="file" class="card-img-top" src="{{imgURL}}" name="image">
+                    
+                    <div class="card-body contenido p-3 mb-2 bg-secondary text-white">
+                        <h5 id="titleT" class="card-title text-center font-weight-bold ">{{ title }}</h5>
+                        <hr>
+                        <p class="card-text animate__animated animate__fadeInDown">Detalle: {{ description }}</p>
+                        <p class="card-text">Precio: Lps.{{precio}}</p>{{format.createdAt}}
+                        <i  style="color: rgb(226, 170, 16);" class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <div class="price botones">
+                            {{!-- <button>Comprar</button> --}}
+                            {{!-- <a href="/cart/add-to-cart/{{this.id}}" class="btn btn-dark btn-lg pull-right"role="button"><i class="fas fa-cart-plus"></i> --}}
+                            <a href="/cart/add/{{_id }}"
+                                class="btn btn-info cart-btn btn-outline-dark btn-block font-weight-bold" role="button">
+                                <i style="color: rgb(255, 145, 0);" class="fa fa-shopping-cart"
+                                    aria-hidden="true"></i>Agregar</a>
+
+                            {{!-- <button class="btn cart-btn pull-right">Agregar<i class="fas fa-cart-plus"></i></button> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+  {{else}}
+  <div class="card mx-auto">
+    <div class="card-body" style="background-color: #a2b9bc;">
+      <h2 class="text-center font-weight-bold mb-0">Sin resultados</h2>
+      <h5 class="lead text-muted">Revisa la ortografía o usa términos más generales.</h5>
+      {{!-- <h1 class="text-center"> {{user.name}} {{user.apellido}}</h1>
+      <p clsss="lead"> Puedes editar tu perfil.</p>
+      <p clsss="lead"> No tienes productos creados.</p>
+      <a href="/notes/add" class="btn btn-success btn-block">Enpieza a crear productos!.</a> --}}
+    </div>
+  </div>
+
+  {{/each}}
+</div>

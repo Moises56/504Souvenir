@@ -8,6 +8,7 @@ const { renderNoteForm,
         createNewNote,
         renderNotas,
         renderEditForm,
+        renderNotesFinder,
         updateNotes,
         deleteNotes,
         status,
@@ -31,6 +32,8 @@ router.get('/notes',isAuthenticated, renderNotas)
 
 router.get("/notes/edit/:id",isAuthenticated, renderEditForm);
 router.put("/notes/edit-note/:id",isAuthenticated, updateNotes);
+
+router.get("/notes/notesFinder",renderNotesFinder);
 
 //*Perfil del producto
 router.get('/note/:id', (req, res) => {
