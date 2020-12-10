@@ -17,18 +17,6 @@ const stripe = require("stripe")(
   "sk_test_51HcP01KSAmtvjzoa4XIExo5vTvKwn3f2Ib99vAoNli1QLs4r4Ynr76WmmcEpqxN5NmQlCqOlwe4MvE5KPDO6BVvW00U0iVV37T"
 );
 
-//  router.get('/cart/cart', (req, res) => {
-//    res.render('cart/cart')
-//  })
-
-// router.signin = passport.authenticate("local", {
-//   successRedirect: "/cart/cart",
-//   failureRedirect: "/cart/login",
-//   failureFlash: true,
-// });
-
-
-
 router.get("/cart/add/:id", (req, res, next) => {
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
@@ -95,23 +83,6 @@ router.get("/aumentar/:id", function (req, res, next) {
   res.redirect("/cart/cart");
 });
 
-//TODO login cart
-
-//  router.get('/cart/login', (req, res,)=>{
-//   res.render('/cart/login')
-//  });
-
-// router.get("/cart/login", (req, res) => {
-//   res.render("cart/login");
-// });
-
-//  router.post('/cart/cart', (req, res,)=>{
-//   res.render('cart/cart')
-//  });
-
-//  usersCtrl.renderSigninForm = (req, res) => {
-//   res.render('users/signin');
-// };
 
 //TODO Pagos con stripe
 
@@ -137,36 +108,22 @@ router.post("/checkout", isLoggedIn, async (req, res, next) => {
     description: 'test',
 
   });
-  ////////////////////////////////////////////*
     //? modelado para el status
 const order = new Order({
   user: req.user,
-  cart: cart,
-  // address: req.body.address,
+  cart: cart.items,
    email: req.body.email,
-  // name: req.user,
+  //  name: cart[items] = 'name',
   paymentId: charge.id
 });
-// newNote.user = req.user.id;
-// await newNote.save();
+
 await order.save() 
   req.flash("success_msg", "tu compra se ha realizado con éxito");
   req.session.cart = null;
   res.render("cart/succesPago");
 
-console.log(order)
+ console.log(order)
 
-////////////////////////////////////////////*
-
-    // req.session.cart = null;
-    // req.flash("success_msg", "tu compra se ha realizado con éxito");
-    // res.render("cart/succesPago");
-  
-  // console.log(cart.title);
-  // console.log(charge);
-  //respuesta en una vista
-  // res.render("cart/succesPago");
-  // res.render('successPago')
 });
 
 module.exports = router;
@@ -177,45 +134,3 @@ function isLoggedIn(req, res, next){
   }
   res.redirect('/users/signin')
 }
-//  if (!req.session.cart) {
-//    return res.render('cart/cart', {
-//      products: null
-//    });
-//  }
-
-//var productId = req.params.id;
-// var cart = new Cart(req.session.cart ? req.session.cart : {});
-// console.log(req.body)
-
-// if (!req.session.cart) {
-//   return res.render('cart/cart', {
-//     products: null
-//   });
-// }
-// var cart = new Cart(req.session.cart);
-// res.render('cart/cart', {
-//   title: 'Producto a Comprar',
-//    numItems: cart.items,
-//   products: cart.getItems(),
-//   totalPrice: cart.totalPrice
-// });
-
-// router.get('/checkout', isLoggedIn, (req, res, next) => {
-//   if (!req.session.cart) {
-//     return res.redirect('/');
-//   }
-
-//   var cart = new Cart(req.session.cart);
-//   var total = parseFloat(cart.totalPrice).toFixed(2);
-//   var errMsg = req.flash('error')[0];
-//   res.render('store/checkout', { total, errMsg, noError: !errMsg });
-
-// });
-
-// function isLoggedIn(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return next();
-//   }
-
-//   res.redirect('/');
-// }

@@ -45,10 +45,10 @@
     {{#each orders}}
     <tr>
       <th scope="row">{{this.cart.totalQty}} </th>
-      <td>{{ user.name }}</td>
-      <td>{{ this.notes.description }}</td>
+      <td>{{ this.cart.items}}</td>
+      <td>{{ this.cart.items}}</td>
       <td>Lps.{{this.cart.totalPrice}}</td>
-      <td class="p-3 mb-2 bg-primary text-white text-center">EN VENTA</td>
+      <td class="p-3 mb-2 bg-danger text-white text-center">Vendido</td>
     </tr>
     {{/each}}
   </tbody>

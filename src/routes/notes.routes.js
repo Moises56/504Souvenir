@@ -47,12 +47,21 @@ router.delete('/notes/delete/:id',isAuthenticated, deleteNotes);
 
 //?Estatus
 router.get('/notes/status',isAuthenticated, async (req, res) => {
-    const orders = await Order.find({ user: req.user.id })
-    .sort({ createdAt: -1 })
-    .lean();
-    res.render('notes/status', {orders})
-    console.log(orders)
+    const orders = await Order.find({ 'user': req.user})
+    // const note = await Order.find({ note: req.user.id })
+     .sort({ createdAt: -1 })
+     .lean();
+    // res.render('notes/status', {orders})
+    // console.log(orders)
+    // console.log(req.note.id )
+    var cart;
+      orders.forEach(order => {
+        cart = new Cart(order.cart);
+        order.items = cart;
+      });
+      res.render('notes/status', {orders});
   });
+
 
 
 
