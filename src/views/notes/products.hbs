@@ -1,0 +1,76 @@
+<div class="container-fluid ">
+    <div class="row">
+        {{#each notes}}
+
+
+        <div id="agregar" class="col-xs-12 col-sm-12 col-md-6 col-lg-4 pt-3 font-weight-bold">
+            <div class="card tarjeta">
+                <img loading="lazy" type="file" class="card-img-top img-alinear" src="{{imgURL}}" name="image">
+
+                <div class="card-body contenido p-3 mb-2 bg-secondary text-white">
+                    <h5 id="titleT" class="card-title text-center font-weight-bold ">{{ title }}</h5>
+                    <hr>
+                    <p class="card-text animate__animated animate__fadeInDown">Detalle: {{ description }}</p>
+                    Vendedor:{{user}}
+                    <p class="card-text">Precio: Lps.{{precio}}</p>
+                    <i style="color: rgb(226, 170, 16);" class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <div class="price botones">
+                        {{!-- <button>Comprar</button> --}}
+                        {{!-- <a href="/cart/add-to-cart/{{this.id}}" class="btn btn-dark btn-lg pull-right"role="button"><i class="fas fa-cart-plus"></i> --}}
+                        <a href="/cart/add/{{_id }}"
+                            class="btn btn-info cart-btn btn-outline-dark btn-block font-weight-bold" role="button">
+                            <i style="color: rgb(255, 145, 0);" class="fa fa-shopping-cart"
+                                aria-hidden="true"></i>Agregar</a>
+
+                        {{!-- <button class="btn cart-btn pull-right">Agregar<i class="fas fa-cart-plus"></i></button> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+    </div>
+
+</div>
+
+<hr>
+<div class="row">
+    <nav class="mx-auto">
+        <ul class="pagination">
+
+            <!-- Primera Pagina -->
+
+
+            {{!-- Numeracion --}}
+
+            <li class="page-item">
+                <a class="page-link" href="/{{page}}">Inicio</a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" href="/products/1">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="/products/2">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="/products/3">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="/products/4">4</a>
+            </li>
+
+            {{!-- Ultima Pagina --}}
+            <li class="page-item">
+                <a class="page-link" href="/products/{{pages}}">Final</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+<Pre>
+{{ current}}
+{{ pages}}
+</Pre>

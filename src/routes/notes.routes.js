@@ -54,11 +54,11 @@ router.get('/notes/status',isAuthenticated, async (req, res) => {
     // res.render('notes/status', {orders})
     // console.log(orders)
     // console.log(req.note.id )
-    var cart;
-      orders.forEach(order => {
-        cart = new Cart(order.cart);
-        order.items = cart;
-      });
+    // var cart;
+    //   orders.forEach(order => {
+    //     cart = new Cart(order.cart);
+    //     order.items = cart;
+    //   });
       res.render('notes/status', {orders});
   });
 

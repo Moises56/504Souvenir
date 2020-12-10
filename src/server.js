@@ -13,6 +13,7 @@ const passport = require("passport");
 const cookieParser = require('cookie-parser');
  var mongoose = require('mongoose');
  var MongoStore = require('connect-mongo')(session);
+//  const alertifyjs = require('alertifyjs');
 // const orderController = require('./controllers/order.contreller');
 
 // var product = require ('./models/Note');
@@ -77,11 +78,21 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use((req, res, next) => {
     //req.flash('success_msg');//*retorna el valor actual de succes_msg
     res.locals.success_msg = req.flash('success_msg'); //?para utilizarlo en cualquier vista
+    res.locals.success_msgC = req.flash('success_msgC'); //?para utilizarlo en cualquier vista
+    res.locals.success_msgCa = req.flash('success_msgCa'); //?para utilizarlo en cualquier vista
     res.locals.error_msg = req.flash("error_msg");
     res.locals.error = req.flash("error");
      res.locals.user = req.user || null;
     next();
 });
+
+
+
+
+
+
+
+
 
 app.use((req, res, next) => {
     app.locals.format = format;

@@ -7,7 +7,7 @@ const orderSchema = new Schema(
     cart: { type: Object, required: true },
     address: { type: String },
     email: {type: String, require:true},
-    // name: {type: Schema.Types.ObjectId, ref: "User" },
+    // note: {type: Schema.Types.ObjectId, ref: "Note" },
     
     // producto: {ype: Schema.Types.ObjectId, ref: "User"},
     paymentId: { type: String, required: true },

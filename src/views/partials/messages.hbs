@@ -1,7 +1,16 @@
 {{#if success_msg }}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
+<div  class="alert alert-success alert-dismissible fade show text-center" role="alert">
     {{success_msg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <button  type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if}}
+
+{{#if success_msgC }}
+<div  class="alert alert-success alert-dismissible fade show text-center" role="alert">
+    {{success_msgC}}
+    <button id="msj-success" type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
@@ -10,8 +19,26 @@
 {{#if error_msg }}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     {{error_msg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <button id="msj-error" type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 {{/if}}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#msj-success').click(function () {
+            //alertify.success("No haz agregado productos al carrito")
+            alertify.alert("Debes iniciar session")
+        })
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#msj-error').click(function () {
+            //alertify.success("No haz agregado productos al carrito")
+            alertify.alert("debes iniciar session primero")
+        })
+    })
+</script>

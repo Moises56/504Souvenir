@@ -51,19 +51,23 @@
         <a style="color: rgb(242, 246, 246);" href="/users/signup">Registrate</a>
         {{/if}}
 
-         <form class="form-inline my-2 my-lg-0 position-relative" action="/notes/notesFinder" method="GET">
-                  <input class="form-control mr-sm-2" name="formulario" type="search" placeholder="Buscar Articulos" aria-label="Search">
-                  <button name="boton" class="btn btn-search position-absolute" type="submit"><i class="fas fa-search"></i></button>
-             </form>
+        <form class="form-inline my-2 my-lg-0 position-relative" action="/notes/notesFinder" method="GET">
+            <input class="form-control mr-sm-2" name="formulario" type="search" placeholder="Buscar Articulos"
+                aria-label="Search">
+            <button name="boton" class="btn btn-search position-absolute" type="submit"><i
+                    class="fas fa-search"></i></button>
+        </form>
         <div class="nav-cart col-xs-8">
             <div class="dropdown pull-right icono">
                 {{!-- <div class="col-xs-8"> --}}
                 <a src="" class="btn" data-toggle="modal" data-target="#exampleModal">
                     <i style="color: rgb(255, 145, 0);" class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                     {{#if session.cart.totalQty }}
-                    <span class="badge badge-pill badge-warning font-weight-bold">{{session.cart.totalQty}}</span>
+                    <span  class="badge badge-pill badge-warning font-weight-bold">{{session.cart.totalQty}}</span>
                     {{/if}}
                 </a>
+
+
             </div>
 
 
@@ -106,8 +110,9 @@
                             </table>
                             <div class="modal-footer">
                                 <a type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</a>
-                                <a type="button" class="btn btn-outline-success" href="/cart/cart">Comprar</a>
+                                <a id="msjC" type="button" class="btn btn-outline-success" href="/cart/cart">Comprar</a>
                             </div>
+
 
                         </div>
                     </div>
@@ -560,3 +565,15 @@
 	 -->
 
 	</main> --}}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#msj').click(function () {
+            alertify.success("No haz agregado productos al carrito")
+            //alertify.alert("No haz agregado productos al carrito")
+            
+        })
+    })
+</script>
+
+

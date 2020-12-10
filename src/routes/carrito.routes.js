@@ -3,6 +3,7 @@ const router = express.Router();
 
 const User = require("../models/User");
 const Order = require("../models/Order");
+//const Note = require("../models/Note");
 
 const { isAuthenticated } = require("../helpers/validacion");
 const passport = require("passport");
@@ -23,15 +24,18 @@ router.get("/cart/add/:id", (req, res, next) => {
 
   Product.findById(productId, (err, product) => {
     if (err) {
+      req.flash("success_msgC", "No has agregado ");
       return res.redirect("/");
     }
     cart.add(product, product.id);
     req.session.cart = cart;
-    req.flash("success_msg", "Producto agregado al carrito");
+    req.flash("success_msgC", "Producto agregado al carrito");
     res.redirect("/");
+    // res.redirect("/notes/products");
     // console.log(cart);
   });
 });
+
 
 
 router.get("/cart/cart",isLoggedIn, function (req, res, next) {
@@ -112,8 +116,8 @@ router.post("/checkout", isLoggedIn, async (req, res, next) => {
 const order = new Order({
   user: req.user,
   cart: cart.items,
-   email: req.body.email,
-  //  name: cart[items] = 'name',
+  email: req.body.email,
+  // note: req.note,
   paymentId: charge.id
 });
 

@@ -2,4 +2,4 @@
 Proyecto-IS=>
 Proyecto de Tienda-Online 504Venir
 
-dominio: https://s504venir.herokuapp.com/
+dominio: https://i504venir.herokuapp.com/
