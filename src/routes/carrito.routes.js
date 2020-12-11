@@ -115,7 +115,7 @@ router.post("/checkout", isLoggedIn, async (req, res, next) => {
     //? modelado para el status
 const order = new Order({
   user: req.user,
-  cart: cart.items,
+  cart: cart,
   email: req.body.email,
   // note: req.note,
   paymentId: charge.id
