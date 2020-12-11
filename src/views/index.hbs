@@ -1,16 +1,16 @@
 <style>
     body {
-
         font-family: 'Roboto', sans-serif;
-
         background: #0F2027;
         /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
         /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
     }
+
+
+    
 </style>
 
 {{!-- class="animate__animated animate__fadeInDown" --}}
@@ -81,31 +81,15 @@
     </div>
 </main>
 
-<div id="contenido">
-
-    {{!-- {{#if notes}} --}}
-    {{!-- <form class="container" action="store/checkout" method="GET">
-        <input type="text" name="buscar" value="{{buscar}}">
-        <input type="submit" value="buscar">
-    </form> --}}
-    {{!-- {{/if}}
-    {{#each notes}}
-    <div>
-        <h2>{{title}}</h2>
-        <h2>{{description}}</h2>
-        <span>{{precio}}</span>
-    </div>
-    {{/each}} --}}
 
 
     <main class="">
         <br>
-        <h1 id="titulo" class="text-center text-white btn-outline-info">Productos</h1>
+        <h1 id="titulo" class="text-center text-white">Productos</h1>
+       
         <div class="container-fluid ">
             <div class="row">
                 {{#each notes}}
-
-
                 <div id="agregar" class="col-xs-12 col-sm-12 col-md-6 col-lg-4 pt-3 font-weight-bold">
                     <div class="card tarjeta">
                         <img loading="lazy" type="file" class="card-img-top img-alinear" src="{{imgURL}}" name="image">
@@ -133,24 +117,16 @@
                     </div>
                 </div>
                 {{/each}}
-
-
             </div>
-
         </div>
+
         <hr style="color: black">
 
         <div class="row">
-           
-
             <nav class="mx-auto">
                 <ul class="pagination">
                     
                     <!-- Primera Pagina -->
-                    
-                   
-                    {{!-- Numeracion --}}
-                    
                     <li class="page-item">
                         <a class="page-link" href="/{{page}}">Inicio</a>
                     </li>
@@ -167,21 +143,15 @@
                     <li class="page-item">
                         <a class="page-link" href="/products/4">4</a>
                     </li>
-                    
-                    
-                     
-                   
+                    <li class="page-item">
+                        <a class="page-link" href="/products/5">5</a>
+                    </li>
                     {{!-- Ultima Pagina --}}
                     <li class="page-item">
                         <a class="page-link" href="/products/{{pages}}">Final</a>
                     </li>
-                    
-
-
-
                 </ul>
             </nav>
-
         </div>
 
 <Pre>
@@ -190,35 +160,3 @@
 </Pre>
     </main>
 
-    {{!-- 
-    <script>
-        const botones = document.querySelectorAll('.cart-btn')
-        botones.forEach(btn => {
-            btn.addEventListener('click', () => {
-                console.log('Hello Click')
-            }
-
-    </script> --}}
-
-
-
-    {{!-- <div class="container marketing">
-        <br>
-        <h2 id="pro1">PRODUCTOS</h2>
-        <hr>
-        <div class="row" id="pro1DIV"></div>
-        <h2 id="pro2">producto2</h2>
-        <hr>
-        <div class="row" id="pro2DIV"></div>
-        <h2 id="pro3">Producto3</h2>
-        <hr>
-        <div class="row" id="pro3DIV"></div>
-        <hr class="featurette-divider">
-
-    </div> --}}
-
-
-
-
-
-    {{!-- <script src="../public/js/main.js"></script> --}}
