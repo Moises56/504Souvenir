@@ -1,6 +1,9 @@
 const {Router} = require('express');
 const router = Router();
 const User = require('../models/User');
+const Cart = require("../models/Cart");
+const Order = require("../models/Order");
+
 const {isAuthenticated} = require('../helpers/validacion');
 
 const { renderSignUpForm,
@@ -99,6 +102,52 @@ function requireAdmin() {
   }
   
 }
+
+
+//?Estatus
+// router.get('/notes/status',isAuthenticated, async (req, res) => {
+//   const orders = await Order.find({ 'user': req.user})
+//   // const note = await Order.find({ note: req.user.id })
+//    .sort({ createdAt: -1 })
+//    .lean();
+//   // res.render('notes/status', {orders})
+//   // console.log(orders)
+//   // console.log(req.note.id )
+//   // var cart;
+//   //   orders.forEach(order => {
+//   //     cart = new Cart(order.cart);
+//   //     order.items = cart;
+//   //   });
+//     res.render('notes/status', {orders});
+// });
+
+router.get('/notes/status',isAuthenticated, async (req, res) => {
+  const orders = await Order.find({ 'user': req.user}, (err, orders) => {
+    
+    if(err){
+      return res.write('Error');
+    }
+    var cart;
+    orders.forEach(order => {
+      cart =new Cart(order.cart);
+      order.items = cart.getItems();      
+    });
+    res.render('notes/status', {orders});
+  })
+  // const note = await Order.find({ note: req.user.id })
+   .sort({ createdAt: -1 })
+   .lean();
+  // res.render('notes/status', {orders})
+  // console.log(orders)
+  // console.log(req.note.id )
+  // var cart;
+  //   orders.forEach(order => {
+  //     cart = new Cart(order.cart);
+  //     order.items = cart;
+  //   });
+    // res.render('notes/status', {orders});
+});
+
 
 
 

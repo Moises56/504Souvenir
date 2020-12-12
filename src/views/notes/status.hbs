@@ -1,55 +1,44 @@
-{{!-- <div class="row mt-5">
+<style>
+  img.avatar {
+    /* cambia estos dos valores para definir el tamaño de tu círculo */
+    height: 50px;
+    width: 50px;
+    /* los siguientes valores son independientes del tamaño del círculo */
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+}
+</style>
+
+<div class="row mt-5">
+  <a href="/notes">Regresar</a>
   <div class="col-md-8 offset-2">
-   
-    <div class="card-header">
+    <div class="card-header text-center">
       Lista de Ordenes
     </div>
-     {{#each products }}
-
+    {{#each orders }}
     <div class="card-body">
+      Unidades: {{this.cart.totalQty}}
       <ul class="list-group">
-
+        {{#each this.items }}
         <li class="list-group-item">
-          <img src="{{this.item.imgUR}}" alt="width: 10%">
-          {{ this.user.name}} | {{ this.cart.totalQty }}  Units
-          <span class="bagde bagde-primary pill font-weight-bold text-white ml-auto">
-            {{ this.precio }}
-          </span>
+          <img src="{{this.item.imgURL}}" class="avatar" >
+          {{!-- <img src="{{this.item.imgURL}}" class="img-fluid zoom img-thumbnail" style="height: 200px;"> --}}
+          {{ this.item.title}} | Precio:
+          <span class="bagde bagde-primary pill font-weight-bold  ml-auto">
+            {{ this.item.precio }}
+          </span> 
+         
         </li>
-
+        {{/each}}
+        Fecha: {{createdAt}}
       </ul>
     </div>
-     
-  
     <div class="card-footer">
-      <strong>${{this.cart.totalPrice }}</strong>
+      <strong>Total Lps.{{this.cart.totalPrice }}</strong>
     </div>
-   {{/each}}
+    {{/each}}
   </div>
 
-</div> --}}
-
-<a href="/notes">Regresar</a>
-
-<table class="table table-hover text-center">
-  <thead class="thead-dark">
-    <tr >
-      <th scope="col">Cantidad</th>
-      <th scope="col">Productos</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">precio</th>
-      <th scope="col">Estado</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each orders}}
-    <tr>
-      <th scope="row">{{this.cart.totalQty}} </th>
-      <td>{{ this.cart}}</td>
-      <td>{{ this.cart}}</td>
-      <td>Lps.{{this.cart.totalPrice}}</td>
-      <td class="p-3 mb-2 bg-danger text-white text-center">Vendido</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+</div>
