@@ -14,7 +14,7 @@
     {{!-- alertas --}}
     <link rel="stylesheet" href="/alertifyjs/css/alertify.css">
     <link rel="stylesheet" href="/alertifyjs/css/themes/default.css">
-    
+
 
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -47,7 +47,7 @@
     <!--Estilos CSS-->
     <link rel="stylesheet" href="/css/estilos.css">
     <link rel="stylesheet" href="/css/tarjeta.css">
-    <!-- <link rel="stylesheet" href="/css/buscador.css"> -->
+    {{!-- <link rel="stylesheet" href="/css/buscador.css"> --}}
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/navbar.css">
@@ -65,18 +65,19 @@
     <div id="pagina">
         <div id="cabecera">
             {{>navigation}}
-                <main class="container p-1">
-                    {{>messages}}
-                    {{>errors}}
-                    {{{body}}}
-                </main>
+           
+            <main class="container p-5">
+                {{>messages}}
+                {{>errors}}
+                {{{body}}}
+            </main>
 
-                <div id="pie">
-                    {{>footer}}
-                </div>
+            <div id="pie">
+                {{>footer}}
             </div>
         </div>
-    
+    </div>
+
 
 
 
