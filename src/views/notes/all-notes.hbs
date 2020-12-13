@@ -226,10 +226,9 @@
     <div class="card tarjeta animate__animated animate__fadeInDown">
       <img type="file" class="card-img-top img-alinear" src="{{imgURL}}" name="image">
       <div class="card-body contenido animate__animated animate__fadeInDown">
-        <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }} <a
-            href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>Precio: Lps.{{precio}}
-        <p class="card-text">Detalle: {{ description }}</p>
-        {{!-- <p class="card-text">{{createdAt}}</p> --}}
+        <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }} 
+          <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>Precio: Lps.{{precio}}
+        <p class="card-text">Detalle: {{ description }}</p>{{createdAt}}
         <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>
@@ -275,7 +274,7 @@
   <div id="menu-items">
     <div class="item">
       <a href="#">
-        <div class="icon" data-toggle="modal" data-target="#modalNuevaApp"><i style="color:forestgreen"
+        <div class="icon" data-toggle="modal" data-target="#modalNuevaApp"><i style="color:rgb(54, 226, 54)"
             class="fas fa-plus"></i></div>
         <div class="title" data-toggle="modal" data-target="#modalNuevaApp"><span>Crear Producto</span></div>
 
@@ -297,7 +296,7 @@
 
     <div class="item">
       <a href="/notes/status">
-        <div class="icon"><i style="color:darkgreen" class="fas fa-hand-holding-usd"></i></div>
+        <div class="icon"><i style="color:rgb(183, 202, 9)" class="far fa-calendar-alt"></i></div>
         <div class="title"><span>Ver Estado</span></div>
       </a>
     </div>
@@ -308,7 +307,7 @@
     <div class="item">
       <a href="/users/editeUserPerfil/{{user._id}}">
         <!-- <div class="icon"><img src="img/app-icons/40.webp" alt=""></div> -->
-        <div class="icon"><i style="color: darkgreen;" class="fas fa-edit"></i></div>
+        <div class="icon"><i style="color:rgb(226, 113, 21)" class="fas fa-user-edit"></i></div>
         <div class="title"><span>Editar Perfil</span></div>
 
 

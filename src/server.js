@@ -86,14 +86,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
-
-
-
-
-
-
+//?tiempo format
 app.use((req, res, next) => {
     app.locals.format = format;
     next();
@@ -105,53 +98,24 @@ app.use((req, res, next) => {
     next();
 })
 
-// res.locals is an object passed to hbs engine
+//? res.locals is an object passed to hbs engine
 app.use(function(req, res, next) {
     res.locals.session = req.session;
     next();
 });
 
-//app.use((req, res, next) => {
-    //res.locals.success_msg = req.flash("success_msg");
-    //res.locals.error_msg = req.flash("error_msg");
-    //res.locals.error = req.flash("error");
-    //res.locals.user = req.user || null;
-  //  next();
-
-
-
-
-
-
 
 //?Routes
-/*app.get('/', (req, res) => { //*muestra handlebars
-    res.render('index')
-//});*/
-
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/notes.routes'));
 app.use(require('./routes/users.routes'));
 app.use(require('./routes/carrito.routes'));
-//  app.use(require('./routes/products.routes'));
-
-// app.get('/saveitem', products.create);
-// app.post('/additem', products.store);
-
 
 app.get('/recuperar', function(req, res) {
     res.render('forgot', {
       user: req.user
     });
   });
-
-  
-
-//app.use(require('./controllers/order.controller'));
-//app.use('/',orderController);
-//app.use(require('./routes/order.routes'));
-
-
 
 
 //?Static failes

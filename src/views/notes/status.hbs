@@ -1,4 +1,14 @@
 <style>
+  body {
+    background: #8e9eab;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+
   img.avatar {
     /* cambia estos dos valores para definir el tamaño de tu círculo */
     height: 50px;
@@ -8,37 +18,51 @@
     background-position: 50%;
     border-radius: 50%;
     background-size: 100% auto;
-}
-</style>
+  }
 
-<div class="row mt-5">
-  <a href="/notes">Regresar</a>
+  hr.new2 {
+    border-top: 1px dashed red;
+  }
+</style>
+<a type="button" class="btn btn-outline-info" href="/notes">Regresar</a>
+<div class="row mt-3">
+
   <div class="col-md-8 offset-2">
-    <div class="card-header text-center">
-     Historial de Compras
+    <div style="color:rgb(255, 145, 0)" class="card-header text-center ">
+      <h5 class="card-header bg-dark">Historial de Compras</h5>
     </div>
     {{#each orders }}
-    <div class="card-body">
-      Unidades: {{this.cart.totalQty}}
+    <div class="card-body ">
+      <button type="button" class="btn btn-link">
+        Unidades: <span class="badge badge-light">{{this.cart.totalQty}}</span>
+        <span class="sr-only">unread messages</span>
+      </button>
       <ul class="list-group">
         {{#each this.items }}
         <li class="list-group-item">
-          <img src="{{this.item.imgURL}}" class="avatar" >
-          {{!-- <img src="{{this.item.imgURL}}" class="img-fluid zoom img-thumbnail" style="height: 200px;"> --}}
-          {{ this.item.title}} | Precio:
-          <span class="bagde bagde-primary pill font-weight-bold  ml-auto">
-            {{ this.item.precio }}
-          </span> 
-         
+          <img src="{{this.item.imgURL}}" class="avatar">
+          |{{ this.item.title}} | <span class="badge badge-info">{{ this.quantity}}</span> |Precio:
+          <span class="badge badge-primary pill font-weight-bold  ml-auto">
+            {{ this.item.precio}}
+          </span>
+
         </li>
         {{/each}}
-        Fecha: {{createdAt}}
+        <a type="button" class="btn btn-link">
+          Fecha: <span class="badge badge-link">{{createdAt}}</span>
+        </a>
       </ul>
     </div>
-    <div class="card-footer">
-      <strong>Total Lps.{{this.cart.totalPrice }}</strong>
+    <div style="color:rgb(39, 23, 3) " class="card-footer">
+      <button type="button" class="btn btn-warning">
+        Total Lps.: <span class="badge badge-light">{{this.cart.totalPrice }}</span>
+        <span class="sr-only">unread messages</span>
+      </button>
+
+      {{!-- <strong class="badge badge-info pill font-weight-bold  ml-auto">Total Lps.{{this.cart.totalPrice }}</strong> --}}
     </div>
+    <hr class="new2">
     {{/each}}
   </div>
-
 </div>
+<br><br>

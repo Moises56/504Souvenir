@@ -14,12 +14,14 @@ cloudinary.config({
 const fsExtra = require("fs-extra");
 const Order = require("../models/Order");
 
+//? pintar formulario crear producto
 notesCtrl.renderNoteForm = (req, res) => {
   //*res.send('Añadir producto');
   //console.log(req.user.id)
   res.render("notes/new-note");
 };
 
+//* Crear un producto
 notesCtrl.createNewNote = async (req, res) => {
   const {
     title,
@@ -67,10 +69,6 @@ notesCtrl.createNewNote = async (req, res) => {
       imgURL: resultado.url,
       public_id: resultado.public_id,
     });
-
-    // process.on('unhandledRejection', e => {
-    //   console.error(e);
-    // });
     console.log(newNote);
     newNote.user = req.user.id;
     await newNote.save(); //?Guardando en la base toda la collections
@@ -114,23 +112,26 @@ notesCtrl.renderProductos = async (req, res) => {
   // console.log(products)
 };
 
-  notesCtrl.renderProductosIndex = async (req, res) => {
-    let perPage = 9;
-   
-   const notes = await Note.find()
-   .limit(perPage) // output just 9 items
-   .sort({ createdAt: -1 })
-   .lean();
-   res.render('index', {notes})
-     //console.log(products)
- }
+//? pintar al index
+notesCtrl.renderProductosIndex = async (req, res) => {
+  let perPage = 9;
+  const notes = await Note.find()
+    .limit(perPage) // output just 9 items
+    .sort({ createdAt: -1 })
+    .lean();
+  res.render("index", { notes });
+  //console.log(products)
+};
 
+//? pintar la Paginacion
 notesCtrl.renderProductosIndexP = async (req, res, next) => {
   // router.get('/products/:page', (req, res, next) => {
   let perPage = 9;
   let page = req.params.page || 1;
 
-  Note.find({}).sort({ createdAt: -1 }).lean()
+  Note.find({})
+    .sort({ createdAt: -1 })
+    .lean()
     .skip(perPage * page - perPage) // in the first page the value of the skip is 0
     .limit(perPage) // output just 9 items
     .exec((err, notes) => {
@@ -146,9 +147,7 @@ notesCtrl.renderProductosIndexP = async (req, res, next) => {
     });
 };
 
-
-
-//?Renderizado para editar productos
+//* Editar productos
 notesCtrl.renderEditForm = async (req, res) => {
   // res.send('Edit form')
   const note = await Note.findById(req.params.id).lean(); //buscando en la base el ID
@@ -190,10 +189,6 @@ notesCtrl.updateNotes = async (req, res) => {
 
 //*Eliminar producto
 
-/*notesCtrl.deleteNotes=(req, res) => {
-    res.render('Eliminar Notas')
-};*/
-
 notesCtrl.deleteNotes = async (req, res) => {
   const note = await Note.findByIdAndDelete(req.params.id); //?Elimina por ID
   const result = await cloudinary.v2.uploader.destroy(note.public_id);
@@ -201,51 +196,5 @@ notesCtrl.deleteNotes = async (req, res) => {
   req.flash("success_msg", "Producto Eliminado Con Exito");
   res.redirect("/notes");
 };
-
-//***************Estatus */
-
-// notesCtrl.status = async (req, res) => {
-//   const orders = await Order.find({ 'user': req.user}, (err, orders) => {
-//     if(err){
-//       return res.write('Error');
-//     }
-//     var cart;
-//     orders.forEach(order => {
-//       cart = new Cart(order.cart);
-//       order.items = cart.generateArray();
-//     });
-//     res.render('notes/status', {orders});
-//   })
-
-//   // res.redirect("notes/status");
-// }
-
-//?Buscador
-
-//   notesCtrl.buscador = async (req, res) => {
-//     if(req.body){
-//         console.log("Buscar",req.body)
-//         console.log(req.body)
-//        await Note.find({title:{$regex:'.*'+req.body+'.*',$options:"i"}}, function(error, req, res){
-//           if(error){
-//             console.log("errorr en finde")
-//           }else{
-//             var productosListado = req, res
-//             res.render('store/checkout',{title:"Home",productos:productosListado,buscar:req.body})
-//           }
-//         })
-//     }else{
-//       await Note.find({}, function(error, req, res){
-//         if(error){
-//           console.log("error en finde")
-//         }else{
-//           var productosListado = req, res
-//           res,render('store/checkout', {title:"Home",Productos:productosListado,buscar:''})
-//         }
-//       })
-
-//     }
-
-// }
 
 module.exports = notesCtrl;
