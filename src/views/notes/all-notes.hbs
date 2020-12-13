@@ -26,6 +26,8 @@
     margin-left: var(--width-collapsed);
   }
 
+
+
   .body-expanded {
     margin-left: var(--width);
   }
@@ -213,20 +215,34 @@
   @media (max-width: 1200px) {
     .img-alinear {
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       object-fit: cover;
     }
   }
+
+  @media (min-width: 768px){
+   .col-md-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    max-width: 50%;
+    }
+  }
+
+  
+
 </style>
 
 
 <div class="row">
   {{#each notes}}
-  <div class="col-xs-12 col-sm-4 col-md-12 col-lg-4 pt-3">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 pt-3">
     <div class="card tarjeta animate__animated animate__fadeInDown">
       <img type="file" class="card-img-top img-alinear" src="{{imgURL}}" name="image">
       <div class="card-body contenido animate__animated animate__fadeInDown">
-        <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }} 
+        <h5 class="card-title d-flex justify-content-between align align-items-center"> {{ title }}
           <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a></h5>Precio: Lps.{{precio}}
         <p class="card-text">Detalle: {{ description }}</p>{{createdAt}}
         <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">

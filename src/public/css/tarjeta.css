@@ -36,7 +36,7 @@ body {
 
 .img-alinear {
   height: 250px;
-  width: 345px;
+  width: 340px;
   object-fit: cover;
 }
 
@@ -192,7 +192,7 @@ button:last-child:hover {
 @media (max-width: 1200px) {
   .img-alinear {
     width:100%;
-    max-width:400px;
+    max-width:500px;
     object-fit: cover;
   }
 }
