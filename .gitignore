@@ -4,3 +4,5 @@ productos
 public/img/uploads
 .env
 .gitignore
+env
+gitignore
